@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="梯云社工具使用栏目：Clash Mi、v2rayN、Shadowrocket 等客户端安装配置与排错教程。">
+  <link rel="canonical" href="https://tiyunclub.com/tools.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="工具使用｜梯云社">
+  <meta property="og:url" content="https://tiyunclub.com/tools.html">
+  <title>工具使用｜梯云社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script>tailwind.config={theme:{extend:{colors:{ink:'#111111',muted:'#6B7280',line:'#E5E7EB',paper:'#FAFAFA'},fontFamily:{mono:['SFMono-Regular','Consolas','monospace']}}}};</script>
+  <style>*{box-sizing:border-box}body{letter-spacing:0}::selection{background:#111;color:#fff}.nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .25s ease}.nav-link:hover:after{transform:scaleX(1);transform-origin:left}</style>
+</head>
+<body class="bg-white text-ink antialiased">
+  <header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-sm">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-5 md:h-20 md:px-10 xl:px-16">
+      <a href="index.html" class="flex items-baseline gap-2"><span class="text-xl font-black">梯云社</span><span class="hidden text-[10px] font-bold uppercase tracking-widest text-muted sm:inline">TIYUN CLUB</span></a>
+      <nav class="hidden items-center gap-7 text-sm font-medium xl:flex"><a class="nav-link" href="index.html">首页</a><a class="nav-link" href="airports.html">机场推荐</a><a class="nav-link font-bold" href="tools.html">工具使用</a><a class="nav-link" href="knowledge.html">知识库</a><a class="nav-link" href="index.html#about">关于</a><a href="index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a><a class="nav-link text-xs" href="disclaimer.html">免责声明</a></nav>
+      <button id="menuButton" class="p-2.5 xl:hidden" aria-label="打开菜单" aria-expanded="false"><i data-lucide="menu" class="h-5 w-5"></i></button>
+    </div>
+    <nav id="mobileMenu" class="hidden border-t border-line bg-white px-5 py-5 xl:hidden"><div class="grid gap-4 text-sm font-medium"><a href="index.html">首页</a><a href="airports.html">机场推荐</a><a class="font-bold" href="tools.html">工具使用</a><a href="knowledge.html">知识库</a><a href="index.html#about">关于</a><a href="disclaimer.html">免责声明</a></div></nav>
+  </header>
+
+  <main class="mx-auto max-w-screen-2xl px-5 md:px-10 xl:px-16">
+    <header class="border-b border-line py-14 md:py-24">
+      <p class="font-mono text-xs uppercase text-muted">Tools / 工具使用</p>
+      <div class="mt-5 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+        <h1 class="text-5xl font-black leading-tight md:text-7xl">从安装开始，<br>把配置一次做对。</h1>
+        <p class="max-w-md leading-relaxed text-gray-600">客户端安装、订阅导入、规则配置与故障排查。每篇教程均提供清晰步骤和官方资料来源。</p>
+      </div>
+    </header>
+
+    <section class="py-14 md:py-20">
+      <div class="mb-10 flex items-end justify-between"><div><p class="font-mono text-xs uppercase text-muted">Guides / 使用教程</p><h2 id="listTitle" class="mt-2 text-2xl font-bold">全部工具教程</h2></div><span id="articleCount" class="font-mono text-xs text-muted"></span></div>
+      <div id="articleGrid" class="grid border-l border-t border-line md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line bg-paper"><div class="mx-auto flex max-w-screen-2xl flex-wrap justify-between gap-4 px-5 py-10 text-xs text-muted md:px-10 xl:px-16"><span>© 2026 TIYUN CLUB</span><div class="flex gap-5"><a href="index.html">首页</a><a href="knowledge.html">知识库</a><a href="disclaimer.html">免责声明</a></div></div></footer>
+
+  <script src="assets/posts-data.js?v=4"></script>
+  <script>
+    const selectedTag = new URLSearchParams(location.search).get('tag');
+    const toolPosts = (window.TIYUN_POSTS || []).filter((post) => post.category === '工具使用');
+    const articles = selectedTag ? toolPosts.filter((post) => (post.tags || []).includes(selectedTag)) : toolPosts;
+    if (selectedTag) document.getElementById('listTitle').textContent = `# ${selectedTag}`;
+    document.getElementById('articleCount').textContent = `${String(articles.length).padStart(2, '0')} GUIDES`;
+    document.getElementById('articleGrid').innerHTML = articles.map((post) => `<article class="group flex min-h-80 flex-col justify-between border-b border-r border-line p-7 transition-colors hover:bg-gray-50 md:p-8"><div><div class="flex items-center justify-between text-xs text-muted"><span class="border border-gray-300 px-2.5 py-1 font-mono text-ink">${post.category}</span><time datetime="${post.date}">${post.date.replaceAll('-', '.')}</time></div><h3 class="mt-8 text-2xl font-bold leading-snug"><a href="${post.url}">${post.title}</a></h3><p class="mt-4 line-clamp-2 leading-relaxed text-gray-600">${post.description}</p></div><a href="${post.url}" class="mt-10 flex justify-between text-xs text-muted" aria-label="阅读：${post.title}"><span>${post.readingMinutes} MIN READ</span><i data-lucide="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1"></i></a></article>`).join('');
+    document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons();const button=document.getElementById('menuButton');const menu=document.getElementById('mobileMenu');button.addEventListener('click',()=>{const open=menu.classList.toggle('hidden')===false;button.setAttribute('aria-expanded',String(open));});});
+  </script>
+  <script src="assets/airport-menu.js" defer></script>
+</body>
+</html>

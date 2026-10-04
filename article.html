@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="梯云社深度技术文章">
+  <link id="canonicalUrl" rel="canonical" href="https://tiyunclub.com/article.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
+  <meta id="ogTitle" property="og:title" content="梯云社深度技术文章">
+  <meta id="ogDescription" property="og:description" content="梯云社深度技术文章">
+  <meta id="ogUrl" property="og:url" content="https://tiyunclub.com/article.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta id="twitterTitle" name="twitter:title" content="梯云社深度技术文章">
+  <meta id="twitterDescription" name="twitter:description" content="梯云社深度技术文章">
+  <title>文章｜梯云社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { letter-spacing: 0; }
+    ::selection { background: #111; color: #fff; }
+    .article-body { color: #1a1a1a; font-size: 1.0625rem; line-height: 1.9; }
+    .article-body > * + * { margin-top: 1.6rem; }
+    .article-body > h1:first-child { display: none; }
+    .article-body h2 { margin-top: 4rem; padding-bottom: .65rem; border-bottom: 1px solid #e5e7eb; font-size: 1.8rem; line-height: 1.35; font-weight: 700; }
+    .article-body h3 { margin-top: 2.75rem; padding-bottom: .5rem; border-bottom: 1px solid #e5e7eb; font-size: 1.3rem; line-height: 1.4; font-weight: 700; }
+    .article-body a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .article-body blockquote { border-left: 3px solid #111; padding: 1rem 0 1rem 1.5rem; color: #374151; background: #fafafa; }
+    .article-body blockquote a { display: inline-block; margin-top: .25rem; font-weight: 700; }
+    .article-body ul, .article-body ol { padding-left: 1.5rem; }
+    .article-body ul { list-style: square; }
+    .article-body ol { list-style: decimal; }
+    .article-body li + li { margin-top: .55rem; }
+    .article-body code:not(pre code) { background: #f3f4f6; padding: .15rem .35rem; font-family: monospace; font-size: .9em; }
+    .article-body pre { overflow-x: auto; background: #111; color: #f9fafb; padding: 1.4rem; font-size: .875rem; line-height: 1.7; }
+    .article-body table { width: 100%; min-width: 42rem; border-collapse: collapse; border-top: 1px solid #111; border-bottom: 1px solid #111; font-size: .9rem; }
+    .article-body th, .article-body td { padding: .8rem .55rem; text-align: left; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .article-body th { font-weight: 700; background: #fafafa; }
+    .article-body table { display: block; overflow-x: auto; }
+  </style>
+</head>
+<body class="bg-white text-[#111] antialiased">
+  <header class="sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-5 md:h-20 md:px-10 xl:px-16">
+      <a href="index.html" class="flex items-baseline gap-2"><span class="text-xl font-black">梯云社</span><span class="hidden text-[10px] font-bold uppercase tracking-widest text-gray-500 sm:inline">TIYUN CLUB</span></a>
+      <nav class="hidden items-center gap-7 text-sm font-medium xl:flex"><a href="index.html">首页</a><a href="airports.html">机场推荐</a><a href="tools.html">工具使用</a><a id="sectionLink" href="knowledge.html">知识库</a><a href="index.html#about">关于</a><a href="index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a><a href="disclaimer.html" class="text-xs">免责声明</a></nav>
+      <div class="flex items-center gap-1 xl:hidden"><a href="index.html?search=1" class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></a><a id="mobileSectionLink" href="knowledge.html" class="p-2.5 text-sm font-semibold">知识库</a></div>
+    </div>
+  </header>
+
+  <main>
+    <article id="article" class="hidden">
+      <header class="border-b border-gray-200">
+        <div class="mx-auto max-w-5xl px-5 py-14 md:py-24">
+          <a id="backLink" href="knowledge.html" class="text-sm text-gray-500 hover:text-black">← 返回知识库</a>
+          <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span id="category" class="border border-gray-300 px-3 py-1 font-mono text-black"></span><time id="date"></time><span>·</span><span id="readingTime"></span></div>
+          <h1 id="title" class="mt-7 text-4xl font-black leading-tight sm:text-5xl md:text-7xl"></h1>
+          <p id="description" class="mt-8 max-w-3xl text-lg leading-relaxed text-gray-600"></p>
+          <div class="mt-10 flex items-center gap-4 border-t border-gray-200 pt-5 text-sm"><div class="flex h-10 w-10 items-center justify-center bg-black font-bold text-white">TY</div><div><p class="font-semibold">梯云社编辑部</p><p class="text-xs text-gray-500">Network Research · 2026</p></div></div>
+        </div>
+      </header>
+      <div class="mx-auto max-w-3xl px-5 py-14 md:py-20">
+        <div id="content" class="article-body"></div>
+      </div>
+    </article>
+
+    <section id="loading" class="mx-auto max-w-3xl px-5 py-32 text-center"><p class="font-mono text-xs text-gray-500">LOADING ARTICLE...</p></section>
+    <section id="error" class="mx-auto hidden max-w-3xl px-5 py-32"><p class="font-mono text-xs text-gray-500">404 / ARTICLE NOT FOUND</p><h1 class="mt-5 text-4xl font-black">文章不存在或尚未发布。</h1><a href="knowledge.html" class="mt-8 inline-block border-b border-black pb-1">返回文章列表</a></section>
+  </main>
+
+  <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><span>TIYUNCLUB.COM</span></div></footer>
+
+  <script src="assets/posts-data.js?v=4"></script>
+  <script>
+    const allowedPosts = new Set((window.TIYUN_POSTS || []).map((post) => post.slug));
+
+    function parsePost(source) {
+      const match = source.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+      if (!match) return { meta: {}, body: source };
+      const meta = {};
+      match[1].split('\n').forEach(line => {
+        const separator = line.indexOf(':');
+        if (separator < 0) return;
+        const key = line.slice(0, separator).trim();
+        meta[key] = line.slice(separator + 1).trim().replace(/^['"]|['"]$/g, '');
+      });
+      return { meta, body: match[2] };
+    }
+
+    async function loadArticle() {
+      const slug = new URLSearchParams(location.search).get('post');
+      if (!allowedPosts.has(slug)) return showError();
+      try {
+        const bundledPost = (window.TIYUN_POSTS || []).find((post) => post.slug === slug);
+        let meta;
+        let body;
+
+        if (bundledPost?.body) {
+          meta = bundledPost;
+          body = bundledPost.body;
+        } else {
+          const response = await fetch(`posts/${slug}.md`);
+          if (!response.ok) throw new Error('Not found');
+          ({ meta, body } = parsePost(await response.text()));
+        }
+        const wordCount = body.replace(/[#*|>`\-\[\]()]/g, '').length;
+        document.getElementById('title').textContent = meta.title || '未命名文章';
+        document.getElementById('description').textContent = meta.description || '';
+        document.getElementById('category').textContent = meta.category || '文章';
+        if (meta.category === '工具使用') {
+          const sectionLink = document.getElementById('sectionLink');
+          const mobileSectionLink = document.getElementById('mobileSectionLink');
+          const backLink = document.getElementById('backLink');
+          sectionLink.href = 'tools.html';
+          sectionLink.textContent = '工具使用';
+          mobileSectionLink.href = 'tools.html';
+          mobileSectionLink.textContent = '工具使用';
+          backLink.href = 'tools.html';
+          backLink.textContent = '← 返回工具使用';
+        }
+        document.getElementById('date').textContent = (meta.date || '').replaceAll('-', '.');
+        document.getElementById('readingTime').textContent = `${Math.max(5, Math.ceil(wordCount / 350))} MIN READ`;
+        const content = document.getElementById('content');
+        content.innerHTML = DOMPurify.sanitize(marked.parse(body));
+        content.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((link) => {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer sponsored';
+        });
+        document.title = `${meta.title}｜梯云社`;
+        document.querySelector('meta[name="description"]').setAttribute('content', meta.description || '梯云社深度技术文章');
+        const canonical = `https://tiyunclub.com/article.html?post=${encodeURIComponent(slug)}`;
+        document.getElementById('canonicalUrl').href = canonical;
+        document.getElementById('ogTitle').content = meta.title || '梯云社深度技术文章';
+        document.getElementById('ogDescription').content = meta.description || '梯云社深度技术文章';
+        document.getElementById('ogUrl').content = canonical;
+        document.getElementById('twitterTitle').content = meta.title || '梯云社深度技术文章';
+        document.getElementById('twitterDescription').content = meta.description || '梯云社深度技术文章';
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('article').classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
+      } catch (error) { showError(); }
+    }
+
+    function showError() {
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('error').classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', loadArticle);
+  </script>
+  <script src="assets/airport-menu.js" defer></script>
+</body>
+</html>

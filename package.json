@@ -1,0 +1,8 @@
+{
+  "name": "tiyunclub-static-blog",
+  "private": true,
+  "scripts": {
+    "generate:knowledge": "node scripts/generate-knowledge-40.js",
+    "build": "node scripts/generate-knowledge-40.js && node scripts/build-content.js"
+  }
+}

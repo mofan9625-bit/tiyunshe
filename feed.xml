@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>梯云社 / TIYUN CLUB</title>
+  <link>https://tiyunclub.com/</link>
+  <description>网络节点评测、工具教程与网络诊断。</description>
+  <item>
+    <title>平价高性价比节点合集：月付 10 元内与一元体验方案实测</title>
+    <link>https://tiyunclub.com/article.html?post=01-budget-nodes</link>
+    <guid>https://tiyunclub.com/article.html?post=01-budget-nodes</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>对比低预算网络节点的延迟、速率、晚高峰稳定性与流媒体支持。</description>
+  </item>
+  <item>
+    <title>IPLC 与 IEPL 专线节点推荐：低延迟与晚高峰 4K 指南</title>
+    <link>https://tiyunclub.com/article.html?post=02-iplc-iepl-lines</link>
+    <guid>https://tiyunclub.com/article.html?post=02-iplc-iepl-lines</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>解释 IPLC、IEPL 与公网中转的差异，并给出同口径性能对比。</description>
+  </item>
+  <item>
+    <title>2026 ChatGPT、Claude 与 OpenAI 专用节点：原生住宅 IP 选择指南</title>
+    <link>https://tiyunclub.com/article.html?post=03-ai-native-ip</link>
+    <guid>https://tiyunclub.com/article.html?post=03-ai-native-ip</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>从 IP 信誉、地区一致性和连接质量出发，降低 AI 工具访问异常。</description>
+  </item>
+  <item>
+    <title>Netflix、Disney+ 与 HBO 原生解锁节点盘点：减少地区限制与开盲盒</title>
+    <link>https://tiyunclub.com/article.html?post=04-streaming-unlock</link>
+    <guid>https://tiyunclub.com/article.html?post=04-streaming-unlock</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>用清晰表格比较主流流媒体的解锁范围、速度与晚高峰表现。</description>
+  </item>
+  <item>
+    <title>外贸与海外社媒网络节点选购指南：TikTok 与 Instagram 稳定运营</title>
+    <link>https://tiyunclub.com/article.html?post=05-global-business-social</link>
+    <guid>https://tiyunclub.com/article.html?post=05-global-business-social</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>为跨境业务选择地区稳定、IP 信誉良好且可审计的网络节点。</description>
+  </item>
+  <item>
+    <title>跨区游戏加速节点推荐：港台、日韩与美服低延迟专线整理</title>
+    <link>https://tiyunclub.com/article.html?post=06-game-acceleration</link>
+    <guid>https://tiyunclub.com/article.html?post=06-game-acceleration</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>对比不同游戏区域的延迟、抖动、丢包和晚高峰稳定性。</description>
+  </item>
+  <item>
+    <title>Clash 与 Clash Verge 测试超时、连接后无法访问：完整排错教程</title>
+    <link>https://tiyunclub.com/article.html?post=07-clash-timeout-troubleshooting</link>
+    <guid>https://tiyunclub.com/article.html?post=07-clash-timeout-troubleshooting</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>从订阅、系统代理、DNS、规则与内核日志逐层排查 Clash 连接问题。</description>
+  </item>
+  <item>
+    <title>Sing-box 与 Shadowrocket 常见报错、节点全红排查指南</title>
+    <link>https://tiyunclub.com/article.html?post=08-singbox-shadowrocket-errors</link>
+    <guid>https://tiyunclub.com/article.html?post=08-singbox-shadowrocket-errors</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>覆盖配置格式、TLS 时间、DNS、路由和网络权限的系统排查流程。</description>
+  </item>
+  <item>
+    <title>节点频繁断连、晚高峰跳 ping？用测速工具完成自检</title>
+    <link>https://tiyunclub.com/article.html?post=09-node-speed-self-test</link>
+    <guid>https://tiyunclub.com/article.html?post=09-node-speed-self-test</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。</description>
+  </item>
+  <item>
+    <title>Shadowrocket iOS 安装、节点添加与规则配置完整指南</title>
+    <link>https://tiyunclub.com/article.html?post=10-shadowrocket-ios-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=10-shadowrocket-ios-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>从正规安装、订阅导入到分流规则和故障检查的完整流程。</description>
+  </item>
+  <item>
+    <title>Clash Mi 安装与订阅导入教程：从下载到规则切换</title>
+    <link>https://tiyunclub.com/article.html?post=11-clash-mi-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=11-clash-mi-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>基于 Clash Mi 官方资料整理的跨平台安装、订阅导入、策略选择与连接排查指南。</description>
+  </item>
+  <item>
+    <title>v2rayN 新手使用教程：安装、导入订阅与系统代理设置</title>
+    <link>https://tiyunclub.com/article.html?post=12-v2rayn-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=12-v2rayn-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>根据 v2rayN 官方仓库与 Wiki 重写的桌面端安装、配置更新、节点测试和故障排查教程。</description>
+  </item>
+  <item>
+    <title>Shadowrocket 使用教程：iOS 安装、配置导入与规则模式</title>
+    <link>https://tiyunclub.com/article.html?post=13-shadowrocket-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=13-shadowrocket-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>依据 Shadowrocket 官方 App Store 信息整理的安装、配置添加、规则选择和连接检查教程。</description>
+  </item>
+  <item>
+    <title>2026 最新 Clash Verge Rev 零基础教程：从订阅导入到分流规则全配置</title>
+    <link>https://tiyunclub.com/article.html?post=14-clash-verge-rev-complete-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=14-clash-verge-rev-complete-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>导入订阅后仍无法连接，通常是内核、系统代理或策略组没有完成最后一步配置。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>小火箭 Shadowrocket 安装与订阅配置教程：iOS 新手快速上手指南</title>
+    <link>https://tiyunclub.com/article.html?post=15-shadowrocket-ios-subscription-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=15-shadowrocket-ios-subscription-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>新手容易买错同名应用，或导入订阅后忘记选择节点和允许系统网络配置。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Sing-box 客户端使用指南：新一代全平台通用配置与规则分流</title>
+    <link>https://tiyunclub.com/article.html?post=16-sing-box-cross-platform-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=16-sing-box-cross-platform-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>配置格式严格、版本变化快，是 sing-box 导入失败和启动报错的主要原因。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Surge 配置与模块使用教程：进阶用户的网络调试与分流利器</title>
+    <link>https://tiyunclub.com/article.html?post=17-surge-modules-routing-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=17-surge-modules-routing-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>模块叠加、规则优先级和证书配置容易互相影响，必须先建立可回退的基础配置。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>手机热点无法共享代理网络？Windows 与安卓热点共享节点方法</title>
+    <link>https://tiyunclub.com/article.html?post=18-hotspot-proxy-sharing-windows-android</link>
+    <guid>https://tiyunclub.com/article.html?post=18-hotspot-proxy-sharing-windows-android</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>热点设备能联网但下游设备无法走指定路径，通常与转发接口、局域网权限和 TUN 路由有关。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Clash 提示“测试超时 / 连接超时”怎么办？7 步自检修复全流程</title>
+    <link>https://tiyunclub.com/article.html?post=19-clash-timeout-seven-step-fix</link>
+    <guid>https://tiyunclub.com/article.html?post=19-clash-timeout-seven-step-fix</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>全部节点同时超时往往不是所有节点一起失效，而是订阅、时间、DNS 或内核层面的共同故障。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>为什么开启代理后无法访问国内网站？配置绕过大陆局域网规则实操</title>
+    <link>https://tiyunclub.com/article.html?post=20-local-sites-bypass-routing-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=20-local-sites-bypass-routing-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>国内站点打不开通常是规则顺序错误、私有网段被错误转发或 DNS 返回异常地址。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>订阅链接无法更新？常见 HTTP 报错代码排查与手动更新方法</title>
+    <link>https://tiyunclub.com/article.html?post=21-subscription-http-error-fix</link>
+    <guid>https://tiyunclub.com/article.html?post=21-subscription-http-error-fix</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>订阅更新失败需要先区分链接失效、鉴权错误、服务器限流和客户端解析失败。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>什么是 TUN 模式？为什么玩游戏和特定应用必须开启虚拟网卡模式</title>
+    <link>https://tiyunclub.com/article.html?post=22-tun-mode-explained</link>
+    <guid>https://tiyunclub.com/article.html?post=22-tun-mode-explained</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>只设置系统代理时，部分游戏、命令行工具和 UDP 应用不会读取代理设置。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>全平台客户端选型对比：Clash、Sing-box、Shadowrocket 哪款更适合你？</title>
+    <link>https://tiyunclub.com/article.html?post=23-proxy-client-platform-comparison</link>
+    <guid>https://tiyunclub.com/article.html?post=23-proxy-client-platform-comparison</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>客户端不是功能越多越好，系统兼容、配置来源和排错能力才决定长期使用成本。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Hysteria 2 协议深度解析：高丢包恶劣网络下的极限提速实测</title>
+    <link>https://tiyunclub.com/article.html?post=24-hysteria2-lossy-network-analysis</link>
+    <guid>https://tiyunclub.com/article.html?post=24-hysteria2-lossy-network-analysis</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>高丢包链路下盲目提高带宽参数，可能让拥塞和抖动进一步恶化。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>VLESS 与 Trojan 协议有何区别？2026年主流节点协议抗封锁表现盘点</title>
+    <link>https://tiyunclub.com/article.html?post=25-vless-vs-trojan-2026</link>
+    <guid>https://tiyunclub.com/article.html?post=25-vless-vs-trojan-2026</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>只看协议名称无法判断质量，传输层、TLS 配置和线路本身通常影响更大。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>什么是 BGP 隧道中转？它与普通公网节点在稳定性上有何区别</title>
+    <link>https://tiyunclub.com/article.html?post=26-bgp-transit-vs-public-node</link>
+    <guid>https://tiyunclub.com/article.html?post=26-bgp-transit-vs-public-node</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>BGP 标签不等于自动拥有稳定线路，需要观察入口选择、回程和故障切换。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>为什么廉价机场容易跑路？揭秘机场运营成本与超售套路</title>
+    <link>https://tiyunclub.com/article.html?post=27-low-price-service-operating-risk</link>
+    <guid>https://tiyunclub.com/article.html?post=27-low-price-service-operating-risk</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>远低于持续带宽成本的长期套餐，往往依赖高超售或预收资金维持。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>什么是住宅 IP 与原生 IP？如何用在线工具检测节点的真实伪装度</title>
+    <link>https://tiyunclub.com/article.html?post=28-residential-native-ip-check</link>
+    <guid>https://tiyunclub.com/article.html?post=28-residential-native-ip-check</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>IP 标签经常被混用，住宅、原生地区和内容可用性是三个不同维度。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>机场节点为什么会有倍率？1x 与 5x 节点如何使用最省流量</title>
+    <link>https://tiyunclub.com/article.html?post=29-traffic-multiplier-explained</link>
+    <guid>https://tiyunclub.com/article.html?post=29-traffic-multiplier-explained</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>忽略倍率会让套餐流量比预期更快耗尽，尤其是视频和大文件传输。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>为什么晚高峰网络会严重断崖式降速？QoS 限速机制与专线解决方案</title>
+    <link>https://tiyunclub.com/article.html?post=30-peak-hour-qos-analysis</link>
+    <guid>https://tiyunclub.com/article.html?post=30-peak-hour-qos-analysis</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>晚间降速可能发生在本地接入、跨网互联或服务端出口，单次测速无法定位。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>机场安全性深度分析：节点服务商能否看到你的网页浏览数据与密码？</title>
+    <link>https://tiyunclub.com/article.html?post=31-service-privacy-visibility-analysis</link>
+    <guid>https://tiyunclub.com/article.html?post=31-service-privacy-visibility-analysis</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>加密连接不等于服务商完全不可见，域名、连接时间和流量特征仍可能形成元数据。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>2026 Midjourney 与 Stable Diffusion 绘图加速：低延迟大图秒开节点指南</title>
+    <link>https://tiyunclub.com/article.html?post=32-ai-image-generation-network-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=32-ai-image-generation-network-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>绘图任务卡顿不只看下载速度，上传稳定性、WebSocket 和长连接同样关键。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>GitHub 与 Docker 镜像加速实战：程序员必备的开发环境代理配置</title>
+    <link>https://tiyunclub.com/article.html?post=33-github-docker-development-network</link>
+    <guid>https://tiyunclub.com/article.html?post=33-github-docker-development-network</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>浏览器可访问不代表 Git、Docker 和终端已经继承网络设置。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>跨境学术科研加速：Google Scholar 与科研文献下载稳定节点整理</title>
+    <link>https://tiyunclub.com/article.html?post=34-academic-research-access-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=34-academic-research-access-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>检索能打开但 PDF 下载中断，常见原因是大文件链路不稳或认证会话发生地区变化。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Telegram 纸飞机连接卡在“Connecting”？直连代理与 MTProxy 解决办法</title>
+    <link>https://tiyunclub.com/article.html?post=35-telegram-connecting-mtproxy-fix</link>
+    <guid>https://tiyunclub.com/article.html?post=35-telegram-connecting-mtproxy-fix</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>长期停在 Connecting 需要先区分 DNS、系统时间、端口和应用内代理配置。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>YouTube 4K/8K 视频缓冲卡顿？看视频专用大带宽节点测速横评</title>
+    <link>https://tiyunclub.com/article.html?post=36-youtube-4k-8k-buffering-test</link>
+    <guid>https://tiyunclub.com/article.html?post=36-youtube-4k-8k-buffering-test</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>测速峰值很高但视频仍缓冲，通常是持续吞吐、丢包或目标 CDN 路由不稳定。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Spotify 与 Apple Music 跨区换区指南：各区曲库对比与支付避坑</title>
+    <link>https://tiyunclub.com/article.html?post=37-spotify-apple-music-region-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=37-spotify-apple-music-region-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>频繁切换地区会造成账号资料、支付方式和曲库授权不一致。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>币安 Binance 与欧易 OKX 登录受限？数字货币交易防封 IP 选择</title>
+    <link>https://tiyunclub.com/article.html?post=38-exchange-login-ip-risk-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=38-exchange-login-ip-risk-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>交易平台登录异常涉及地区合规和账号安全，不能用频繁切换地址来掩盖真实使用环境。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>Steam 锁区购买与社区错误代码 118 快速修复教程</title>
+    <link>https://tiyunclub.com/article.html?post=39-steam-region-error-118-fix</link>
+    <guid>https://tiyunclub.com/article.html?post=39-steam-region-error-118-fix</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>商店地区、支付资料和网络出口不一致，可能触发购买限制；错误 118 也可能只是 DNS 或社区链路故障。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>2026 不限时按量付费机场推荐：适合轻度查资料与备用党的流量包</title>
+    <link>https://tiyunclub.com/article.html?post=40-pay-as-you-go-service-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=40-pay-as-you-go-service-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>低频用户购买月付套餐容易浪费，按量包则需要重点确认有效期、倍率和重置规则。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>稳定大于一切：企业办公与跨国团队专用防断连专线机场横评</title>
+    <link>https://tiyunclub.com/article.html?post=41-business-team-stability-review</link>
+    <guid>https://tiyunclub.com/article.html?post=41-business-team-stability-review</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>团队连接的核心成本是中断和排障时间，而不是单人峰值速度。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>一元机场能用吗？低价体验套餐优缺点客观测评与风险提示</title>
+    <link>https://tiyunclub.com/article.html?post=42-one-yuan-trial-objective-review</link>
+    <guid>https://tiyunclub.com/article.html?post=42-one-yuan-trial-objective-review</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>体验价适合验证本地兼容性，却不能代表正式套餐的长期容量和售后。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>2026 最新机场优惠码与折扣合集：高性价比订阅省钱攻略</title>
+    <link>https://tiyunclub.com/article.html?post=43-discount-code-saving-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=43-discount-code-saving-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>折扣力度不能抵消服务不稳定，先验证线路再考虑优惠才是真正省钱。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>支持微信与支付宝付款的稳定机场推荐：免去虚拟币门槛</title>
+    <link>https://tiyunclub.com/article.html?post=44-local-payment-service-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=44-local-payment-service-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>支付方便不代表服务可靠，仍需核对收款主体、退款规则和订单记录。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>什么是“三网优化”？电信、联通、移动不同宽带该如何挑选节点</title>
+    <link>https://tiyunclub.com/article.html?post=45-three-network-optimization-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=45-three-network-optimization-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>同一节点在不同运营商上的表现可能完全不同，所谓三网优化必须用本地线路验证。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>长期主力机场与便宜备用机场如何搭配？双订阅冗余防断网方案</title>
+    <link>https://tiyunclub.com/article.html?post=46-primary-backup-subscription-strategy</link>
+    <guid>https://tiyunclub.com/article.html?post=46-primary-backup-subscription-strategy</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>两个套餐如果共享同一入口或上游，故障时可能同时不可用。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>月付 vs 年付：新手挑选机场为什么强烈建议从月付开始？</title>
+    <link>https://tiyunclub.com/article.html?post=47-monthly-vs-annual-subscription</link>
+    <guid>https://tiyunclub.com/article.html?post=47-monthly-vs-annual-subscription</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>年付单价更低，但把线路变化和运营风险集中到了更长周期。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>浏览器提示“您的连接不是私密连接（SSL 证书错误）”排查指南</title>
+    <link>https://tiyunclub.com/article.html?post=48-ssl-certificate-error-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=48-ssl-certificate-error-guide</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>证书错误不能通过反复刷新解决，继续访问可能暴露账号和内容。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>开启代理后电脑 DNS 泄漏如何检测与修复？保障上网真实隐私</title>
+    <link>https://tiyunclub.com/article.html?post=49-dns-leak-detection-fix</link>
+    <guid>https://tiyunclub.com/article.html?post=49-dns-leak-detection-fix</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>出口地址变化但 DNS 仍由本地网络解析，会造成地区不一致和访问异常。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>本地网络正常但所有节点全部显示“9999ms”或红色超时的根本原因</title>
+    <link>https://tiyunclub.com/article.html?post=50-all-nodes-9999ms-timeout</link>
+    <guid>https://tiyunclub.com/article.html?post=50-all-nodes-9999ms-timeout</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>所有节点同时变红通常指向客户端公共依赖，而不是每个节点独立故障。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>机场服务商跑路前有哪些征兆？用户资金与订阅风险防范指南</title>
+    <link>https://tiyunclub.com/article.html?post=51-service-shutdown-warning-signs</link>
+    <guid>https://tiyunclub.com/article.html?post=51-service-shutdown-warning-signs</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>长期套餐突然大促、支持失联和容量持续下降，需要被视为风险信号而非普通波动。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>机场官网打不开怎么办？如何获取最新的官方发布页与应急备用地址</title>
+    <link>https://tiyunclub.com/article.html?post=52-official-site-unavailable-recovery</link>
+    <guid>https://tiyunclub.com/article.html?post=52-official-site-unavailable-recovery</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>官网打不开时最危险的做法，是在搜索结果中随意输入账号和付款信息。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+  <item>
+    <title>代理软件与各类本地杀毒软件/Windows Defender 冲突的解决方案</title>
+    <link>https://tiyunclub.com/article.html?post=53-security-software-client-conflict</link>
+    <guid>https://tiyunclub.com/article.html?post=53-security-software-client-conflict</guid>
+    <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
+    <description>客户端启动失败或核心被隔离，需要确认文件来源和签名，而不是直接关闭全部防护。本文提供可复现步骤、记录表、FAQ 与风险提示。</description>
+  </item>
+</channel></rss>
