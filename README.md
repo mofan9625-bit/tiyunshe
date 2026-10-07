@@ -86,10 +86,10 @@
 
 ## IndexNow 自动推送
 
-- API Key 验证文件位于站点根目录：`07d65f43608d1d05c376b34ca54a3fbe.txt`。
+- API Key 验证文件位于站点根目录：`fddde65779077ea012628fd8f19fe971.txt`。
 - `npm run indexnow:submit` 会读取根目录的 `sitemap.xml`，并将其中的 URL 批量提交到 IndexNow。
 - `.github/workflows/indexnow.yml` 会在 `main` 分支更新后先执行构建，等待线上 Key 文件发布成功，再自动提交站点地图中的 URL；也支持在 GitHub Actions 页面手动运行。
-- 发布时必须保留根目录的 Key 文件，确保可通过 `https://tiyunclub.com/07d65f43608d1d05c376b34ca54a3fbe.txt` 访问。
+- 发布时必须保留根目录的 Key 文件，确保可通过 `https://tiyunclub.com/fddde65779077ea012628fd8f19fe971.txt` 访问。
 
 ## 免责声明
 

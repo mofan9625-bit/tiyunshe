@@ -31,13 +31,13 @@ jobs:
       - name: Verify IndexNow key is in the site root
         shell: bash
         run: |
-          test -f 07d65f43608d1d05c376b34ca54a3fbe.txt
-          test "$(tr -d '\r\n' < 07d65f43608d1d05c376b34ca54a3fbe.txt)" = "07d65f43608d1d05c376b34ca54a3fbe"
+          test -f fddde65779077ea012628fd8f19fe971.txt
+          test "$(tr -d '\r\n' < fddde65779077ea012628fd8f19fe971.txt)" = "fddde65779077ea012628fd8f19fe971"
 
       - name: Wait for the deployed IndexNow key
         shell: bash
         run: |
-          key="07d65f43608d1d05c376b34ca54a3fbe"
+          key="fddde65779077ea012628fd8f19fe971"
           key_url="https://tiyunclub.com/${key}.txt"
 
           for attempt in {1..30}; do
