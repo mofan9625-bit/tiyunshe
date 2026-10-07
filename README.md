@@ -84,7 +84,13 @@
 3. 导入 Clash / Shadowrocket / sing-box 等客户端后，先做晚高峰测速。
 4. **点击右上角 Star ⭐ 收藏本项目，方便后续查看 2026 机场评测、ChatGPT 节点与优惠信息更新。**
 
+## IndexNow 自动推送
+
+- API Key 验证文件位于站点根目录：`07d65f43608d1d05c376b34ca54a3fbe.txt`。
+- `npm run indexnow:submit` 会读取根目录的 `sitemap.xml`，并将其中的 URL 批量提交到 IndexNow。
+- `.github/workflows/indexnow.yml` 会在 `main` 分支更新后先执行构建，等待线上 Key 文件发布成功，再自动提交站点地图中的 URL；也支持在 GitHub Actions 页面手动运行。
+- 发布时必须保留根目录的 Key 文件，确保可通过 `https://tiyunclub.com/07d65f43608d1d05c376b34ca54a3fbe.txt` 访问。
+
 ## 免责声明
 
 本文与本仓库仅供科研、技术学习交流、网络质量测试及合规用途参考。请遵守所在国家 / 地区法律法规、服务商条款与单位网络政策，不得用于违法活动、绕过访问控制、侵犯版权或危害网络安全。机场套餐、节点可用性、速度、解锁情况和优惠活动均可能变化，请在购买前自行核验，相关链接仅作为信息入口，不构成任何保证或投资建议。
-

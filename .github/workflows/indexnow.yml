@@ -1,0 +1,58 @@
+name: Build and submit IndexNow URLs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Verify IndexNow key is in the site root
+        shell: bash
+        run: |
+          test -f 07d65f43608d1d05c376b34ca54a3fbe.txt
+          test "$(tr -d '\r\n' < 07d65f43608d1d05c376b34ca54a3fbe.txt)" = "07d65f43608d1d05c376b34ca54a3fbe"
+
+      - name: Wait for the deployed IndexNow key
+        shell: bash
+        run: |
+          key="07d65f43608d1d05c376b34ca54a3fbe"
+          key_url="https://tiyunclub.com/${key}.txt"
+
+          for attempt in {1..30}; do
+            deployed_key="$(curl --fail --silent --show-error --location --max-time 15 "$key_url" 2>/dev/null | tr -d '\r\n' || true)"
+            if [ "$deployed_key" = "$key" ]; then
+              echo "IndexNow key is available at $key_url"
+              exit 0
+            fi
+
+            echo "Waiting for deployment ($attempt/30)..."
+            sleep 10
+          done
+
+          echo "IndexNow key was not published at $key_url within five minutes."
+          exit 1
+
+      - name: Submit sitemap URLs to IndexNow
+        run: npm run indexnow:submit
