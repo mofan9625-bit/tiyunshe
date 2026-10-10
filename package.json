@@ -4,6 +4,7 @@
   "scripts": {
     "generate:knowledge": "node scripts/generate-knowledge-40.js",
     "build": "node scripts/generate-knowledge-40.js && node scripts/build-content.js",
+    "docs:build": "npm run build",
     "indexnow:submit": "node scripts/submit-indexnow.js"
   }
 }
