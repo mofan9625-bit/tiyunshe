@@ -73,10 +73,8 @@
 
   <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><span>TIYUNCLUB.COM</span></div></footer>
 
-  <script src="assets/posts-data.js?v=4"></script>
+  <script src="assets/posts-data.js?v=20261011"></script>
   <script>
-    const allowedPosts = new Set((window.TIYUN_POSTS || []).map((post) => post.slug));
-
     function parsePost(source) {
       const match = source.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
       if (!match) return { meta: {}, body: source };
@@ -91,8 +89,19 @@
     }
 
     async function loadArticle() {
-      const slug = new URLSearchParams(location.search).get('post');
-      if (!allowedPosts.has(slug)) return showError();
+      let slug = new URLSearchParams(location.search).get('post');
+      if (!slug) {
+        const pathParts = location.pathname.split('/');
+        const last = pathParts[pathParts.length - 1];
+        if (last && !['article.html', 'article', ''].includes(last)) {
+          slug = last;
+        }
+      }
+      if (slug) {
+        slug = slug.replace(/\.(html|md)$/, '');
+      }
+      if (!slug) return showError();
+
       try {
         const bundledPost = (window.TIYUN_POSTS || []).find((post) => post.slug === slug);
         let meta;
@@ -102,7 +111,13 @@
           meta = bundledPost;
           body = bundledPost.body;
         } else {
-          const response = await fetch(`posts/${slug}.md`);
+          let response = await fetch(`posts/${slug}.md`);
+          if (!response.ok) {
+            response = await fetch(`docs/posts/${slug}.md`);
+          }
+          if (!response.ok) {
+            response = await fetch(`${slug}.md`);
+          }
           if (!response.ok) throw new Error('Not found');
           ({ meta, body } = parsePost(await response.text()));
         }
