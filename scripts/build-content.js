@@ -38,29 +38,38 @@ function escapeXml(value) {
   return String(value).replace(/[<>&'"]/g, (char) => ({ '<':'&lt;', '>':'&gt;', '&':'&amp;', "'":'&apos;', '"':'&quot;' })[char]);
 }
 
-const posts = fs.readdirSync(postsDir)
-  .filter((name) => /^\d{2}-.+\.md$/.test(name))
-  .map((file) => {
-    const source = fs.readFileSync(path.join(postsDir, file), 'utf8');
-    const { meta, body } = parseFrontMatter(source);
+const postDirs = [path.join(root, 'posts'), path.join(root, 'docs', 'posts')].filter(fs.existsSync);
+const seenSlugs = new Set();
+const posts = [];
+
+for (const dir of postDirs) {
+  const files = fs.readdirSync(dir)
+    .filter((name) => /^\d{2}-.+\.md$/.test(name) || /-audit-2026\.md$/.test(name));
+  for (const file of files) {
     const slug = file.replace(/\.md$/, '');
+    if (seenSlugs.has(slug)) continue;
+    seenSlugs.add(slug);
+    const source = fs.readFileSync(path.join(dir, file), 'utf8');
+    const { meta, body } = parseFrontMatter(source);
+    const postSlug = meta.slug || slug;
     const searchText = `${meta.title || ''} ${meta.category || ''} ${body}`;
     const tags = [meta.category, ...keywordTags.filter(([, pattern]) => pattern.test(searchText)).map(([tag]) => tag)]
       .filter(Boolean).filter((tag, index, all) => all.indexOf(tag) === index).slice(0, 5);
-    return {
+    posts.push({
       source: file,
-      slug,
-      title: meta.title || slug,
+      slug: postSlug,
+      title: meta.title || postSlug,
       description: meta.description || '',
       date: meta.date || '1970-01-01',
       category: meta.category || '文章',
       tags,
       body,
       readingMinutes: Math.max(5, Math.ceil(textLength(body) / 350)),
-      url: `article.html?post=${encodeURIComponent(slug)}`
-    };
-  })
-  .sort((a, b) => b.date.localeCompare(a.date) || a.source.localeCompare(b.source));
+      url: `article.html?post=${encodeURIComponent(postSlug)}`
+    });
+  }
+}
+posts.sort((a, b) => b.date.localeCompare(a.date) || a.source.localeCompare(b.source));
 
 fs.mkdirSync(assetsDir, { recursive: true });
 fs.writeFileSync(

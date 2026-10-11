@@ -4,72 +4,93 @@
   <link>https://tiyunclub.com/</link>
   <description>网络节点评测、工具教程与网络诊断。</description>
   <item>
+    <title>梯云特稿 026 期｜大佬云 2026 深度观察：多设备并发负载与长连接稳定性分析</title>
+    <link>https://tiyunclub.com/article.html?post=dalaoyun-audit-2026</link>
+    <guid>https://tiyunclub.com/article.html?post=dalaoyun-audit-2026</guid>
+    <pubDate>Sat, 10 Oct 2026 16:00:00 GMT</pubDate>
+    <description>梯云社 2026 稳定机场推荐与多设备并发压力观察：深度审计大佬云老牌中转架构与“不限设备连接数”特性，实测 3-5 台多终端长连接下的延迟抬升、晚高峰防断流机制及节点热更新无感切换体验。</description>
+  </item>
+  <item>
+    <title>梯云特稿 026 期｜环球梯协议韧性审计：晚高峰复杂网络环境下的抗拥塞表现</title>
+    <link>https://tiyunclub.com/article.html?post=huanqiuti-audit-2026</link>
+    <guid>https://tiyunclub.com/article.html?post=huanqiuti-audit-2026</guid>
+    <pubDate>Sat, 10 Oct 2026 16:00:00 GMT</pubDate>
+    <description>梯云社 2026 稳定机场推荐与复杂弱网韧性实测：对环球梯开展晚高峰协议层拥塞控制深度审计，实测校园网与移动蜂窝网络高丢包环境下的抗拥塞退避表现、瞬断恢复时间与全球边缘流媒体解锁效率。</description>
+  </item>
+  <item>
+    <title>梯云特稿 026 期｜云界线专线长周期可用率审计：晚高峰丢包与抖动实录</title>
+    <link>https://tiyunclub.com/article.html?post=yunjiexian-audit-2026</link>
+    <guid>https://tiyunclub.com/article.html?post=yunjiexian-audit-2026</guid>
+    <pubDate>Sat, 10 Oct 2026 16:00:00 GMT</pubDate>
+    <description>梯云社 2026 稳定机场推荐与专线测速指南：针对云界线 IEPL 跨境专线开展为期 7 天的长周期可用率与低抖动节点审计，实测 20:00-23:00 晚高峰丢包率、延迟方差及 GitHub/OpenAI/Claude 生产力工具抗封锁表现。</description>
+  </item>
+  <item>
     <title>平价高性价比节点合集：月付 10 元内与一元体验方案实测</title>
-    <link>https://tiyunclub.com/article.html?post=01-budget-nodes</link>
-    <guid>https://tiyunclub.com/article.html?post=01-budget-nodes</guid>
+    <link>https://tiyunclub.com/article.html?post=budget-nodes-under-10</link>
+    <guid>https://tiyunclub.com/article.html?post=budget-nodes-under-10</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>对比低预算网络节点的延迟、速率、晚高峰稳定性与流媒体支持。</description>
   </item>
   <item>
     <title>IPLC 与 IEPL 专线节点推荐：低延迟与晚高峰 4K 指南</title>
-    <link>https://tiyunclub.com/article.html?post=02-iplc-iepl-lines</link>
-    <guid>https://tiyunclub.com/article.html?post=02-iplc-iepl-lines</guid>
+    <link>https://tiyunclub.com/article.html?post=iplc-iepl-lines</link>
+    <guid>https://tiyunclub.com/article.html?post=iplc-iepl-lines</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>解释 IPLC、IEPL 与公网中转的差异，并给出同口径性能对比。</description>
   </item>
   <item>
     <title>2026 ChatGPT、Claude 与 OpenAI 专用节点：原生住宅 IP 选择指南</title>
-    <link>https://tiyunclub.com/article.html?post=03-ai-native-ip</link>
-    <guid>https://tiyunclub.com/article.html?post=03-ai-native-ip</guid>
+    <link>https://tiyunclub.com/article.html?post=ai-native-ip-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=ai-native-ip-guide</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>从 IP 信誉、地区一致性和连接质量出发，降低 AI 工具访问异常。</description>
   </item>
   <item>
     <title>Netflix、Disney+ 与 HBO 原生解锁节点盘点：减少地区限制与开盲盒</title>
-    <link>https://tiyunclub.com/article.html?post=04-streaming-unlock</link>
-    <guid>https://tiyunclub.com/article.html?post=04-streaming-unlock</guid>
+    <link>https://tiyunclub.com/article.html?post=streaming-unlock-nodes</link>
+    <guid>https://tiyunclub.com/article.html?post=streaming-unlock-nodes</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>用清晰表格比较主流流媒体的解锁范围、速度与晚高峰表现。</description>
   </item>
   <item>
     <title>外贸与海外社媒网络节点选购指南：TikTok 与 Instagram 稳定运营</title>
-    <link>https://tiyunclub.com/article.html?post=05-global-business-social</link>
-    <guid>https://tiyunclub.com/article.html?post=05-global-business-social</guid>
+    <link>https://tiyunclub.com/article.html?post=global-business-social-nodes</link>
+    <guid>https://tiyunclub.com/article.html?post=global-business-social-nodes</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>为跨境业务选择地区稳定、IP 信誉良好且可审计的网络节点。</description>
   </item>
   <item>
     <title>跨区游戏加速节点推荐：港台、日韩与美服低延迟专线整理</title>
-    <link>https://tiyunclub.com/article.html?post=06-game-acceleration</link>
-    <guid>https://tiyunclub.com/article.html?post=06-game-acceleration</guid>
+    <link>https://tiyunclub.com/article.html?post=game-acceleration-nodes</link>
+    <guid>https://tiyunclub.com/article.html?post=game-acceleration-nodes</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>对比不同游戏区域的延迟、抖动、丢包和晚高峰稳定性。</description>
   </item>
   <item>
     <title>Clash 与 Clash Verge 测试超时、连接后无法访问：完整排错教程</title>
-    <link>https://tiyunclub.com/article.html?post=07-clash-timeout-troubleshooting</link>
-    <guid>https://tiyunclub.com/article.html?post=07-clash-timeout-troubleshooting</guid>
+    <link>https://tiyunclub.com/article.html?post=clash-timeout-troubleshooting</link>
+    <guid>https://tiyunclub.com/article.html?post=clash-timeout-troubleshooting</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>从订阅、系统代理、DNS、规则与内核日志逐层排查 Clash 连接问题。</description>
   </item>
   <item>
     <title>Sing-box 与 Shadowrocket 常见报错、节点全红排查指南</title>
-    <link>https://tiyunclub.com/article.html?post=08-singbox-shadowrocket-errors</link>
-    <guid>https://tiyunclub.com/article.html?post=08-singbox-shadowrocket-errors</guid>
+    <link>https://tiyunclub.com/article.html?post=singbox-shadowrocket-errors</link>
+    <guid>https://tiyunclub.com/article.html?post=singbox-shadowrocket-errors</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>覆盖配置格式、TLS 时间、DNS、路由和网络权限的系统排查流程。</description>
   </item>
   <item>
     <title>节点频繁断连、晚高峰跳 ping？用测速工具完成自检</title>
-    <link>https://tiyunclub.com/article.html?post=09-node-speed-self-test</link>
-    <guid>https://tiyunclub.com/article.html?post=09-node-speed-self-test</guid>
+    <link>https://tiyunclub.com/article.html?post=node-speed-self-test</link>
+    <guid>https://tiyunclub.com/article.html?post=node-speed-self-test</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。</description>
   </item>
   <item>
     <title>Shadowrocket iOS 安装、节点添加与规则配置完整指南</title>
-    <link>https://tiyunclub.com/article.html?post=10-shadowrocket-ios-guide</link>
-    <guid>https://tiyunclub.com/article.html?post=10-shadowrocket-ios-guide</guid>
+    <link>https://tiyunclub.com/article.html?post=shadowrocket-ios-guide</link>
+    <guid>https://tiyunclub.com/article.html?post=shadowrocket-ios-guide</guid>
     <pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate>
     <description>从正规安装、订阅导入到分流规则和故障检查的完整流程。</description>
   </item>
