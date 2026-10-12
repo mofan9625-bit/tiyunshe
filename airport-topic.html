@@ -79,7 +79,7 @@
       document.getElementById('brandGrid').innerHTML = ordered.map((brand, index) => {
         const href = brand.url || `airports.html?brand=${encodeURIComponent(brand.name)}`;
         const external = Boolean(brand.url);
-        return `<a href="${href}" ${external ? 'target="_blank" rel="sponsored noopener noreferrer"' : ''} class="group grid min-h-24 grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-4 border-b border-line px-1 py-5 transition-colors hover:bg-gray-50 md:grid-cols-[5rem_minmax(0,1fr)_minmax(12rem,22rem)_auto] md:gap-7 md:px-5"><span class="font-mono text-xs text-muted">${String(index + 1).padStart(2,'0')}</span><strong class="text-lg md:text-xl">${brand.name}</strong><small class="hidden text-sm text-muted md:block">${brand.summary}</small><i data-lucide="arrow-up-right" class="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></i></a>`;
+        return `<a href="${href}" ${external ? 'target="_blank" rel="nofollow sponsored noopener noreferrer"' : ''} class="group grid min-h-24 grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-4 border-b border-line px-1 py-5 transition-colors hover:bg-gray-50 md:grid-cols-[5rem_minmax(0,1fr)_minmax(12rem,22rem)_auto] md:gap-7 md:px-5"><span class="font-mono text-xs text-muted">${String(index + 1).padStart(2,'0')}</span><strong class="text-lg md:text-xl">${brand.name}</strong><small class="hidden text-sm text-muted md:block">${brand.summary}</small><i data-lucide="arrow-up-right" class="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></i></a>`;
       }).join('');
       document.getElementById('brandSection').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
