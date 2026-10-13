@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="梯云社机场推荐主题索引。">
+  <link id="canonicalUrl" rel="canonical" href="https://tiyunclub.com/airport-topic">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
+  <meta id="ogTitle" property="og:title" content="机场推荐主题｜梯云社">
+  <meta id="ogDescription" property="og:description" content="梯云社机场推荐主题索引。">
+  <meta id="ogUrl" property="og:url" content="https://tiyunclub.com/airport-topic">
   <title>机场推荐主题｜梯云社</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
@@ -161,29 +165,58 @@
 
   <footer class="border-t border-line bg-paper"><div class="mx-auto flex max-w-screen-2xl justify-between gap-4 px-5 py-10 text-xs text-muted md:px-10 xl:px-16"><span>© 2026 TIYUN CLUB</span><a href="disclaimer.html">免责声明</a></div></footer>
 
-  <script src="assets/posts-data.js?v=4"></script>
+  <script src="/assets/posts-data.js?v=20261013"></script>
   <script>
+    // 1. 前端路由规范化：如果在 /airport-topic.html，平滑切换为规范的 /airport-topic (保持已有 query 参数)
+    if (window.history && window.history.replaceState && location.pathname.endsWith('.html')) {
+      const cleanPath = location.pathname.replace(/\.html$/, '');
+      window.history.replaceState(null, '', cleanPath + location.search + location.hash);
+    }
+
     const topics = {
       stable: { index:'01 / 07', eyebrow:'稳定优先', title:'稳定抗封锁专线榜', description:'聚合关注晚高峰可用率、低抖动、故障恢复与长期稳定性的选购和诊断内容。', terms:['稳定','断连','专线','企业','晚高峰'] },
-      value: { index:'02 / 07', eyebrow:'预算与体验', title:'平价高性价比机场榜', description:'从月付门槛、流量倍率、晚高峰表现和退款条款出发，筛选真正适合长期使用的平价方案。', terms:['平价','性价比','低价','月付','一元'] },
-      premium: { index:'03 / 07', eyebrow:'线路品质', title:'IEPL / IPLC 顶级专线榜', description:'集中阅读 IPLC、IEPL、BGP 中转和企业线路相关内容，理解低延迟与稳定性的真实来源。', terms:['IPLC','IEPL','专线','BGP','企业'] },
-      budget: { index:'04 / 07', eyebrow:'10 元内方案', title:'10元内平价月付合集', description:'面向轻量浏览、临时使用与预算敏感用户，比较低门槛月付、体验套餐和实际使用限制。', terms:['10 元','月付','平价','一元','预算'] },
+      value: { index:'02 / 07', eyebrow:'预算与体验', title:'平价高性价比机场榜', description:'从月付门槛、流量倍率、晚高峰表现和退款条款出发，筛选真正适合长期使用的平价方案。', terms:['平价','性价比','低价','月付','一元','折扣','优惠','合集','省钱'] },
+      premium: { index:'03 / 07', eyebrow:'线路品质', title:'IEPL / IPLC 顶级专线榜', description:'集中阅读 IPLC、IEPL、BGP 中转和企业线路相关内容，理解低延迟与稳定性的真实来源。', terms:['IPLC','IEPL','专线','BGP','企业','顶级','低延迟','隧道'] },
+      budget: { index:'04 / 07', eyebrow:'10 元内方案', title:'10元内平价月付合集', description:'面向轻量浏览、临时使用与预算敏感用户，比较低门槛月付、体验套餐和实际使用限制。', terms:['10 元','月付','平价','一元','预算','便宜','低价','轻量','低门槛'] },
       payg: { index:'05 / 07', eyebrow:'灵活计费', title:'按量计费与不限时套餐', description:'适合低频查资料和备用需求，重点核对流量有效期、倍率、设备数量以及长期闲置成本。', terms:['按量','不限时','流量','备用','轻度'] },
       discounts: { index:'06 / 07', eyebrow:'价格追踪', title:'2026 最新独家优惠码', description:'整理折扣选择方法、续费原价和活动期限核对要点。优惠信息以品牌实时页面为准。', terms:['优惠','折扣','省钱','价格','年付'] },
-      trials: { index:'07 / 07', eyebrow:'先测后买', title:'免费试用与一元体验', description:'用最低成本验证本地线路、客户端兼容性和晚高峰表现，避免未经测试直接购买长期套餐。', terms:['试用','一元','体验','月付','测试'] }
+      trials: { index:'07 / 07', eyebrow:'先测后买', title:'免费试用与一元体验', description:'用最低成本验证本地线路、客户端兼容性和晚高峰表现，避免未经测试直接购买长期套餐。', terms:['试用','一元','体验','月付','测试','验证','新手'] }
     };
-    const key = new URLSearchParams(location.search).get('topic') || 'stable';
+
+    const searchParams = new URLSearchParams(location.search);
+    let rawTopic = searchParams.get('topic') || searchParams.get('id') || searchParams.get('t');
+    if (!rawTopic) {
+      const pathParts = location.pathname.split('/').filter(Boolean);
+      const last = pathParts[pathParts.length - 1];
+      if (last && !['airport-topic.html', 'airport-topic', ''].includes(last)) {
+        rawTopic = last;
+      }
+    }
+    const key = (rawTopic || 'stable').trim().toLowerCase().replace(/\.(html|md)$/i, '');
     const topic = topics[key] || topics.stable;
     const posts = window.TIYUN_POSTS || [];
     const scored = posts.map(post => ({ post, score: topic.terms.reduce((score, term) => score + (`${post.title} ${post.description} ${(post.tags || []).join(' ')}`.toLowerCase().includes(term.toLowerCase()) ? 1 : 0), 0) })).filter(item => item.score > 0).sort((a,b) => b.score-a.score).slice(0,9).map(item => item.post);
+    
     document.title = `${topic.title}｜梯云社`;
-    document.querySelector('meta[name="description"]').content = topic.description;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = topic.description;
+
+    const canonical = `https://tiyunclub.com/airport-topic?topic=${encodeURIComponent(key)}`;
+    const canEl = document.getElementById('canonicalUrl');
+    if (canEl) canEl.href = canonical;
+    const ogUrlEl = document.getElementById('ogUrl');
+    if (ogUrlEl) ogUrlEl.content = canonical;
+    const ogTitleEl = document.getElementById('ogTitle');
+    if (ogTitleEl) ogTitleEl.content = `${topic.title}｜梯云社`;
+    const ogDescEl = document.getElementById('ogDescription');
+    if (ogDescEl) ogDescEl.content = topic.description;
+
     document.getElementById('topicIndex').textContent = topic.index;
     document.getElementById('topicEyebrow').textContent = topic.eyebrow;
     document.getElementById('topicTitle').textContent = topic.title;
     document.getElementById('topicDescription').textContent = topic.description;
     document.getElementById('articleCount').textContent = `${String(scored.length).padStart(2,'0')} ARTICLES`;
-    document.getElementById('articleGrid').innerHTML = scored.map(post => `<article class="group flex min-h-72 flex-col justify-between border-b border-r border-line p-7 hover:bg-gray-50"><div><div class="flex justify-between text-xs text-muted"><span class="border border-gray-300 px-2.5 py-1 font-mono text-ink">${post.category}</span><time>${post.date.replaceAll('-','.')}</time></div><h3 class="mt-7 text-xl font-bold leading-snug"><a href="${post.url}">${post.title}</a></h3><p class="mt-4 line-clamp-2 text-sm leading-relaxed text-gray-600">${post.description}</p></div><a href="${post.url}" class="mt-8 flex justify-between text-xs text-muted"><span>${post.readingMinutes} MIN READ</span><i data-lucide="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1"></i></a></article>`).join('');
+    document.getElementById('articleGrid').innerHTML = scored.map(post => `<article class="group flex min-h-72 flex-col justify-between border-b border-r border-line p-7 hover:bg-gray-50"><div><div class="flex justify-between text-xs text-muted"><span class="border border-gray-300 px-2.5 py-1 font-mono text-ink">${post.category}</span><time>${(post.date || '').replaceAll('-','.')}</time></div><h3 class="mt-7 text-xl font-bold leading-snug"><a href="${post.url}">${post.title}</a></h3><p class="mt-4 line-clamp-2 text-sm leading-relaxed text-gray-600">${post.description}</p></div><a href="${post.url}" class="mt-8 flex justify-between text-xs text-muted"><span>${post.readingMinutes} MIN READ</span><i data-lucide="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1"></i></a></article>`).join('');
 
     const brandTopics = ['stable','value','premium','budget','payg'];
     const fallbackBrands = [
@@ -246,6 +279,6 @@
     if (key === 'trials') document.getElementById('emptyBrandSection').classList.remove('hidden');
     document.addEventListener('DOMContentLoaded',()=>window.lucide&&lucide.createIcons(),{once:true});
   </script>
-  <script src="assets/airport-menu.js" defer></script>
+  <script src="/assets/airport-menu.js" defer></script>
 </body>
 </html>

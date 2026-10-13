@@ -3,7 +3,9 @@ title: "外贸与海外社媒网络节点选购指南：TikTok 与 Instagram 稳
 description: "为跨境业务选择地区稳定、IP 信誉良好且可审计的网络节点。"
 date: 2026-10-03
 category: 商务网络
-slug: global-business-social-nodes
+slug: 05-global-business-social
+aliases: [global-business-social-nodes]
+status: published
 ---
 
 # 外贸与海外社媒网络节点选购指南：TikTok 与 Instagram 稳定运营

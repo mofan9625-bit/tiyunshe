@@ -3,7 +3,9 @@ title: "节点频繁断连、晚高峰跳 ping？用测速工具完成自检"
 description: "用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。"
 date: 2026-10-03
 category: 网络诊断
-slug: node-speed-self-test
+slug: 09-node-speed-self-test
+aliases: [node-speed-self-test]
+status: published
 ---
 
 # 节点频繁断连、晚高峰跳 ping？用测速工具完成自检

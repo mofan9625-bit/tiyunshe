@@ -3,7 +3,9 @@ title: "平价高性价比节点合集：月付 10 元内与一元体验方案�
 description: "对比低预算网络节点的延迟、速率、晚高峰稳定性与流媒体支持。"
 date: 2026-10-03
 category: 机场推荐
-slug: budget-nodes-under-10
+slug: 01-budget-nodes
+aliases: [budget-nodes-under-10]
+status: published
 ---
 
 # 平价高性价比节点合集：月付 10 元内与一元体验方案实测

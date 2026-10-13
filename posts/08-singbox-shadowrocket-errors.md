@@ -3,7 +3,9 @@ title: "Sing-box 与 Shadowrocket 常见报错、节点全红排查指南"
 description: "覆盖配置格式、TLS 时间、DNS、路由和网络权限的系统排查流程。"
 date: 2026-10-03
 category: 工具使用
-slug: singbox-shadowrocket-errors
+slug: 08-singbox-shadowrocket-errors
+aliases: [singbox-shadowrocket-errors]
+status: published
 ---
 
 # Sing-box 与 Shadowrocket 常见报错、节点全红排查指南

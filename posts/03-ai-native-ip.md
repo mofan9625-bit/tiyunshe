@@ -3,7 +3,9 @@ title: "2026 ChatGPT、Claude 与 OpenAI 专用节点：原生住宅 IP 选择�
 description: "从 IP 信誉、地区一致性和连接质量出发，降低 AI 工具访问异常。"
 date: 2026-10-03
 category: AI 工具
-slug: ai-native-ip-guide
+slug: 03-ai-native-ip
+aliases: [ai-native-ip-guide]
+status: published
 ---
 
 # 2026 ChatGPT、Claude 与 OpenAI 专用节点：原生住宅 IP 选择指南

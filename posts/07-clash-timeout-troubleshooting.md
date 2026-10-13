@@ -3,7 +3,9 @@ title: "Clash 与 Clash Verge 测试超时、连接后无法访问：完整排�
 description: "从订阅、系统代理、DNS、规则与内核日志逐层排查 Clash 连接问题。"
 date: 2026-10-03
 category: 工具使用
-slug: clash-timeout-troubleshooting
+slug: 07-clash-timeout-troubleshooting
+aliases: [clash-timeout-troubleshooting]
+status: published
 ---
 
 # Clash 与 Clash Verge 测试超时、连接后无法访问：完整排错教程

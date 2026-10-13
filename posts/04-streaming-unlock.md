@@ -3,7 +3,9 @@ title: "Netflix、Disney+ 与 HBO 原生解锁节点盘点：减少地区限制�
 description: "用清晰表格比较主流流媒体的解锁范围、速度与晚高峰表现。"
 date: 2026-10-03
 category: 流媒体
-slug: streaming-unlock-nodes
+slug: 04-streaming-unlock
+aliases: [streaming-unlock-nodes]
+status: published
 ---
 
 # Netflix、Disney+ 与 HBO 原生解锁节点盘点：减少地区限制与开盲盒

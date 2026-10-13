@@ -47,31 +47,48 @@ for (const dir of postDirs) {
   const files = fs.readdirSync(dir)
     .filter((name) => /^\d{2}-.+\.md$/.test(name) || /-audit-2026\.md$/.test(name));
   for (const file of files) {
-    const slug = file.replace(/\.md$/, '');
-    if (seenSlugs.has(slug)) continue;
-    seenSlugs.add(slug);
+    const fileSlug = file.replace(/\.md$/, '');
+    if (seenSlugs.has(fileSlug)) continue;
+    seenSlugs.add(fileSlug);
     const source = fs.readFileSync(path.join(dir, file), 'utf8');
     const { meta, body } = parseFrontMatter(source);
     let declaredTags = [];
     if (meta.tags) {
       declaredTags = String(meta.tags).replace(/[\[\]\s'"]/g, '').split(',').map(t => t.trim()).filter(Boolean);
     }
-    const postSlug = meta.slug || slug;
+    let declaredAliases = [];
+    if (meta.aliases) {
+      declaredAliases = String(meta.aliases).replace(/[\[\]\s'"]/g, '').split(',').map(a => a.trim()).filter(Boolean);
+    }
+
+    const canonicalSlug = meta.slug || fileSlug;
+    const aliases = new Set([...declaredAliases]);
+    aliases.add(fileSlug);
+    aliases.add(fileSlug.replace(/^\d+-/, ''));
+    if (meta.slug) {
+      aliases.add(meta.slug);
+      aliases.add(meta.slug.replace(/^\d+-/, ''));
+    }
+    aliases.delete(canonicalSlug);
+
     const searchText = `${meta.title || ''} ${meta.category || ''} ${body}`;
     const autoTags = keywordTags.filter(([, pattern]) => pattern.test(searchText)).map(([tag]) => tag);
     const tags = [meta.category, ...declaredTags, ...autoTags]
       .filter(Boolean).filter((tag, index, all) => all.indexOf(tag) === index).slice(0, 5);
     posts.push({
       source: file,
-      slug: postSlug,
-      title: meta.title || postSlug,
+      slug: canonicalSlug,
+      aliases: Array.from(aliases),
+      status: meta.status || 'published',
+      title: meta.title || canonicalSlug,
       description: meta.description || '',
       date: meta.date || '1970-01-01',
       category: meta.category || '文章',
       tags,
       body,
       readingMinutes: Math.max(5, Math.ceil(textLength(body) / 350)),
-      url: `article.html?post=${encodeURIComponent(postSlug)}`
+      url: `article.html?post=${encodeURIComponent(canonicalSlug)}`,
+      canonicalUrl: `article?post=${encodeURIComponent(canonicalSlug)}`
     });
   }
 }
@@ -84,18 +101,35 @@ fs.writeFileSync(
   'utf8'
 );
 
-const rssItems = posts.map((post) => `  <item>\n    <title>${escapeXml(post.title)}</title>\n    <link>${siteUrl}/${escapeXml(post.url)}</link>\n    <guid>${siteUrl}/${escapeXml(post.url)}</guid>\n    <pubDate>${new Date(`${post.date}T00:00:00+08:00`).toUTCString()}</pubDate>\n    <description>${escapeXml(post.description)}</description>\n  </item>`).join('\n');
+const rssItems = posts.map((post) => `  <item>\n    <title>${escapeXml(post.title)}</title>\n    <link>${siteUrl}/${escapeXml(post.canonicalUrl || post.url)}</link>\n    <guid>${siteUrl}/${escapeXml(post.canonicalUrl || post.url)}</guid>\n    <pubDate>${new Date(`${post.date}T00:00:00+08:00`).toUTCString()}</pubDate>\n    <description>${escapeXml(post.description)}</description>\n  </item>`).join('\n');
 fs.writeFileSync(path.join(root, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n  <title>梯云社 / TIYUN CLUB</title>\n  <link>${siteUrl}/</link>\n  <description>网络节点评测、工具教程与网络诊断。</description>\n${rssItems}\n</channel></rss>\n`, 'utf8');
 
 const staticPages = [
   '', 'posts/global-iplc-benchmark-2026.html', 'knowledge.html', 'tools.html', 'airports.html',
-  'airport-topic.html?topic=stable', 'airport-topic.html?topic=value',
-  'airport-topic.html?topic=premium', 'airport-topic.html?topic=budget',
-  'airport-topic.html?topic=payg', 'airport-topic.html?topic=discounts',
-  'airport-topic.html?topic=trials', 'disclaimer.html'
+  'airport-topic?topic=stable', 'airport-topic?topic=value',
+  'airport-topic?topic=premium', 'airport-topic?topic=budget',
+  'airport-topic?topic=payg', 'airport-topic?topic=discounts',
+  'airport-topic?topic=trials', 'disclaimer.html'
 ];
-const sitemapUrls = [...staticPages.map((url) => `${siteUrl}/${url}`), ...posts.map((post) => `${siteUrl}/${post.url}`)]
+const sitemapUrls = [...staticPages.map((url) => `${siteUrl}/${url}`), ...posts.map((post) => `${siteUrl}/${post.canonicalUrl || post.url}`)]
   .map((url) => `  <url><loc>${escapeXml(url)}</loc></url>`).join('\n');
 fs.writeFileSync(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls}\n</urlset>\n`, 'utf8');
 
-console.log(`Built ${posts.length} posts, assets/posts-data.js, feed.xml and sitemap.xml.`);
+// 同步静态目录回退文件（确保在各种静态托管环境下直接访问 clean URL 亦不 404）
+const syncDirs = [
+  { src: 'article.html', dir: 'article' },
+  { src: 'airport-topic.html', dir: 'airport-topic' },
+  { src: 'airports.html', dir: 'airports' },
+  { src: 'knowledge.html', dir: 'knowledge' },
+  { src: 'tools.html', dir: 'tools' }
+];
+syncDirs.forEach(({ src, dir }) => {
+  const srcPath = path.join(root, src);
+  if (fs.existsSync(srcPath)) {
+    const targetDir = path.join(root, dir);
+    fs.mkdirSync(targetDir, { recursive: true });
+    fs.copyFileSync(srcPath, path.join(targetDir, 'index.html'));
+  }
+});
+
+console.log(`Built ${posts.length} posts, clean-url fallbacks, assets/posts-data.js, feed.xml and sitemap.xml.`);

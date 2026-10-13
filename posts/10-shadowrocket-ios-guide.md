@@ -3,7 +3,9 @@ title: "Shadowrocket iOS 安装、节点添加与规则配置完整指南"
 description: "从正规安装、订阅导入到分流规则和故障检查的完整流程。"
 date: 2026-10-03
 category: 工具使用
-slug: shadowrocket-ios-guide
+slug: 10-shadowrocket-ios-guide
+aliases: [shadowrocket-ios-guide]
+status: published
 ---
 
 # Shadowrocket iOS 安装、节点添加与规则配置完整指南

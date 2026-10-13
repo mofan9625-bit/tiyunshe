@@ -3,7 +3,9 @@ title: "跨区游戏加速节点推荐：港台、日韩与美服低延迟专线
 description: "对比不同游戏区域的延迟、抖动、丢包和晚高峰稳定性。"
 date: 2026-10-03
 category: 游戏加速
-slug: game-acceleration-nodes
+slug: 06-game-acceleration
+aliases: [game-acceleration-nodes]
+status: published
 ---
 
 # 跨区游戏加速节点推荐：港台、日韩与美服低延迟专线整理

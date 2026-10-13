@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="梯云社深度技术文章">
-  <link id="canonicalUrl" rel="canonical" href="https://tiyunclub.com/article.html">
+  <link id="canonicalUrl" rel="canonical" href="https://tiyunclub.com/article">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
   <meta id="ogTitle" property="og:title" content="梯云社深度技术文章">
   <meta id="ogDescription" property="og:description" content="梯云社深度技术文章">
-  <meta id="ogUrl" property="og:url" content="https://tiyunclub.com/article.html">
+  <meta id="ogUrl" property="og:url" content="https://tiyunclub.com/article">
   <meta name="twitter:card" content="summary_large_image">
   <meta id="twitterTitle" name="twitter:title" content="梯云社深度技术文章">
   <meta id="twitterDescription" name="twitter:description" content="梯云社深度技术文章">
@@ -204,13 +204,20 @@
 
   <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><span>TIYUNCLUB.COM</span></div></footer>
 
-  <script src="assets/posts-data.js?v=20261011"></script>
+  <!-- 多层级自适应加载文章数据源，确保无论在根路径、子路径还是本地环境均能成功读取 -->
+  <script src="assets/posts-data.js?v=20261013"></script>
+  <script>
+    if (!window.TIYUN_POSTS || !window.TIYUN_POSTS.length) {
+      document.write('<script src="/assets/posts-data.js?v=20261013"><\/script>');
+      document.write('<script src="../assets/posts-data.js?v=20261013"><\/script>');
+    }
+  </script>
   <script>
     function parsePost(source) {
-      const match = source.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+      const match = source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n([\s\S]*)$/);
       if (!match) return { meta: {}, body: source };
       const meta = {};
-      match[1].split('\n').forEach(line => {
+      match[1].split(/\r?\n/).forEach(line => {
         const separator = line.indexOf(':');
         if (separator < 0) return;
         const key = line.slice(0, separator).trim();
@@ -219,22 +226,112 @@
       return { meta, body: match[2] };
     }
 
+    function stripPrefix(str) {
+      return (str || '').replace(/^\d+[-_]/, '');
+    }
+
+    function escapeHtml(str) {
+      return String(str || '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[m]);
+    }
+
+    function renderMarkdownContent(body) {
+      if (window.marked && typeof marked.parse === 'function') {
+        const raw = marked.parse(body);
+        if (window.DOMPurify && typeof DOMPurify.sanitize === 'function') {
+          return DOMPurify.sanitize(raw);
+        }
+        return raw;
+      }
+      // 容错降级解析：若 CDN marked.js 因网络波动未载入，确保正文依然正常呈现，绝不白屏或报错
+      return body
+        .split(/\n\n+/)
+        .map(block => {
+          block = block.trim();
+          if (!block) return '';
+          if (block.startsWith('# ')) return `<h1 class="text-3xl font-black mb-4">${escapeHtml(block.slice(2))}</h1>`;
+          if (block.startsWith('## ')) return `<h2 class="text-2xl font-bold mt-8 mb-4 border-b pb-2">${escapeHtml(block.slice(3))}</h2>`;
+          if (block.startsWith('### ')) return `<h3 class="text-xl font-bold mt-6 mb-3">${escapeHtml(block.slice(4))}</h3>`;
+          if (block.startsWith('> ')) return `<blockquote class="border-l-4 border-black pl-4 py-2 bg-gray-50 my-4">${escapeHtml(block.slice(2))}</blockquote>`;
+          if (block.startsWith('- ') || block.startsWith('* ')) {
+            const items = block.split('\n').map(l => l.replace(/^[-*]\s*/, '').trim()).filter(Boolean);
+            return `<ul class="list-disc pl-6 my-4 space-y-1">${items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>`;
+          }
+          if (block.startsWith('|')) {
+            const rows = block.split('\n').filter(r => r.trim() && !r.includes('---'));
+            return `<table class="w-full my-4 border"><tbody>${rows.map(r => `<tr>${r.split('|').filter(Boolean).map(c => `<td class="border px-3 py-2">${escapeHtml(c.trim())}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+          }
+          return `<p class="my-4 leading-relaxed">${escapeHtml(block).replace(/\n/g, '<br>')}</p>`;
+        })
+        .join('');
+    }
+
+    async function waitForPostsData() {
+      if (Array.isArray(window.TIYUN_POSTS) && window.TIYUN_POSTS.length > 0) return true;
+      for (let i = 0; i < 15; i++) {
+        await new Promise(r => setTimeout(r, 40));
+        if (Array.isArray(window.TIYUN_POSTS) && window.TIYUN_POSTS.length > 0) return true;
+      }
+      return false;
+    }
+
+    function findBundledPost(slugQuery) {
+      if (!slugQuery) return null;
+      const posts = window.TIYUN_POSTS || [];
+      const clean = decodeURIComponent(slugQuery).trim().toLowerCase().replace(/\.(html|md)$/i, '');
+      const cleanNoNum = stripPrefix(clean);
+
+      // 1. 精确匹配 slug 或 source 文件名
+      let hit = posts.find(p => (p.slug && p.slug.toLowerCase() === clean) || (p.source && p.source.toLowerCase().replace(/\.md$/, '') === clean));
+      if (hit) return hit;
+
+      // 2. 别名列表匹配 (aliases)
+      hit = posts.find(p => Array.isArray(p.aliases) && p.aliases.some(a => a.toLowerCase() === clean));
+      if (hit) return hit;
+
+      // 3. 剥离数字序号前缀匹配（如 07-clash-timeout... 与 clash-timeout... 互通）
+      hit = posts.find(p => {
+        const postSlugNoNum = stripPrefix((p.slug || '').toLowerCase());
+        const postSrcNoNum = stripPrefix((p.source || '').toLowerCase().replace(/\.md$/, ''));
+        return postSlugNoNum === cleanNoNum || postSrcNoNum === cleanNoNum;
+      });
+      if (hit) return hit;
+
+      // 4. 别名列表剥离数字前缀匹配
+      hit = posts.find(p => Array.isArray(p.aliases) && p.aliases.some(a => stripPrefix(a.toLowerCase()) === cleanNoNum));
+      if (hit) return hit;
+
+      // 5. 模糊标题匹配
+      if (clean.length >= 4) {
+        hit = posts.find(p => (p.title || '').toLowerCase().includes(clean));
+      }
+      return hit || null;
+    }
+
     async function loadArticle() {
-      let slug = new URLSearchParams(location.search).get('post');
+      // 1. 前端路由规范化：如果在 /article.html，平滑切换为规范的 /article (保持已有 query 参数)
+      if (window.history && window.history.replaceState && location.pathname.endsWith('.html')) {
+        const cleanPath = location.pathname.replace(/\.html$/, '');
+        window.history.replaceState(null, '', cleanPath + location.search + location.hash);
+      }
+
+      // 2. 多源解析 post 参数
+      const params = new URLSearchParams(location.search);
+      let slug = params.get('post') || params.get('id') || params.get('slug') || params.get('p');
       if (!slug) {
-        const pathParts = location.pathname.split('/');
+        const pathParts = location.pathname.split('/').filter(Boolean);
         const last = pathParts[pathParts.length - 1];
         if (last && !['article.html', 'article', ''].includes(last)) {
           slug = last;
         }
       }
       if (slug) {
-        slug = slug.replace(/\.(html|md)$/, '');
+        slug = slug.replace(/\.(html|md)$/i, '');
       }
-      if (!slug) return showError();
+      if (!slug) return showError('请在 URL 中提供文章参数，如 ?post=07-clash-timeout-troubleshooting');
 
       try {
-        const bundledPost = (window.TIYUN_POSTS || []).find((post) => post.slug === slug);
+        await waitForPostsData();
+        let bundledPost = findBundledPost(slug);
         let meta;
         let body;
 
@@ -242,16 +339,38 @@
           meta = bundledPost;
           body = bundledPost.body;
         } else {
-          let response = await fetch(`posts/${slug}.md`);
-          if (!response.ok) {
-            response = await fetch(`docs/posts/${slug}.md`);
+          // 备用多层级相对路径 fetch 容错（防止子目录或不同运行环境下相对路径丢失）
+          const cleanSlug = slug.replace(/\.(html|md)$/i, '');
+          const noNumSlug = stripPrefix(cleanSlug);
+          const slugVariants = [cleanSlug];
+          if (noNumSlug !== cleanSlug) slugVariants.push(noNumSlug);
+
+          const candidateUrls = [];
+          ['', '/', '../', '../../', './'].forEach(prefix => {
+            slugVariants.forEach(sv => {
+              candidateUrls.push(`${prefix}posts/${sv}.md`);
+              candidateUrls.push(`${prefix}docs/posts/${sv}.md`);
+              candidateUrls.push(`${prefix}${sv}.md`);
+            });
+          });
+
+          let response = null;
+          for (const url of candidateUrls) {
+            try {
+              const res = await fetch(url);
+              if (res.ok) {
+                response = res;
+                break;
+              }
+            } catch (e) {}
           }
-          if (!response.ok) {
-            response = await fetch(`${slug}.md`);
+          if (!response) {
+            throw new Error(`文章数据源未找到 (Slug: ${slug})`);
           }
-          if (!response.ok) throw new Error('Not found');
           ({ meta, body } = parsePost(await response.text()));
         }
+
+        const canonicalSlug = meta.slug || slug;
         const wordCount = body.replace(/[#*|>`\-\[\]()]/g, '').length;
         document.getElementById('title').textContent = meta.title || '未命名文章';
         document.getElementById('description').textContent = meta.description || '';
@@ -260,43 +379,61 @@
           const sectionLink = document.getElementById('sectionLink');
           const mobileSectionLink = document.getElementById('mobileSectionLink');
           const backLink = document.getElementById('backLink');
-          sectionLink.href = 'tools.html';
-          sectionLink.textContent = '工具使用';
-          mobileSectionLink.href = 'tools.html';
-          mobileSectionLink.textContent = '工具使用';
-          backLink.href = 'tools.html';
-          backLink.textContent = '← 返回工具使用';
+          if (sectionLink) { sectionLink.href = 'tools.html'; sectionLink.textContent = '工具使用'; }
+          if (mobileSectionLink) { mobileSectionLink.href = 'tools.html'; mobileSectionLink.textContent = '工具使用'; }
+          if (backLink) { backLink.href = 'tools.html'; backLink.textContent = '← 返回工具使用'; }
         }
         document.getElementById('date').textContent = (meta.date || '').replaceAll('-', '.');
         document.getElementById('readingTime').textContent = `${Math.max(5, Math.ceil(wordCount / 350))} MIN READ`;
+        
         const content = document.getElementById('content');
-        content.innerHTML = DOMPurify.sanitize(marked.parse(body));
+        content.innerHTML = renderMarkdownContent(body);
         content.querySelectorAll('a[href^="http://"], a[href^="https://"]').forEach((link) => {
           link.target = '_blank';
           link.rel = 'noopener noreferrer sponsored';
         });
+
         document.title = `${meta.title}｜梯云社`;
-        document.querySelector('meta[name="description"]').setAttribute('content', meta.description || '梯云社深度技术文章');
-        const canonical = `https://tiyunclub.com/article.html?post=${encodeURIComponent(slug)}`;
-        document.getElementById('canonicalUrl').href = canonical;
-        document.getElementById('ogTitle').content = meta.title || '梯云社深度技术文章';
-        document.getElementById('ogDescription').content = meta.description || '梯云社深度技术文章';
-        document.getElementById('ogUrl').content = canonical;
-        document.getElementById('twitterTitle').content = meta.title || '梯云社深度技术文章';
-        document.getElementById('twitterDescription').content = meta.description || '梯云社深度技术文章';
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute('content', meta.description || '梯云社深度技术文章');
+        
+        // 规范 URL 使用 /article?post=xxx 格式
+        const canonical = `https://tiyunclub.com/article?post=${encodeURIComponent(canonicalSlug)}`;
+        const canonicalEl = document.getElementById('canonicalUrl');
+        if (canonicalEl) canonicalEl.href = canonical;
+        const ogTitle = document.getElementById('ogTitle');
+        if (ogTitle) ogTitle.content = meta.title || '梯云社深度技术文章';
+        const ogDesc = document.getElementById('ogDescription');
+        if (ogDesc) ogDesc.content = meta.description || '梯云社深度技术文章';
+        const ogUrl = document.getElementById('ogUrl');
+        if (ogUrl) ogUrl.content = canonical;
+        const twTitle = document.getElementById('twitterTitle');
+        if (twTitle) twTitle.content = meta.title || '梯云社深度技术文章';
+        const twDesc = document.getElementById('twitterDescription');
+        if (twDesc) twDesc.content = meta.description || '梯云社深度技术文章';
+        
         document.getElementById('loading').classList.add('hidden');
         document.getElementById('article').classList.remove('hidden');
         if (window.lucide) lucide.createIcons();
-      } catch (error) { showError(); }
+      } catch (error) {
+        console.error('[Article Load Error]:', error);
+        showError(error.message);
+      }
     }
 
-    function showError() {
+    function showError(customMsg) {
       document.getElementById('loading').classList.add('hidden');
-      document.getElementById('error').classList.remove('hidden');
+      const errSection = document.getElementById('error');
+      if (customMsg) {
+        const titleEl = errSection.querySelector('h1');
+        if (titleEl) titleEl.textContent = customMsg;
+      }
+      errSection.classList.remove('hidden');
     }
 
     document.addEventListener('DOMContentLoaded', loadArticle);
   </script>
   <script src="assets/airport-menu.js" defer></script>
+  <script src="/assets/airport-menu.js" defer></script>
 </body>
 </html>

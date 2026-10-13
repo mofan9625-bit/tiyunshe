@@ -7,6 +7,7 @@
     "nav:clean": "node scripts/clean-brand-nav-duplicates.js",
     "seo:prerender": "node scripts/seo-prerender.js",
     "build": "node scripts/generate-knowledge-40.js && node scripts/build-content.js && node scripts/seo-prerender.js",
+    "verify": "node scripts/verify-all-fixes.js",
     "docs:build": "npm run build",
     "indexnow:submit": "node scripts/submit-indexnow.js"
   }

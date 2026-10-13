@@ -3,7 +3,9 @@ title: "IPLC 与 IEPL 专线节点推荐：低延迟与晚高峰 4K 指南"
 description: "解释 IPLC、IEPL 与公网中转的差异，并给出同口径性能对比。"
 date: 2026-10-03
 category: 机场推荐
-slug: iplc-iepl-lines
+slug: 02-iplc-iepl-lines
+aliases: [iplc-iepl-lines]
+status: published
 ---
 
 # IPLC 与 IEPL 专线节点推荐：低延迟与晚高峰 4K 指南
