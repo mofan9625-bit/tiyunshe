@@ -115,21 +115,4 @@ const sitemapUrls = [...staticPages.map((url) => `${siteUrl}/${url}`), ...posts.
   .map((url) => `  <url><loc>${escapeXml(url)}</loc></url>`).join('\n');
 fs.writeFileSync(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls}\n</urlset>\n`, 'utf8');
 
-// 同步静态目录回退文件（确保在各种静态托管环境下直接访问 clean URL 亦不 404）
-const syncDirs = [
-  { src: 'article.html', dir: 'article' },
-  { src: 'airport-topic.html', dir: 'airport-topic' },
-  { src: 'airports.html', dir: 'airports' },
-  { src: 'knowledge.html', dir: 'knowledge' },
-  { src: 'tools.html', dir: 'tools' }
-];
-syncDirs.forEach(({ src, dir }) => {
-  const srcPath = path.join(root, src);
-  if (fs.existsSync(srcPath)) {
-    const targetDir = path.join(root, dir);
-    fs.mkdirSync(targetDir, { recursive: true });
-    fs.copyFileSync(srcPath, path.join(targetDir, 'index.html'));
-  }
-});
-
-console.log(`Built ${posts.length} posts, clean-url fallbacks, assets/posts-data.js, feed.xml and sitemap.xml.`);
+console.log(`Built ${posts.length} posts, assets/posts-data.js, feed.xml and sitemap.xml.`);

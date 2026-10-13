@@ -1,5 +1,5 @@
 # ==============================================================================
-# 梯云社 (tiyunclub.com) Nginx 站点配置与 301 规范重定向配置参考
+# 梯云社 (tiyunclub.com) Nginx 站点配置参考（零死循环、高兼容规范配置）
 # ==============================================================================
 
 server {
@@ -10,45 +10,16 @@ server {
     index index.html;
 
     # --------------------------------------------------------------------------
-    # 1. 301 永久重定向：将带 .html 的历史收录 URL 永久重定向到规范 URL（完整保留 query 参数）
-    # --------------------------------------------------------------------------
-    location = /article.html {
-        return 301 /article$is_args$args;
-    }
-
-    location = /airport-topic.html {
-        return 301 /airport-topic$is_args$args;
-    }
-
-    location = /airports.html {
-        return 301 /airports$is_args$args;
-    }
-
-    location = /knowledge.html {
-        return 301 /knowledge$is_args$args;
-    }
-
-    location = /tools.html {
-        return 301 /tools$is_args$args;
-    }
-
-    location = /disclaimer.html {
-        return 301 /disclaimer$is_args$args;
-    }
-
-    location = /trial.html {
-        return 301 /trial$is_args$args;
-    }
-
-    # --------------------------------------------------------------------------
-    # 2. 静态 Clean URL 支持：客户端请求 /article 时，自动读取磁盘上的 article.html
+    # 静态 Clean URL 与常规路由支持（无循环 200 直出模式）：
+    # 请求 /article 或 /airport-topic 时，自动匹配对应 html 文件，
+    # 杜绝内部 internal rewrite 再次命中 301 导致的死循环（ERR_TOO_MANY_REDIRECTS）
     # --------------------------------------------------------------------------
     location / {
-        try_files $uri $uri.html $uri/ /index.html =404;
+        try_files $uri $uri.html /index.html =404;
     }
 
     # --------------------------------------------------------------------------
-    # 3. 静态资源长效缓存优化
+    # 静态资源长效缓存优化
     # --------------------------------------------------------------------------
     location ~* \.(?:css|js|jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc|woff|woff2)$ {
         expires 30d;
