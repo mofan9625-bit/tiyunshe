@@ -95,7 +95,44 @@
     }
   }
 
+  
+  
+  function installMobileMenuHandlers() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuButton && mobileMenu && !menuButton.__hasMenuListener) {
+      menuButton.__hasMenuListener = true;
+      menuButton.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('hidden') === false;
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+    }
+
+    const airportMenuButton = document.getElementById('airportMenuButton');
+    const airportMobileMenu = document.getElementById('airportMobileMenu');
+    if (airportMenuButton && airportMobileMenu && !airportMenuButton.__hasAirportListener) {
+      airportMenuButton.__hasAirportListener = true;
+      airportMenuButton.addEventListener('click', () => {
+        const open = airportMobileMenu.classList.toggle('hidden') === false;
+        airportMenuButton.setAttribute('aria-expanded', String(open));
+        airportMenuButton.querySelector('svg')?.classList.toggle('rotate-180', open);
+      });
+    }
+
+    const brandMenuButton = document.getElementById('brandMenuButton');
+    const brandMobileMenu = document.getElementById('brandMobileMenu');
+    if (brandMenuButton && brandMobileMenu && !brandMenuButton.__hasBrandListener) {
+      brandMenuButton.__hasBrandListener = true;
+      brandMenuButton.addEventListener('click', () => {
+        const open = brandMobileMenu.classList.toggle('hidden') === false;
+        brandMenuButton.setAttribute('aria-expanded', String(open));
+        brandMenuButton.querySelector('svg')?.classList.toggle('rotate-180', open);
+      });
+    }
+  }
+
   function init() {
+    installMobileMenuHandlers();
     installStyles();
     installDesktopMenus();
     loadBrands();

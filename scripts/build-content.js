@@ -7,6 +7,7 @@ const assetsDir = path.join(root, 'assets');
 const siteUrl = 'https://tiyunclub.com';
 
 const keywordTags = [
+  ['品牌审计', /品牌审计|单品审计|深度观察|可用率审计|协议韧性审计|大吞吐负载测试|专线延迟与接入点测试|轻量与备用方案实测/i],
   ['IPLC', /\bIPLC\b/i], ['IEPL', /\bIEPL\b/i], ['ChatGPT', /ChatGPT/i],
   ['Claude', /Claude/i], ['Netflix', /Netflix/i], ['Disney+', /Disney\+/i],
   ['TikTok', /TikTok/i], ['游戏加速', /游戏|区服/], ['Clash', /Clash/i],
@@ -51,9 +52,14 @@ for (const dir of postDirs) {
     seenSlugs.add(slug);
     const source = fs.readFileSync(path.join(dir, file), 'utf8');
     const { meta, body } = parseFrontMatter(source);
+    let declaredTags = [];
+    if (meta.tags) {
+      declaredTags = String(meta.tags).replace(/[\[\]\s'"]/g, '').split(',').map(t => t.trim()).filter(Boolean);
+    }
     const postSlug = meta.slug || slug;
     const searchText = `${meta.title || ''} ${meta.category || ''} ${body}`;
-    const tags = [meta.category, ...keywordTags.filter(([, pattern]) => pattern.test(searchText)).map(([tag]) => tag)]
+    const autoTags = keywordTags.filter(([, pattern]) => pattern.test(searchText)).map(([tag]) => tag);
+    const tags = [meta.category, ...declaredTags, ...autoTags]
       .filter(Boolean).filter((tag, index, all) => all.indexOf(tag) === index).slice(0, 5);
     posts.push({
       source: file,
