@@ -11,6 +11,24 @@
   <title>免责声明｜梯云社</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{ink:'#111111',muted:'#6B7280',line:'#E5E7EB',paper:'#FAFAFA'},fontFamily:{mono:['SFMono-Regular','Consolas','monospace']}}}};</script>
+  <style>
+    .dropdown-panel {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+    }
+    .dropdown:hover .dropdown-panel,
+    .dropdown:focus-within .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      transition-delay: 0s;
+    }
+  </style>
 </head>
 <body class="bg-white text-ink antialiased">
   <header class="border-b border-line">

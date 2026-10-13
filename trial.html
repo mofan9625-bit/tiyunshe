@@ -10,6 +10,24 @@
   <link rel="canonical" href="https://tiyunclub.com/airports.html">
   <title>优惠试用｜梯云社</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .dropdown-panel {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+    }
+    .dropdown:hover .dropdown-panel,
+    .dropdown:focus-within .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      transition-delay: 0s;
+    }
+  </style>
 </head>
 <body class="bg-white text-[#111] antialiased">
   <header class="border-b border-gray-200">

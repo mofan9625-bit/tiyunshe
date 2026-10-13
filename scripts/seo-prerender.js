@@ -106,8 +106,22 @@ const postHtmlContent = `<!doctype html>
       background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .25s ease;
     }
     .nav-link:hover::after, .text-link:hover::after { transform: scaleX(1); transform-origin: left; }
-    .dropdown-panel { opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s; }
-    .dropdown:hover .dropdown-panel, .dropdown:focus-within .dropdown-panel { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0s; }
+    .dropdown-panel {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+    }
+    .dropdown:hover .dropdown-panel,
+    .dropdown:focus-within .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      transition-delay: 0s;
+    }
     .prose-editorial { color: #1a1a1a; font-size: 1.0625rem; line-height: 1.9; }
     .prose-editorial > * + * { margin-top: 1.65rem; }
     .prose-editorial h2 { margin-top: 4rem; padding-bottom: .65rem; border-bottom: 1px solid #e5e7eb; font-size: 1.8rem; line-height: 1.3; font-weight: 700; }
@@ -135,7 +149,7 @@ const postHtmlContent = `<!doctype html>
         <a class="nav-link" href="../index.html">首页</a>
         <div class="dropdown relative flex h-20 items-center">
           <a class="nav-link flex items-center gap-1" href="../airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a>
-          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-3">
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">2026 年度综合排行榜</p>
               <div class="grid gap-0.5 text-sm">
@@ -154,7 +168,7 @@ const postHtmlContent = `<!doctype html>
           <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
             品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
           </button>
-          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-3">
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
               <div class="grid gap-0.5 text-sm">
@@ -210,7 +224,7 @@ const postHtmlContent = `<!doctype html>
           <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
             品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
           </button>
-          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-3">
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
               <div class="grid gap-0.5 text-sm">

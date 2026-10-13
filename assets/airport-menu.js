@@ -14,6 +14,8 @@
     const style = document.createElement('style');
     style.id = 'airportDropdownStyles';
     style.textContent = `
+      .dropdown-panel{position:absolute;top:100%;left:50%;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+      .dropdown:hover .dropdown-panel,.dropdown:focus-within .dropdown-panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:0s}
       .airport-dropdown-panel{opacity:0;visibility:hidden;transform:translate(-50%,-6px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
       .airport-dropdown:hover .airport-dropdown-panel,.airport-dropdown:focus-within .airport-dropdown-panel{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
     `;

@@ -21,8 +21,22 @@
     .nav-link { position: relative; }
     .nav-link::after { content:""; position:absolute; left:0; bottom:-3px; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:right; transition:transform .25s ease; }
     .nav-link:hover::after { transform:scaleX(1); transform-origin:left; }
-    .dropdown-panel { opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .18s ease, transform .18s ease, visibility 0s linear .18s; }
-    .dropdown:hover .dropdown-panel, .dropdown:focus-within .dropdown-panel { opacity:1; visibility:visible; transform:translateY(0); transition-delay:0s; }
+    .dropdown-panel {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(-6px);
+      transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+    }
+    .dropdown:hover .dropdown-panel,
+    .dropdown:focus-within .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      transition-delay: 0s;
+    }
     :target { scroll-margin-top: 6rem; }
   </style>
 </head>
@@ -32,12 +46,12 @@
       <a href="index.html" class="flex items-baseline gap-2"><span class="text-xl font-black">梯云社</span><span class="hidden text-[10px] font-bold uppercase text-muted sm:inline">TIYUN CLUB</span></a>
       <nav class="hidden items-center gap-7 text-sm font-medium xl:flex">
         <a class="nav-link" href="index.html">首页</a>
-        <div class="dropdown relative flex h-20 items-center"><a class="nav-link flex items-center gap-1" href="airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a><div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-3"><div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]"><p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">2026 年度综合排行榜</p><div class="grid gap-0.5 text-sm"><a href="airport-topic.html?topic=stable" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🛡️</span>稳定抗封锁专线榜</a><a href="airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价高性价比机场榜</a><a href="airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线榜</a><a href="airport-topic.html?topic=budget" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💰</span>10元内平价月付合集</a><a href="airport-topic.html?topic=payg" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⏱️</span>按量计费与不限时套餐</a><a href="airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 最新独家优惠码</a><a href="airport-topic.html?topic=trials" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎁</span>免费试用与一元体验</a></div></div></div></div>
+        <div class="dropdown relative flex h-20 items-center"><a class="nav-link flex items-center gap-1" href="airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a><div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2"><div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]"><p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">2026 年度综合排行榜</p><div class="grid gap-0.5 text-sm"><a href="airport-topic.html?topic=stable" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🛡️</span>稳定抗封锁专线榜</a><a href="airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价高性价比机场榜</a><a href="airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线榜</a><a href="airport-topic.html?topic=budget" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💰</span>10元内平价月付合集</a><a href="airport-topic.html?topic=payg" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⏱️</span>按量计费与不限时套餐</a><a href="airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 最新独家优惠码</a><a href="airport-topic.html?topic=trials" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎁</span>免费试用与一元体验</a></div></div></div></div>
         <div class="dropdown relative flex h-20 items-center">
           <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
             品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
           </button>
-          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-3">
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
               <div class="grid gap-0.5 text-sm">
