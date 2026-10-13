@@ -82,7 +82,7 @@ const rssItems = posts.map((post) => `  <item>\n    <title>${escapeXml(post.titl
 fs.writeFileSync(path.join(root, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n  <title>梯云社 / TIYUN CLUB</title>\n  <link>${siteUrl}/</link>\n  <description>网络节点评测、工具教程与网络诊断。</description>\n${rssItems}\n</channel></rss>\n`, 'utf8');
 
 const staticPages = [
-  '', 'knowledge.html', 'tools.html', 'airports.html',
+  '', 'posts/global-iplc-benchmark-2026.html', 'knowledge.html', 'tools.html', 'airports.html',
   'airport-topic.html?topic=stable', 'airport-topic.html?topic=value',
   'airport-topic.html?topic=premium', 'airport-topic.html?topic=budget',
   'airport-topic.html?topic=payg', 'airport-topic.html?topic=discounts',
