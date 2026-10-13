@@ -44,7 +44,7 @@ if (fs.existsSync(nginxPath)) {
 console.log('\n--- 任务 2：前端路由兼容与 18 个文章 Slug 映射验证 ---');
 const articlePath = path.resolve(__dirname, '..', 'article.html');
 const articleContent = fs.readFileSync(articlePath, 'utf8');
-assert('article.html 包含无刷新地址栏规范化 replaceState', articleContent.includes('window.history.replaceState'));
+assert('article.html 遵循静默兼容原则不强制跳转 URL', !articleContent.includes('location.href =') && !articleContent.includes('location.replace('));
 assert('article.html 包含强大的 findBundledPost 智能匹配函数', articleContent.includes('function findBundledPost'));
 assert('article.html canonical 规范化为 clean URL /article', articleContent.includes('https://tiyunclub.com/article?post='));
 
@@ -113,7 +113,7 @@ targetSlugs.forEach(slug => {
 console.log('\n--- 任务 3：专题页面 topic 参数解析与四大主题验证 ---');
 const topicPath = path.resolve(__dirname, '..', 'airport-topic.html');
 const topicContent = fs.readFileSync(topicPath, 'utf8');
-assert('airport-topic.html 包含无刷新地址栏规范化 replaceState', topicContent.includes('window.history.replaceState'));
+assert('airport-topic.html 遵循静默兼容原则不强制跳转 URL', !topicContent.includes('location.href =') && !topicContent.includes('location.replace('));
 assert('airport-topic.html 包含规范 canonical /airport-topic', topicContent.includes('https://tiyunclub.com/airport-topic?topic='));
 
 const topicTermsMap = {
