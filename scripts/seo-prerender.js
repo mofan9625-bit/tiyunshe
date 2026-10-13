@@ -203,14 +203,12 @@ const postHtmlContent = `<!doctype html>
         <a class="nav-link" href="../tools.html">工具使用</a>
         <a class="nav-link" href="../knowledge.html">知识库</a>
         <a class="nav-link" href="../index.html#about">关于</a>
-        <button type="button" data-search-open class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索">
-          <i data-lucide="search" class="h-4 w-4"></i>
-        </button>
+        <a href="../index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a>
         <a href="../disclaimer.html" class="nav-link text-xs">免责声明</a>
       </nav>
 
       <div class="flex items-center gap-1 xl:hidden">
-        <button type="button" data-search-open class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></button>
+        <a href="../index.html?search=1" class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></a>
         <button id="menuButton" type="button" class="p-2.5" aria-expanded="false" aria-controls="mobileMenu" aria-label="打开菜单">
           <i data-lucide="menu" class="h-5 w-5"></i>
         </button>
@@ -219,40 +217,21 @@ const postHtmlContent = `<!doctype html>
     <nav id="mobileMenu" class="hidden border-t border-line bg-white px-5 py-5 xl:hidden" aria-label="移动端导航">
       <div class="grid gap-4 text-sm font-medium">
         <a href="../index.html">首页</a>
-        <div><button id="airportMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="airportMobileMenu"><span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i></button><div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4"><p class="pb-2 text-xs font-bold text-muted">2026 年度综合排行榜</p><div class="grid gap-1 text-sm font-normal"><a class="py-1.5 font-semibold" href="../airports.html">查看机场品牌排行榜 →</a><a class="py-1.5" href="../airport-topic.html?topic=stable">🛡️ 稳定抗封锁专线榜</a><a class="py-1.5" href="../airport-topic.html?topic=value">💎 平价高性价比机场榜</a><a class="py-1.5" href="../airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线榜</a><a class="py-1.5" href="../airport-topic.html?topic=budget">💰 10元内平价月付合集</a><a class="py-1.5" href="../airport-topic.html?topic=payg">⏱️ 按量计费与不限时套餐</a><a class="py-1.5" href="../airport-topic.html?topic=discounts">🎟️ 2026 最新独家优惠码</a><a class="py-1.5" href="../airport-topic.html?topic=trials">🎁 免费试用与一元体验</a></div></div></div>
-        <div class="dropdown relative flex h-20 items-center">
-          <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
-            品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+        <div>
+          <button id="airportMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="airportMobileMenu">
+            <span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
           </button>
-          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
-            <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
-              <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
-              <div class="grid gap-0.5 text-sm">
-                <a href="../posts/yunjiexian-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
-                  <span class="font-medium text-ink">云界线 · 可用率审计</span>
-                  <span class="font-mono text-xs text-muted">IEPL专线</span>
-                </a>
-                <a href="../posts/dalaoyun-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
-                  <span class="font-medium text-ink">大佬云 · 长连接分析</span>
-                  <span class="font-mono text-xs text-muted">多设备并发</span>
-                </a>
-                <a href="../posts/huanqiuti-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
-                  <span class="font-medium text-ink">环球梯 · 协议抗拥塞</span>
-                  <span class="font-mono text-xs text-muted">弱网韧性</span>
-                </a>
-                <a href="../posts/liulianyun-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
-                  <span class="font-medium text-ink">榴莲云 · 大吞吐负载</span>
-                  <span class="font-mono text-xs text-muted">高码率流媒体</span>
-                </a>
-                <a href="../posts/shandianshu-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
-                  <span class="font-medium text-ink">闪电鼠 · 接入点测试</span>
-                  <span class="font-mono text-xs text-muted">低延迟敏感</span>
-                </a>
-                <a href="../posts/shenxing-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
-                  <span class="font-medium text-ink">神行加速 · 按量长连接</span>
-                  <span class="font-mono text-xs text-muted">备用方案</span>
-                </a>
-              </div>
+          <div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4">
+            <p class="pb-2 text-xs font-bold text-muted">2026 年度综合排行榜</p>
+            <div class="grid gap-1 font-normal">
+              <a class="py-1.5 font-semibold" href="../airports.html">查看机场品牌排行榜 →</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=stable">🛡️ 稳定抗封锁专线榜</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=value">💎 平价高性价比机场榜</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线榜</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=budget">💰 10元内平价月付合集</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=payg">⏱️ 按量计费与不限时套餐</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=discounts">🎟️ 2026 最新独家优惠码</a>
+              <a class="py-1.5" href="../airport-topic.html?topic=trials">🎁 免费试用与一元体验</a>
             </div>
           </div>
         </div>
@@ -272,8 +251,10 @@ const postHtmlContent = `<!doctype html>
             </div>
           </div>
         </div>
-        <a href="../tools.html">工具使用</a>
-        <a href="../knowledge.html">知识库</a><a href="../index.html#about">关于</a><a href="../disclaimer.html">免责声明</a>
+        <a class="" href="../tools.html">工具使用</a>
+        <a class="" href="../knowledge.html">知识库</a>
+        <a href="../index.html#about">关于</a>
+        <a href="../disclaimer.html">免责声明</a>
       </div>
     </nav>
   </header>

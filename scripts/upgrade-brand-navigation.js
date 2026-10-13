@@ -186,52 +186,7 @@ function getDesktopBrandDropdown(prefix = '') {
         </div>`;
 }
 
-function getFullMobileMenu(prefix = '') {
-  return `<nav id="mobileMenu" class="hidden border-t border-line bg-white px-5 py-5 xl:hidden" aria-label="移动端导航">
-      <div class="grid gap-4 text-sm font-medium">
-        <a href="${prefix}index.html">首页</a>
-        <div>
-          <button id="airportMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="airportMobileMenu">
-            <span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
-          </button>
-          <div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4">
-            <p class="pb-2 text-xs font-bold text-muted">2026 年度综合排行榜</p>
-            <div class="grid gap-1 font-normal">
-              <a class="py-1.5 font-semibold" href="${prefix}airports.html">查看机场品牌排行榜 →</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=stable">🛡️ 稳定抗封锁专线榜</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=value">💎 平价高性价比机场榜</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线榜</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=budget">💰 10元内平价月付合集</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=payg">⏱️ 按量计费与不限时套餐</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=discounts">🎟️ 2026 最新独家优惠码</a>
-              <a class="py-1.5" href="${prefix}airport-topic.html?topic=trials">🎁 免费试用与一元体验</a>
-            </div>
-          </div>
-        </div>
-        <div>
-          <button id="brandMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="brandMobileMenu">
-            <span>品牌测评</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
-          </button>
-          <div id="brandMobileMenu" class="mt-3 hidden border-l border-line pl-4">
-            <p class="pb-2 text-xs font-bold text-muted">单品深度审计实测</p>
-            <div class="grid gap-1 text-sm font-normal">
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/yunjiexian-audit-2026.html"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/dalaoyun-audit-2026.html"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/huanqiuti-audit-2026.html"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/liulianyun-audit-2026.html"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/shandianshu-audit-2026.html"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/shenxing-audit-2026.html"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
-            </div>
-          </div>
-        </div>
-        <a href="${prefix}tools.html">工具使用</a>
-        <a href="${prefix}knowledge.html">知识库</a>
-        <a href="${prefix}index.html#about">关于</a>
-        <a href="${prefix}disclaimer.html">免责声明</a>
-      </div>
-    </nav>`;
-}
-
+function getFullMobileMenu(prefix = '') { return ''; }
 function getMobileBrandItem(prefix = '') {
   return `<div>
           <button id="brandMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="brandMobileMenu">
