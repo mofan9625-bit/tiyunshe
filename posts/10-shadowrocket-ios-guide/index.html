@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="从正规安装、订阅导入到分流规则和故障检查的完整流程。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tiyunclub.com/posts/10-shadowrocket-ios-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
+  <meta property="og:title" content="Shadowrocket iOS 安装、节点添加与规则配置完整指南">
+  <meta property="og:description" content="从正规安装、订阅导入到分流规则和故障检查的完整流程。">
+  <meta property="og:url" content="https://tiyunclub.com/posts/10-shadowrocket-ios-guide/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Shadowrocket iOS 安装、节点添加与规则配置完整指南">
+  <meta name="twitter:description" content="从正规安装、订阅导入到分流规则和故障检查的完整流程。">
+  <title>Shadowrocket iOS 安装、节点添加与规则配置完整指南｜梯云社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Shadowrocket iOS 安装、节点添加与规则配置完整指南","description":"从正规安装、订阅导入到分流规则和故障检查的完整流程。","datePublished":"2026-10-03","dateModified":"2026-10-03","author":{"@type":"Organization","name":"梯云社编辑部"},"publisher":{"@type":"Organization","name":"梯云社","url":"https://tiyunclub.com/"},"mainEntityOfPage":"https://tiyunclub.com/posts/10-shadowrocket-ios-guide/"}</script>
+  <style>
+    *{box-sizing:border-box}::selection{background:#111;color:#fff}
+    .article-body{color:#1a1a1a;font-size:1.0625rem;line-height:1.9}.article-body>*+*{margin-top:1.6rem}
+    .article-body h2{margin-top:4rem;padding-bottom:.65rem;border-bottom:1px solid #e5e7eb;font-size:1.8rem;line-height:1.35;font-weight:700}
+    .article-body h3{margin-top:2.75rem;padding-bottom:.5rem;border-bottom:1px solid #e5e7eb;font-size:1.3rem;line-height:1.4;font-weight:700}
+    .article-body a{text-decoration:underline;text-underline-offset:4px}.article-body blockquote{border-left:3px solid #111;padding:1rem 0 1rem 1.5rem;color:#374151;background:#fafafa}
+    .article-body ul,.article-body ol{padding-left:1.5rem}.article-body ul{list-style:square}.article-body ol{list-style:decimal}.article-body li+li{margin-top:.55rem}
+    .article-body code:not(pre code){background:#f3f4f6;padding:.15rem .35rem;font-family:monospace;font-size:.9em}.article-body pre{overflow-x:auto;background:#111;color:#f9fafb;padding:1.4rem;font-size:.875rem;line-height:1.7}
+    .article-body table{display:block;overflow-x:auto;width:100%;min-width:42rem;border-collapse:collapse;border-top:1px solid #111;border-bottom:1px solid #111;font-size:.9rem}.article-body th,.article-body td{padding:.8rem .55rem;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}.article-body th{font-weight:700;background:#fafafa}
+  </style>
+</head>
+<body class="bg-white text-[#111] antialiased">
+  <header class="border-b border-gray-200 bg-white"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20"><a href="/" class="text-xl font-black">梯云社</a><nav class="flex items-center gap-5 text-sm"><a href="/airports.html">机场推荐</a><a href="/tools.html">工具使用</a><a href="/knowledge.html">知识库</a></nav></div></header>
+  <main><article>
+    <header class="border-b border-gray-200"><div class="mx-auto max-w-5xl px-5 py-14 md:py-24">
+      <a href="/tools.html" class="text-sm text-gray-500 hover:text-black">← 返回工具使用</a>
+      <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span class="border border-gray-300 px-3 py-1 font-mono text-black">工具使用</span><time datetime="2026-10-03">2026.10.03</time><span>·</span><span>5 MIN READ</span></div>
+      <h1 class="mt-7 text-4xl font-black leading-tight sm:text-5xl md:text-7xl">Shadowrocket iOS 安装、节点添加与规则配置完整指南</h1>
+      <p class="mt-8 max-w-3xl text-lg leading-relaxed text-gray-600">从正规安装、订阅导入到分流规则和故障检查的完整流程。</p>
+      <div class="mt-10 flex items-center gap-4 border-t border-gray-200 pt-5 text-sm"><div class="flex h-10 w-10 items-center justify-center bg-black font-bold text-white">TY</div><div><p class="font-semibold">梯云社编辑部</p><p class="text-xs text-gray-500">Network Research · 2026</p></div></div>
+    </div></header>
+    <div class="mx-auto max-w-3xl px-5 py-14 md:py-20"><div class="article-body"><p>iPhone 用户最常踩的坑，是从不明来源获取安装账号、直接导入未经检查的配置，或同时开启多个网络工具。这样不仅容易造成连接冲突，还可能带来账号与隐私风险。应用应通过正规商店渠道获取，配置来源要可信，并遵守所在地区的规则与服务条款。</p>
+<h2>安装前准备</h2>
+<p>确认 Apple ID 所在商店可以正常获取应用，不借用陌生账号，也不安装来源不明的描述文件。系统保持最新稳定版本，并提前记录当前 Wi-Fi 与蜂窝网络是否正常。</p>
+<h2>添加节点的三种方式</h2>
+<ol><li>订阅链接：适合长期维护，可统一更新节点与规则。</li><li>二维码：适合单个节点，扫码前确认来源。</li><li>手动添加：便于检查服务器、端口、协议和 TLS 参数。</li></ol>
+<p>导入后先更新订阅，再对单个节点执行连通测试。不要一次导入多个来源相同、名称重复的配置，否则排障时难以确认实际使用项。</p>
+<h2>参数与体验参考</h2>
+<table><thead><tr><th>使用场景</th><th>建议延迟</th><th>峰值速率</th><th>晚高峰最低速率</th><th>解锁支持</th><th>推荐规则</th></tr></thead><tbody><tr><td>网页与消息</td><td>&lt; 150 ms</td><td>20 Mbps</td><td>10 Mbps</td><td>非必需</td><td>基础分流</td></tr><tr><td>1080p 视频</td><td>&lt; 120 ms</td><td>50 Mbps</td><td>15 Mbps</td><td>按平台测试</td><td>媒体分组</td></tr><tr><td>4K 视频</td><td>&lt; 100 ms</td><td>100 Mbps</td><td>35 Mbps</td><td>按地区测试</td><td>媒体分组</td></tr><tr><td>实时会议</td><td>&lt; 100 ms</td><td>30 Mbps</td><td>10 Mbps</td><td>非必需</td><td>固定低抖动节点</td></tr></tbody></table>
+<h2>懒人规则配置原则</h2>
+<p>规则应保持简单：本地网络直连、目标服务走指定策略，其余流量使用默认策略。规则按顺序匹配，应把具体域名放在宽泛规则之前。启用配置后，在连接记录中确认常用应用命中了预期分组。</p>
+<p>不要盲目导入体积很大的规则库。规则越多，维护成本越高，也更容易出现过期域名和错误匹配。每月更新一次规则即可，更新前保留可工作的旧版本。</p>
+<h2>常见故障</h2>
+<p>连接后无法访问时，先关闭其他同类应用，检查 iOS 顶部的网络状态，再切换 Wi-Fi 与蜂窝网络。延迟正常但视频不可用，应检查规则命中与出口地区；所有节点超时，则先更新订阅并确认系统时间。</p>
+<blockquote>领取 iOS 体验节点与基础规则，导入后先测试网页、视频和蜂窝网络三种场景。</blockquote>
+<h2>最终建议</h2>
+<p>稳定使用依赖可信配置、清晰规则和固定主节点。不要追求节点数量，也不要保存来历不明的共享配置。先用月付或体验方案完成晚高峰验证，再考虑长期使用。</p></div></div>
+  </article></main>
+  <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><a href="/sitemap.xml">SITEMAP</a></div></footer>
+  <script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons()});</script>
+  <script src="/assets/airport-menu.js" defer></script>
+</body>
+</html>

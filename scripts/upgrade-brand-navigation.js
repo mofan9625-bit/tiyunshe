@@ -80,11 +80,11 @@ compatFiles.forEach(({ file, target }) => {
 <head>
   <meta charset="utf-8">
   <title>正在跳转至审计报告</title>
-  <meta http-equiv="refresh" content="0; url=../article.html?post=${target}">
-  <script>location.replace("../article.html?post=${target}");</script>
+  <meta http-equiv="refresh" content="0; url=/posts/${target}/">
+  <script>location.replace("/posts/${target}/");</script>
 </head>
 <body>
-  <p>正在前往 <a href="../article.html?post=${target}">审计报告</a>...</p>
+  <p>正在前往 <a href="/posts/${target}/">审计报告</a>...</p>
 </body>
 </html>
 `;
@@ -156,27 +156,27 @@ function getDesktopBrandDropdown(prefix = '') {
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
               <div class="grid gap-0.5 text-sm">
-                <a href="${prefix}posts/yunjiexian-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="${prefix}posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">云界线 · 可用率审计</span>
                   <span class="font-mono text-xs text-muted">IEPL专线</span>
                 </a>
-                <a href="${prefix}posts/dalaoyun-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="${prefix}posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">大佬云 · 长连接分析</span>
                   <span class="font-mono text-xs text-muted">多设备并发</span>
                 </a>
-                <a href="${prefix}posts/huanqiuti-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="${prefix}posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">环球梯 · 协议抗拥塞</span>
                   <span class="font-mono text-xs text-muted">弱网韧性</span>
                 </a>
-                <a href="${prefix}posts/liulianyun-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="${prefix}posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">榴莲云 · 大吞吐负载</span>
                   <span class="font-mono text-xs text-muted">高码率流媒体</span>
                 </a>
-                <a href="${prefix}posts/shandianshu-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="${prefix}posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">闪电鼠 · 接入点测试</span>
                   <span class="font-mono text-xs text-muted">低延迟敏感</span>
                 </a>
-                <a href="${prefix}posts/shenxing-audit-2026.html" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="${prefix}posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">神行加速 · 按量长连接</span>
                   <span class="font-mono text-xs text-muted">备用方案</span>
                 </a>
@@ -195,12 +195,12 @@ function getMobileBrandItem(prefix = '') {
           <div id="brandMobileMenu" class="mt-3 hidden border-l border-line pl-4">
             <p class="pb-2 text-xs font-bold text-muted">单品深度审计实测</p>
             <div class="grid gap-1 text-sm font-normal">
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/yunjiexian-audit-2026.html"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/dalaoyun-audit-2026.html"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/huanqiuti-audit-2026.html"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/liulianyun-audit-2026.html"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/shandianshu-audit-2026.html"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/shenxing-audit-2026.html"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/yunjiexian-audit-2026/"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/dalaoyun-audit-2026/"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/huanqiuti-audit-2026/"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/liulianyun-audit-2026/"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/shandianshu-audit-2026/"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="${prefix}posts/shenxing-audit-2026/"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
             </div>
           </div>
         </div>`;

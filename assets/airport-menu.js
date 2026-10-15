@@ -6,7 +6,9 @@
     ['🎟️', '2026 独家优惠码清单', 'airport-topic.html?topic=discounts']
   ];
 
-  const rootPrefix = location.pathname.includes('/posts/') ? '../' : '';
+  // 站内页面包含根目录、/posts/*.html 与 /posts/<slug>/ 多种层级；
+  // 统一使用站点根路径，避免静态文章目录中解析成 /posts/airports.html。
+  const rootPrefix = '/';
 
   function installStyles() {
     if (document.getElementById('airportDropdownStyles')) return;

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tiyunclub.com/posts/09-node-speed-self-test/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
+  <meta property="og:title" content="节点频繁断连、晚高峰跳 ping？用测速工具完成自检">
+  <meta property="og:description" content="用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。">
+  <meta property="og:url" content="https://tiyunclub.com/posts/09-node-speed-self-test/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="节点频繁断连、晚高峰跳 ping？用测速工具完成自检">
+  <meta name="twitter:description" content="用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。">
+  <title>节点频繁断连、晚高峰跳 ping？用测速工具完成自检｜梯云社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"节点频繁断连、晚高峰跳 ping？用测速工具完成自检","description":"用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。","datePublished":"2026-10-03","dateModified":"2026-10-03","author":{"@type":"Organization","name":"梯云社编辑部"},"publisher":{"@type":"Organization","name":"梯云社","url":"https://tiyunclub.com/"},"mainEntityOfPage":"https://tiyunclub.com/posts/09-node-speed-self-test/"}</script>
+  <style>
+    *{box-sizing:border-box}::selection{background:#111;color:#fff}
+    .article-body{color:#1a1a1a;font-size:1.0625rem;line-height:1.9}.article-body>*+*{margin-top:1.6rem}
+    .article-body h2{margin-top:4rem;padding-bottom:.65rem;border-bottom:1px solid #e5e7eb;font-size:1.8rem;line-height:1.35;font-weight:700}
+    .article-body h3{margin-top:2.75rem;padding-bottom:.5rem;border-bottom:1px solid #e5e7eb;font-size:1.3rem;line-height:1.4;font-weight:700}
+    .article-body a{text-decoration:underline;text-underline-offset:4px}.article-body blockquote{border-left:3px solid #111;padding:1rem 0 1rem 1.5rem;color:#374151;background:#fafafa}
+    .article-body ul,.article-body ol{padding-left:1.5rem}.article-body ul{list-style:square}.article-body ol{list-style:decimal}.article-body li+li{margin-top:.55rem}
+    .article-body code:not(pre code){background:#f3f4f6;padding:.15rem .35rem;font-family:monospace;font-size:.9em}.article-body pre{overflow-x:auto;background:#111;color:#f9fafb;padding:1.4rem;font-size:.875rem;line-height:1.7}
+    .article-body table{display:block;overflow-x:auto;width:100%;min-width:42rem;border-collapse:collapse;border-top:1px solid #111;border-bottom:1px solid #111;font-size:.9rem}.article-body th,.article-body td{padding:.8rem .55rem;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}.article-body th{font-weight:700;background:#fafafa}
+  </style>
+</head>
+<body class="bg-white text-[#111] antialiased">
+  <header class="border-b border-gray-200 bg-white"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20"><a href="/" class="text-xl font-black">梯云社</a><nav class="flex items-center gap-5 text-sm"><a href="/airports.html">机场推荐</a><a href="/tools.html">工具使用</a><a href="/knowledge.html">知识库</a></nav></div></header>
+  <main><article>
+    <header class="border-b border-gray-200"><div class="mx-auto max-w-5xl px-5 py-14 md:py-24">
+      <a href="/knowledge.html" class="text-sm text-gray-500 hover:text-black">← 返回知识库</a>
+      <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span class="border border-gray-300 px-3 py-1 font-mono text-black">网络诊断</span><time datetime="2026-10-03">2026.10.03</time><span>·</span><span>5 MIN READ</span></div>
+      <h1 class="mt-7 text-4xl font-black leading-tight sm:text-5xl md:text-7xl">节点频繁断连、晚高峰跳 ping？用测速工具完成自检</h1>
+      <p class="mt-8 max-w-3xl text-lg leading-relaxed text-gray-600">用延迟、P95、丢包、吞吐和路由记录定位网络节点质量问题。</p>
+      <div class="mt-10 flex items-center gap-4 border-t border-gray-200 pt-5 text-sm"><div class="flex h-10 w-10 items-center justify-center bg-black font-bold text-white">TY</div><div><p class="font-semibold">梯云社编辑部</p><p class="text-xs text-gray-500">Network Research · 2026</p></div></div>
+    </div></header>
+    <div class="mx-auto max-w-3xl px-5 py-14 md:py-20"><div class="article-body"><p>网络不稳定时，最常见的误区是只截一张测速图就下结论。单次测速无法区分本地 Wi-Fi、入口拥塞、跨区路径和出口负载。真正有用的诊断需要记录时间、接入方式、目标地址和连续样本，并比较正常时段与晚高峰。</p>
+<h2>五个核心指标</h2>
+<table><thead><tr><th>指标</th><th>良好参考值</th><th>可接受范围</th><th>明显异常</th><th>对体验的影响</th></tr></thead><tbody><tr><td>基础延迟</td><td>&lt; 60 ms</td><td>60–120 ms</td><td>&gt; 180 ms</td><td>首开与操作响应</td></tr><tr><td>P95 延迟</td><td>&lt; 平均值 1.5 倍</td><td>1.5–2 倍</td><td>&gt; 2 倍</td><td>卡顿与跳 ping</td></tr><tr><td>抖动</td><td>&lt; 10 ms</td><td>10–25 ms</td><td>&gt; 25 ms</td><td>会议、游戏、语音</td></tr><tr><td>丢包率</td><td>&lt; 0.3%</td><td>0.3–1%</td><td>&gt; 1%</td><td>断流与重传</td></tr><tr><td>晚高峰速率</td><td>&gt; 100 Mbps</td><td>30–100 Mbps</td><td>&lt; 15 Mbps</td><td>视频与下载</td></tr></tbody></table>
+<p>解锁支持应作为独立项目记录。线路速度正常但目标平台不可用，通常是出口 IP 或 DNS 识别问题，不应与带宽故障混为一谈。</p>
+<h2>推荐测试流程</h2>
+<p>第一轮使用网线直连，关闭后台同步，记录本地到路由器的延迟。第二轮测试入口节点，第三轮再测试目标地区。每轮至少持续 10 分钟，并在白天和 21:00 各做一次。</p>
+<p>使用 <code>ping</code> 观察基础延迟和丢包，使用 MTR 类工具查看路径变化，用测速工具记录单连接与多连接吞吐。不要对不属于自己的服务器进行高频或长时间压力测试。</p>
+<h2>如何读 MTR</h2>
+<p>中间某一跳显示高丢包，但后续和最终目标正常，通常只是该路由设备降低了探测响应优先级。只有丢包从某一跳开始并持续传递到终点，才更可能是实际路径问题。</p>
+<h2>形成可用报告</h2>
+<p>报告应包含日期、时间、网络接入、客户端版本、节点名称、最终目标和原始截图。向服务方反馈时提供这些信息，比一句“很卡”更容易获得有效处理。</p>
+<blockquote>领取基准测试节点，用同一时间、同一设备对比当前线路，快速确认问题发生在哪一段。</blockquote>
+<h2>结论</h2>
+<p>先排除本地网络，再比较入口与出口；先看连续样本，再看单次峰值。能够复现的故障才容易解决，也能帮助你判断是否需要更换套餐或线路类型。</p></div></div>
+  </article></main>
+  <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><a href="/sitemap.xml">SITEMAP</a></div></footer>
+  <script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons()});</script>
+  <script src="/assets/airport-menu.js" defer></script>
+</body>
+</html>

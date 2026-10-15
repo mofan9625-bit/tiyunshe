@@ -26,6 +26,7 @@ const redirectsPath = path.resolve(__dirname, '..', '_redirects');
 if (fs.existsSync(redirectsPath)) {
   const content = fs.readFileSync(redirectsPath, 'utf8');
   assert('_redirects 严禁包含双向循环 200 rewrite', !content.includes('/article  /article.html  200') && !content.includes('/article /article.html 200'));
+  assert('_redirects 历史文章只单向跳转到静态 canonical 页面', content.includes('/docs/posts/yunjiexian-audit-2026 /posts/yunjiexian-audit-2026/ 301'));
 } else {
   assert('_redirects 循环规则已彻底移除，由平台原生静态Clean URL安全接管', true);
 }
@@ -46,7 +47,8 @@ const articlePath = path.resolve(__dirname, '..', 'article.html');
 const articleContent = fs.readFileSync(articlePath, 'utf8');
 assert('article.html 遵循静默兼容原则不强制跳转 URL', !articleContent.includes('location.href =') && !articleContent.includes('location.replace('));
 assert('article.html 包含强大的 findBundledPost 智能匹配函数', articleContent.includes('function findBundledPost'));
-assert('article.html canonical 规范化为 clean URL /article', articleContent.includes('https://tiyunclub.com/article?post='));
+assert('article.html canonical 规范化为可直接抓取正文的静态文章 URL', articleContent.includes('https://tiyunclub.com/posts/${encodeURIComponent(canonicalSlug)}/'));
+assert('article.html 仅加载一次机场导航脚本', (articleContent.match(/assets\/airport-menu\.js/g) || []).length === 1);
 
 const postsDataPath = path.resolve(__dirname, '..', 'assets', 'posts-data.js');
 assert('assets/posts-data.js 存在', fs.existsSync(postsDataPath));
@@ -105,6 +107,14 @@ targetSlugs.forEach(slug => {
   const isPublished = matchDirect && matchDirect.status === 'published';
   assert(`Slug [${slug}] 真实存在且带序号与不带序号均能双向匹配 (published: ${isPublished})`, 
     Boolean(matchDirect && matchNoNum && fileExists && isPublished));
+});
+
+posts.forEach((post) => {
+  const staticPath = path.resolve(__dirname, '..', 'posts', post.slug, 'index.html');
+  assert(`静态正文 [${post.slug}] 已生成且不依赖客户端文章加载器`,
+    fs.existsSync(staticPath)
+      && fs.readFileSync(staticPath, 'utf8').includes(post.title)
+      && !fs.readFileSync(staticPath, 'utf8').includes('LOADING ARTICLE'));
 });
 
 // -----------------------------------------------------------------------------

@@ -87,8 +87,8 @@ for (const dir of postDirs) {
       tags,
       body,
       readingMinutes: Math.max(5, Math.ceil(textLength(body) / 350)),
-      url: `article.html?post=${encodeURIComponent(canonicalSlug)}`,
-      canonicalUrl: `article?post=${encodeURIComponent(canonicalSlug)}`
+      url: `posts/${encodeURIComponent(canonicalSlug)}/`,
+      canonicalUrl: `posts/${encodeURIComponent(canonicalSlug)}/`
     });
   }
 }

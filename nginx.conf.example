@@ -9,6 +9,13 @@ server {
     root /www/wwwroot/tiyunclub.com;
     index index.html;
 
+    # 历史收录路径只做单向永久跳转，目标为可直接抓取完整正文的静态文章页。
+    location = /posts/dalaocloud-audit-2026 { return 301 /posts/dalaoyun-audit-2026/; }
+    location = /posts/liuliancloud-audit-2026 { return 301 /posts/liulianyun-audit-2026/; }
+    location ~ ^/docs/posts/(yunjiexian|dalaoyun|huanqiuti|liulianyun|shandianshu|shenxing)-audit-2026(?:\.html)?/?$ {
+        return 301 /posts/$1-audit-2026/;
+    }
+
     # --------------------------------------------------------------------------
     # 静态 Clean URL 与常规路由支持（无循环 200 直出模式）：
     # 请求 /article 或 /airport-topic 时，自动匹配对应 html 文件，
