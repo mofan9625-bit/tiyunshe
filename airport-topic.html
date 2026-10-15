@@ -16,7 +16,7 @@
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
   <script>tailwind.config={theme:{extend:{colors:{ink:'#111111',muted:'#6B7280',line:'#E5E7EB',paper:'#FAFAFA'},fontFamily:{mono:['SFMono-Regular','Consolas','monospace']}}}};</script>
   <style>
-        .dropdown-panel {
+            .dropdown-panel {
       position: absolute;
       top: 100%;
       left: 50%;
@@ -51,15 +51,12 @@
           <a class="nav-link flex items-center gap-1" href="airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a>
           <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
-              <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">2026 年度综合排行榜</p>
+              <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">精选服务商导航 · 06 BRANDS</p>
               <div class="grid gap-0.5 text-sm">
-                <a href="airport-topic.html?topic=stable" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🛡️</span>稳定抗封锁专线榜</a>
-                <a href="airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价高性价比机场榜</a>
-                <a href="airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线榜</a>
-                <a href="airport-topic.html?topic=budget" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💰</span>10元内平价月付合集</a>
-                <a href="airport-topic.html?topic=payg" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⏱️</span>按量计费与不限时套餐</a>
-                <a href="airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 最新独家优惠码</a>
-                <a href="airport-topic.html?topic=trials" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎁</span>免费试用与一元体验</a>
+                <a href="airports.html" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🏆</span>年度综合推荐榜</a>
+                <a href="airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线精选</a>
+                <a href="airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价月付与不限时按量合集</a>
+                <a href="airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 独家优惠码清单</a>
               </div>
             </div>
           </div>
@@ -122,16 +119,12 @@
             <span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
           </button>
           <div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4">
-            <p class="pb-2 text-xs font-bold text-muted">2026 年度综合排行榜</p>
+            <p class="pb-2 text-xs font-bold text-muted">精选服务商导航 · 06 BRANDS</p>
             <div class="grid gap-1 font-normal">
-              <a class="py-1.5 font-semibold" href="airports.html">查看机场品牌排行榜 →</a>
-              <a class="py-1.5" href="airport-topic.html?topic=stable">🛡️ 稳定抗封锁专线榜</a>
-              <a class="py-1.5" href="airport-topic.html?topic=value">💎 平价高性价比机场榜</a>
-              <a class="py-1.5" href="airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线榜</a>
-              <a class="py-1.5" href="airport-topic.html?topic=budget">💰 10元内平价月付合集</a>
-              <a class="py-1.5" href="airport-topic.html?topic=payg">⏱️ 按量计费与不限时套餐</a>
-              <a class="py-1.5" href="airport-topic.html?topic=discounts">🎟️ 2026 最新独家优惠码</a>
-              <a class="py-1.5" href="airport-topic.html?topic=trials">🎁 免费试用与一元体验</a>
+              <a class="py-1.5" href="airports.html">🏆 年度综合推荐榜</a>
+              <a class="py-1.5" href="airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线精选</a>
+              <a class="py-1.5" href="airport-topic.html?topic=value">💎 平价月付与不限时按量合集</a>
+              <a class="py-1.5" href="airport-topic.html?topic=discounts">🎟️ 2026 独家优惠码清单</a>
             </div>
           </div>
         </div>
@@ -162,8 +155,14 @@
   <main>
     <header class="border-b border-line"><div class="mx-auto max-w-screen-2xl px-5 py-14 md:px-10 md:py-24 xl:px-16"><div class="flex items-center justify-between border-b border-black pb-4 font-mono text-[11px] uppercase text-muted"><span>Airport Guides / 机场推荐</span><span id="topicIndex"></span></div><div class="mt-10 grid gap-8 lg:grid-cols-12 lg:items-end"><div class="lg:col-span-8"><p id="topicEyebrow" class="text-xs font-bold text-muted"></p><h1 id="topicTitle" class="mt-5 text-4xl font-black leading-tight md:text-7xl"></h1></div><p id="topicDescription" class="max-w-lg leading-relaxed text-gray-600 lg:col-span-4"></p></div></div></header>
 
+    <section id="topicIntroSection" class="mx-auto hidden max-w-screen-2xl px-5 pt-14 md:px-10 md:pt-20 xl:px-16" aria-labelledby="topicIntroHeading">
+      <div class="grid gap-7 border-y border-line py-8 md:grid-cols-[minmax(12rem,18rem)_minmax(0,1fr)] md:py-10">
+        <div><p class="font-mono text-xs uppercase text-muted">Selection Notes / 选购说明</p><h2 id="topicIntroHeading" class="mt-3 text-2xl font-bold">选购前先看</h2></div>
+        <p id="topicIntroText" class="max-w-4xl text-sm leading-8 text-gray-700 md:text-base"></p>
+      </div>
+    </section>
     <section id="emptyBrandSection" class="mx-auto hidden max-w-screen-2xl px-5 pt-14 md:px-10 md:pt-20 xl:px-16"><div class="border-y border-line py-10 md:flex md:items-center md:justify-between"><div><p class="font-mono text-xs uppercase text-muted">Current Status / 当前状态</p><h2 class="mt-3 text-2xl font-bold">现未收录</h2></div><p class="mt-4 max-w-lg text-sm leading-relaxed text-gray-600 md:mt-0">暂未收录符合当前主题且经过核验的品牌，后续新增内容会自动同步到这里。</p></div></section>
-    <section id="brandSection" class="mx-auto hidden max-w-screen-2xl px-5 pt-14 md:px-10 md:pt-20 xl:px-16"><div class="mb-8 flex items-end justify-between"><div><p class="font-mono text-xs uppercase text-muted">Brand Ranking / 品牌排行</p><h2 class="mt-2 text-2xl font-bold">已收录品牌</h2></div><span class="font-mono text-xs text-muted">TOP 10 · AUTO SYNC</span></div><div id="brandGrid" class="border-t border-black"></div></section>
+    <section id="brandSection" class="mx-auto hidden max-w-screen-2xl px-5 pt-14 md:px-10 md:pt-20 xl:px-16"><div class="mb-8 flex items-end justify-between"><div><p class="font-mono text-xs uppercase text-muted">Curated Brands / 精选品牌</p><h2 class="mt-2 text-2xl font-bold">本榜收录品牌</h2></div><span class="font-mono text-xs text-muted">03 VERIFIED</span></div><div id="brandGrid" class="border-t border-black"></div></section>
     <section id="discountSection" class="mx-auto hidden max-w-screen-2xl px-5 pt-14 md:px-10 md:pt-20 xl:px-16" aria-labelledby="discountHeading">
       <div class="mb-8 border-b border-black pb-5 md:flex md:items-end md:justify-between">
         <div>
@@ -215,14 +214,31 @@
     // 前端静默兼容：同时兼容 /airport-topic 与 /airport-topic.html，不执行任何重定向或地址栏篡改，就地读取参数渲染
 
     const topics = {
-      stable: { index:'01 / 07', eyebrow:'稳定优先', title:'稳定抗封锁专线榜', description:'聚合关注晚高峰可用率、低抖动、故障恢复与长期稳定性的选购和诊断内容。', terms:['稳定','断连','专线','企业','晚高峰'] },
-      value: { index:'02 / 07', eyebrow:'预算与体验', title:'平价高性价比机场榜', description:'从月付门槛、流量倍率、晚高峰表现和退款条款出发，筛选真正适合长期使用的平价方案。', terms:['平价','性价比','低价','月付','一元','折扣','优惠','合集','省钱'] },
-      premium: { index:'03 / 07', eyebrow:'线路品质', title:'IEPL / IPLC 顶级专线榜', description:'集中阅读 IPLC、IEPL、BGP 中转和企业线路相关内容，理解低延迟与稳定性的真实来源。', terms:['IPLC','IEPL','专线','BGP','企业','顶级','低延迟','隧道'] },
-      budget: { index:'04 / 07', eyebrow:'10 元内方案', title:'10元内平价月付合集', description:'面向轻量浏览、临时使用与预算敏感用户，比较低门槛月付、体验套餐和实际使用限制。', terms:['10 元','月付','平价','一元','预算','便宜','低价','轻量','低门槛'] },
-      payg: { index:'05 / 07', eyebrow:'灵活计费', title:'按量计费与不限时套餐', description:'适合低频查资料和备用需求，重点核对流量有效期、倍率、设备数量以及长期闲置成本。', terms:['按量','不限时','流量','备用','轻度'] },
-      discounts: { index:'06 / 07', eyebrow:'价格追踪', title:'2026 最新独家优惠码', description:'汇总云界线、大佬云、环球梯、神行加速、榴莲云与闪电鼠 2026 最新机场优惠码、折扣码及专属通道，附优惠使用提示与短周期实测省钱攻略。', terms:['优惠','折扣','省钱','价格','年付'] },
-      trials: { index:'07 / 07', eyebrow:'先测后买', title:'免费试用与一元体验', description:'用最低成本验证本地线路、客户端兼容性和晚高峰表现，避免未经测试直接购买长期套餐。', terms:['试用','一元','体验','月付','测试','验证','新手'] }
+      premium: {
+        index:'01 / 03',
+        eyebrow:'线路品质',
+        title:'IEPL / IPLC 顶级专线精选',
+        description:'精选云界线、大佬云与环球梯 3 家专线服务商，重点比较晚高峰抖动、多端并发、弱网抗丢包与线路稳定性。',
+        intro:'选择 IEPL / IPLC 专线时，不应只看节点数量或宣传带宽，而要结合入口质量、跨境链路隔离程度、晚高峰抖动、丢包恢复和故障切换效率综合判断。IEPL 通常更强调企业级点对点承载与稳定时延，IPLC 则适合重视跨境链路确定性的用户，但不同地区、运营商与设备环境仍会产生明显差异。购买前建议先用月付套餐，在本地宽带与移动网络分别测试 20:00—23:00 的延迟、丢包、4K 视频和 AI 工具访问，并核对倍率、设备数、退款条款及售后响应。连续观察三至七天后再决定是否延长周期，避免仅凭一次测速或低价年付作出长期选择。',
+        terms:['IPLC','IEPL','专线','BGP','企业','低延迟','隧道']
+      },
+      value: {
+        index:'02 / 03',
+        eyebrow:'灵活预算',
+        title:'平价月付与不限时按量合集',
+        description:'精选神行加速、榴莲云与闪电鼠 3 家高性价比服务商，覆盖不限时按量、平价月付、原生 IP 与企业专线方案。',
+        intro:'备用线路和按量计费的核心价值是降低闲置成本，而不是单纯追求最低标价。低频查资料、临时出差或主力线路故障切换，可优先选择流量长期有效、按实际用量扣费的方案；每天稳定使用视频、AI 工具或多设备同步，则应比较月付流量、倍率、原生 IP、设备限制和晚高峰可用率。购买前务必确认流量是否清零、套餐是否自动续费、节点倍率如何计算，以及不同运营商下的实际表现。建议先购买最短周期或最小流量包，分别测试网页、下载、视频、跨境办公和目标平台解锁，再根据真实月均消耗升级。备用服务应与主力线路采用不同入口或上游，才能在区域故障时提供有效冗余。',
+        terms:['平价','性价比','月付','按量','不限时','备用','流量','省钱']
+      },
+      discounts: {
+        index:'03 / 03',
+        eyebrow:'价格追踪',
+        title:'2026 独家优惠码清单',
+        description:'汇总云界线、大佬云、环球梯、神行加速、榴莲云与闪电鼠 2026 最新机场优惠码、折扣码及专属通道，附短周期实测建议。',
+        terms:['优惠','折扣','省钱','价格','年付']
+      }
     };
+    const topicAliases = { stable:'premium', budget:'value', payg:'value', trials:'discounts' };
 
     const searchParams = new URLSearchParams(location.search);
     let rawTopic = searchParams.get('topic') || searchParams.get('id') || searchParams.get('t');
@@ -233,8 +249,9 @@
         rawTopic = last;
       }
     }
-    const key = (rawTopic || 'stable').trim().toLowerCase().replace(/\.(html|md)$/i, '');
-    const topic = topics[key] || topics.stable;
+    const normalizedKey = (rawTopic || 'premium').trim().toLowerCase().replace(/\.(html|md)$/i, '');
+    const key = topicAliases[normalizedKey] || (topics[normalizedKey] ? normalizedKey : 'premium');
+    const topic = topics[key];
     const posts = window.TIYUN_POSTS || [];
     const discountGuides = [
       {
@@ -264,7 +281,14 @@
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.content = topic.description;
     const metaKeywords = document.getElementById('metaKeywords');
-    if (metaKeywords && key === 'discounts') metaKeywords.content = '机场优惠码,折扣码,2026节点优惠,省钱攻略,机场折扣,独家优惠码';
+    if (metaKeywords) {
+      const keywordSets = {
+        premium: 'IEPL专线,IPLC专线,专线机场,低延迟节点,晚高峰稳定,机场推荐',
+        value: '平价月付,按量计费,不限时流量,备用机场,原生IP,高性价比机场',
+        discounts: '机场优惠码,折扣码,2026节点优惠,省钱攻略,机场折扣,独家优惠码'
+      };
+      metaKeywords.content = keywordSets[key];
+    }
 
     const canonical = `https://tiyunclub.com/airport-topic?topic=${encodeURIComponent(key)}`;
     const canEl = document.getElementById('canonicalUrl');
@@ -280,6 +304,10 @@
     document.getElementById('topicEyebrow').textContent = topic.eyebrow;
     document.getElementById('topicTitle').textContent = topic.title;
     document.getElementById('topicDescription').textContent = topic.description;
+    if (topic.intro) {
+      document.getElementById('topicIntroText').textContent = topic.intro;
+      document.getElementById('topicIntroSection').classList.remove('hidden');
+    }
     document.getElementById('articleCount').textContent = `${String(scored.length).padStart(2,'0')} ARTICLES`;
     if (key === 'discounts') {
       document.getElementById('articleGrid').classList.remove('xl:grid-cols-3');
@@ -287,66 +315,28 @@
     }
     document.getElementById('articleGrid').innerHTML = scored.map(post => `<article class="group flex min-h-72 flex-col justify-between border-b border-r border-line p-7 hover:bg-gray-50"><div><div class="flex justify-between text-xs text-muted"><span class="border border-gray-300 px-2.5 py-1 font-mono text-ink">${post.category}</span><time>${(post.date || '').replaceAll('-','.')}</time></div><h3 class="mt-7 text-xl font-bold leading-snug"><a href="${post.url}">${post.title}</a></h3><p class="mt-4 line-clamp-2 text-sm leading-relaxed text-gray-600">${post.description}</p></div><a href="${post.url}" class="mt-8 flex justify-between text-xs text-muted"><span>${post.readingMinutes} MIN READ</span><i data-lucide="arrow-right" class="h-4 w-4 transition-transform group-hover:translate-x-1"></i></a></article>`).join('');
 
-    const brandTopics = ['stable','value','premium','budget','payg'];
-    const fallbackBrands = [
-      { name:'云界线', summary:'综合推荐 · ¥8/月起', url:'https://9625mofan01.yunjiexianaff.com/#/?code=OOYhSj0L' },
-      { name:'大佬云', summary:'专线品质 · ¥8/月起', url:'https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V' },
-      { name:'环球梯', summary:'全球覆盖 · ¥8/月起', url:'https://mofanvip01.huanqiutiaff.com/#/?code=l7oLmjVU' },
-      { name:'神行加速', summary:'低延迟 · ¥8/月起', url:'https://vipmofan01.shenxingaff.com/#/?code=nn4ohwnK' },
-      { name:'榴莲云', summary:'平价月付 · ¥8/月起', url:'https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR' },
-      { name:'闪电鼠', summary:'均衡方案 · ¥8/月起', url:'https://mofanvip01.shandianshuaff.com/#/?code=a3GAQAXg' },
-      { name:'极连云', summary:'连接效率 · 多设备' },
-      { name:'可信云', summary:'透明信息 · 稳健选择' },
-      { name:'快狸', summary:'轻量套餐 · 灵活付费' },
-      { name:'EdgeNova', summary:'技术向 · 边缘网络' }
-    ];
-    const seededShuffle = (items, seed) => {
-      let state = [...seed].reduce((hash, char) => ((hash * 31) + char.charCodeAt(0)) >>> 0, 2166136261);
-      const result = [...items];
-      for (let index = result.length - 1; index > 0; index--) {
-        state = (state * 9301 + 49297) % 233280;
-        const target = Math.floor((state / 233280) * (index + 1));
-        [result[index], result[target]] = [result[target], result[index]];
-      }
-      return result;
+    const brandCollections = {
+      premium: [
+        { name:'云界线', summary:'IEPL 专线，晚高峰低抖动，AI 工具分流', report:'article.html?post=yunjiexian-audit-2026', url:'https://9625mofan01.yunjiexianaff.com/#/?code=OOYhSj0L' },
+        { name:'大佬云', summary:'专线中转，多端并发，节点热更新', report:'article.html?post=dalaoyun-audit-2026', url:'https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V' },
+        { name:'环球梯', summary:'抗丢包弱网优化，全时段平稳', report:'article.html?post=huanqiuti-audit-2026', url:'https://mofanvip01.huanqiutiaff.com/#/?code=l7oLmjVU' }
+      ],
+      value: [
+        { name:'神行加速', summary:'按量计费不限时，适合轻量备用', report:'article.html?post=shenxing-audit-2026', url:'https://vipmofan01.shenxingaff.com/#/?code=nn4ohwnK' },
+        { name:'榴莲云', summary:'平价月付大流量，原生 IP 解锁', report:'article.html?post=liulianyun-audit-2026', url:'https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR' },
+        { name:'闪电鼠', summary:'企业专线均衡方案，高性价比', report:'article.html?post=shandianshu-audit-2026', url:'https://mofanvip01.shandianshuaff.com/#/?code=a3GAQAXg' }
+      ]
     };
 
     function displayBrands(brands) {
-      const pinned = ['云界线','大佬云'].map(name => brands.find(brand => brand.name === name)).filter(Boolean);
-      const remaining = brands.filter(brand => !['云界线','大佬云'].includes(brand.name));
-      const ordered = [...pinned, ...seededShuffle(remaining, key)];
-      document.getElementById('brandGrid').innerHTML = ordered.map((brand, index) => {
-        const href = brand.url || `airports.html?brand=${encodeURIComponent(brand.name)}`;
-        const external = Boolean(brand.url);
-        return `<a href="${href}" ${external ? 'target="_blank" rel="nofollow sponsored noopener noreferrer"' : ''} class="group grid min-h-24 grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-4 border-b border-line px-1 py-5 transition-colors hover:bg-gray-50 md:grid-cols-[5rem_minmax(0,1fr)_minmax(12rem,22rem)_auto] md:gap-7 md:px-5"><span class="font-mono text-xs text-muted">${String(index + 1).padStart(2,'0')}</span><strong class="text-lg md:text-xl">${brand.name}</strong><small class="hidden text-sm text-muted md:block">${brand.summary}</small><i data-lucide="arrow-up-right" class="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></i></a>`;
+      document.getElementById('brandGrid').innerHTML = brands.map((brand, index) => {
+        return `<article class="grid gap-5 border-b border-line py-7 md:grid-cols-[4rem_minmax(10rem,16rem)_minmax(0,1fr)_auto] md:items-center md:gap-7 md:px-5"><span class="font-mono text-2xl font-black text-gray-300 md:text-3xl">${String(index + 1).padStart(2,'0')}</span><div><h3 class="text-xl font-bold md:text-2xl">${brand.name}</h3><span class="mt-2 inline-block border border-gray-300 px-2.5 py-1 font-mono text-[11px] text-muted">VERIFIED</span></div><p class="text-sm leading-7 text-gray-600">${brand.summary}</p><div class="flex flex-wrap gap-2 md:justify-end"><a href="${brand.report}" class="border border-black px-3.5 py-2 text-xs font-semibold transition-colors hover:bg-black hover:text-white">审计报告</a><a href="${brand.url}" target="_blank" rel="noopener noreferrer nofollow" class="bg-black px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800">访问官网 ↗</a></div></article>`;
       }).join('');
       document.getElementById('brandSection').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
     }
-
-    async function updateBrands() {
-      try {
-        const response = await fetch('airports.html');
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const source = await response.text();
-        const copy = new DOMParser().parseFromString(source, 'text/html');
-        const links = Object.fromEntries([...source.matchAll(/'([^']+)':\s*'(https:\/\/[^']+)'/g)].map(match => [match[1], match[2]]));
-        const brands = [...copy.querySelectorAll('main article')].map(row => ({
-          name: row.querySelector('h3')?.textContent.trim(),
-          summary: row.querySelector('h3 + p')?.textContent.trim() || '查看品牌信息',
-          url: links[row.querySelector('h3')?.textContent.trim()]
-        })).filter(brand => brand.name);
-        if (brands.length) displayBrands(brands);
-      } catch (error) {
-        console.warn('Brand matrix could not be loaded:', error);
-      }
-    }
-    if (brandTopics.includes(key)) {
-      displayBrands(fallbackBrands);
-      updateBrands();
-    }
+    if (brandCollections[key]) displayBrands(brandCollections[key]);
     if (key === 'discounts') document.getElementById('discountSection').classList.remove('hidden');
-    if (key === 'trials') document.getElementById('emptyBrandSection').classList.remove('hidden');
     document.querySelectorAll('.copy-code').forEach(button => {
       button.addEventListener('click', async () => {
         const code = button.dataset.code;

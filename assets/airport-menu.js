@@ -1,13 +1,12 @@
 (() => {
   const topics = [
-    ['🛡️', '稳定抗封锁专线榜', 'stable'],
-    ['💎', '平价高性价比机场榜', 'value'],
-    ['⚡', 'IEPL / IPLC 顶级专线榜', 'premium'],
-    ['💰', '10元内平价月付合集', 'budget'],
-    ['⏱️', '按量计费与不限时套餐', 'payg'],
-    ['🎟️', '2026 最新独家优惠码', 'discounts'],
-    ['🎁', '免费试用与一元体验', 'trials']
+    ['🏆', '年度综合推荐榜', 'airports.html'],
+    ['⚡', 'IEPL / IPLC 顶级专线精选', 'airport-topic.html?topic=premium'],
+    ['💎', '平价月付与不限时按量合集', 'airport-topic.html?topic=value'],
+    ['🎟️', '2026 独家优惠码清单', 'airport-topic.html?topic=discounts']
   ];
+
+  const rootPrefix = location.pathname.includes('/posts/') ? '../' : '';
 
   function installStyles() {
     if (document.getElementById('airportDropdownStyles')) return;
@@ -23,8 +22,8 @@
   }
 
   function topicLinks() {
-    return topics.map(([icon, label, topic]) => `
-      <a href="airport-topic.html?topic=${topic}" class="block rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+    return topics.map(([icon, label, href]) => `
+      <a href="${rootPrefix}${href}" class="block rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
         <span class="mr-2">${icon}</span>${label}
       </a>`).join('');
   }
@@ -51,7 +50,7 @@
       wrapper.insertAdjacentHTML('beforeend', `
         <div class="airport-dropdown-panel absolute left-1/2 top-full z-[100] w-80 pt-3">
           <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
-            <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">2026 年度综合排行榜</p>
+            <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">精选服务商导航 · 06 BRANDS</p>
             <div class="grid gap-0.5 text-sm">${topicLinks()}</div>
           </div>
         </div>`);
@@ -68,7 +67,7 @@
     if (!targets.length) return;
 
     try {
-      const response = await fetch('airports.html');
+      const response = await fetch(`${rootPrefix}airports.html`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const source = await response.text();
       const documentCopy = new DOMParser().parseFromString(source, 'text/html');
@@ -86,7 +85,7 @@
           <p class="px-3 pb-1 pt-1 text-xs font-bold text-gray-500">已收录品牌</p>
           <div class="grid grid-cols-2 gap-0.5">
             ${brands.map((brand) => `
-              <a href="airports.html?brand=${encodeURIComponent(brand)}" class="truncate rounded-lg px-3 py-2 text-sm transition-colors hover:bg-gray-100">${brand}</a>
+              <a href="${rootPrefix}airports.html?brand=${encodeURIComponent(brand)}" class="truncate rounded-lg px-3 py-2 text-sm transition-colors hover:bg-gray-100">${brand}</a>
             `).join('')}
           </div>
         `;
