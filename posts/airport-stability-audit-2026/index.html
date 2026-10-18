@@ -201,6 +201,47 @@
       line-height: 1.7;
       border-radius: 4px;
     }
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #e5e7eb;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #d1d5db;
+    }
+    .custom-scrollbar table {
+      display: table !important;
+      width: 100% !important;
+      margin: 0 !important;
+      border-top: none !important;
+      border-bottom: none !important;
+    }
+    .custom-scrollbar th, .custom-scrollbar td {
+      padding: 0.75rem 1rem !important;
+      white-space: nowrap !important;
+      font-size: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .custom-scrollbar th, .custom-scrollbar td {
+        font-size: 0.875rem;
+      }
+    }
+    .custom-scrollbar th:last-child,
+    .custom-scrollbar td:last-child {
+      padding-right: 2rem !important;
+      text-align: right;
+    }
     .prose-editorial table, .article-body table {
       display: block;
       overflow-x: auto;
@@ -455,80 +496,80 @@
             以下为梯云社评测组自建的华东电信、华南联通、西南移动三大骨干网探针，在连续 30 天的严密采样周期内，针对受审服务商香港、东京、新加坡、美西核心节点测得的汇总指标对照表。点击各服务商名称可查阅由本实验室独立发布的深度单品审计报告：
           </p>
 
-          <div class="overflow-x-auto">
-            <table>
-              <thead>
+          <div class="w-full overflow-x-auto my-8 border border-line rounded-lg custom-scrollbar">
+            <table class="w-full min-w-full border-collapse text-left text-xs md:text-sm">
+              <thead class="bg-paper border-b border-line">
                 <tr>
-                  <th>服务商与单品审计链接</th>
-                  <th>核心网络拓扑与架构</th>
-                  <th>晚高峰丢包率 (20:00-23:00)</th>
-                  <th>RTT 抖动方差 Jitter</th>
-                  <th>48h 长连接保活率</th>
-                  <th>综合可用率 SLA</th>
-                  <th>单品核心审计聚焦</th>
-                  <th>终审评定等级</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">服务商与单品审计链接</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">核心网络拓扑与架构</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">晚高峰丢包率 (20:00-23:00)</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">RTT 抖动方差 Jitter</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">48h 长连接保活率</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">综合可用率 SLA</th>
+                  <th class="whitespace-nowrap px-4 py-3 font-bold text-ink">单品核心审计聚焦</th>
+                  <th class="whitespace-nowrap px-4 py-3 pr-8 font-bold text-ink text-right">综合评分</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><strong><a href="/posts/yunjiexian-audit-2026/">云界线专线长周期可用率审计</a></strong></td>
-                  <td>纯物理内网 IEPL 专线 / 多地入口多活热备</td>
-                  <td><strong>0.05% – 0.22%</strong></td>
-                  <td>1.4ms – 2.8ms</td>
-                  <td>99.92%</td>
-                  <td><strong>99.98%</strong></td>
-                  <td>专注 IEPL 晚高峰 0 丢包与跨境极低抖动，企业生产力首选</td>
-                  <td><strong>A+ (GRADE I)</strong></td>
+              <tbody class="divide-y divide-line">
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                  <td class="whitespace-nowrap px-4 py-3 font-medium text-ink"><a href="/posts/yunjiexian-audit-2026/" class="font-bold underline underline-offset-4 hover:text-muted">云界线专线长周期可用率审计</a></td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">纯物理内网 IEPL 专线 / 多地入口多活热备</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">0.05% – 0.22%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">1.4ms – 2.8ms</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.92%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">99.98%</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">专注 IEPL 晚高峰 0 丢包与跨境极低抖动，企业生产力首选</td>
+                  <td class="whitespace-nowrap px-4 py-3 pr-8 text-right font-mono font-bold text-ink">A+ (GRADE I)</td>
                 </tr>
-                <tr>
-                  <td><strong><a href="/posts/dalaoyun-audit-2026/">大佬云多设备并发负载与长连接稳定性分析</a></strong></td>
-                  <td>多线 BGP 混合中转 / 动态智能健康排队</td>
-                  <td>0.12% – 0.45%</td>
-                  <td>1.8ms – 3.5ms</td>
-                  <td>99.85%</td>
-                  <td>99.88%</td>
-                  <td>聚焦多终端并发、按量灵活与长期连接不中断，家庭/团队兼顾</td>
-                  <td><strong>A+ (GRADE I)</strong></td>
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                  <td class="whitespace-nowrap px-4 py-3 font-medium text-ink"><a href="/posts/dalaoyun-audit-2026/" class="font-bold underline underline-offset-4 hover:text-muted">大佬云多设备并发负载与长连接稳定性分析</a></td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">多线 BGP 混合中转 / 动态智能健康排队</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">0.12% – 0.45%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">1.8ms – 3.5ms</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.85%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">99.88%</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">聚焦多终端并发、按量灵活与长期连接不中断，家庭/团队兼顾</td>
+                  <td class="whitespace-nowrap px-4 py-3 pr-8 text-right font-mono font-bold text-ink">A+ (GRADE I)</td>
                 </tr>
-                <tr>
-                  <td><strong><a href="/posts/huanqiuti-audit-2026/">环球梯协议韧性审计</a></strong></td>
-                  <td>新一代抗弱网传输协议 / 全球广泛边缘拓扑</td>
-                  <td>0.30% – 0.85% (弱网强抗)</td>
-                  <td>2.2ms – 4.2ms</td>
-                  <td>99.78%</td>
-                  <td>99.82%</td>
-                  <td>聚焦 Hysteria 2 / 复杂弱网抗拥塞穿透能力，差旅通勤利器</td>
-                  <td><strong>A (GRADE I)</strong></td>
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                  <td class="whitespace-nowrap px-4 py-3 font-medium text-ink"><a href="/posts/huanqiuti-audit-2026/" class="font-bold underline underline-offset-4 hover:text-muted">环球梯协议韧性审计</a></td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">新一代抗弱网传输协议 / 全球广泛边缘拓扑</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">0.30% – 0.85% (弱网强抗)</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">2.2ms – 4.2ms</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.78%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">99.82%</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">聚焦 Hysteria 2 / 复杂弱网抗拥塞穿透能力，差旅通勤利器</td>
+                  <td class="whitespace-nowrap px-4 py-3 pr-8 text-right font-mono font-bold text-ink">A (GRADE I)</td>
                 </tr>
-                <tr>
-                  <td><strong><a href="/posts/liulianyun-audit-2026/">榴莲云大吞吐负载测试</a></strong></td>
-                  <td>高带宽集群物理管道 / 单节点万兆承载</td>
-                  <td>0.25% – 0.60%</td>
-                  <td>2.0ms – 3.8ms</td>
-                  <td>99.80%</td>
-                  <td>99.85%</td>
-                  <td>聚焦单节点物理大管道与 4K/8K 流媒体冗余，大流量不降速</td>
-                  <td><strong>A (GRADE I)</strong></td>
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                  <td class="whitespace-nowrap px-4 py-3 font-medium text-ink"><a href="/posts/liulianyun-audit-2026/" class="font-bold underline underline-offset-4 hover:text-muted">榴莲云大吞吐负载测试</a></td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">高带宽集群物理管道 / 单节点万兆承载</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">0.25% – 0.60%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">2.0ms – 3.8ms</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.80%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">99.85%</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">聚焦单节点物理大管道与 4K/8K 流媒体冗余，大流量不降速</td>
+                  <td class="whitespace-nowrap px-4 py-3 pr-8 text-right font-mono font-bold text-ink">A (GRADE I)</td>
                 </tr>
-                <tr>
-                  <td><strong><a href="/posts/shandianshu-audit-2026/">闪电鼠接入点测试</a></strong></td>
-                  <td>全节点三网优质 BGP 优化对齐 / 真实倍率池</td>
-                  <td>0.08% – 0.32%</td>
-                  <td><strong>0.8ms – 2.6ms</strong></td>
-                  <td>99.90%</td>
-                  <td>99.94%</td>
-                  <td>聚焦低延迟敏感型场景与真实 1x 倍率，击键即时无粘滞</td>
-                  <td><strong>A+ (GRADE I)</strong></td>
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                  <td class="whitespace-nowrap px-4 py-3 font-medium text-ink"><a href="/posts/shandianshu-audit-2026/" class="font-bold underline underline-offset-4 hover:text-muted">闪电鼠接入点测试</a></td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">全节点三网优质 BGP 优化对齐 / 真实倍率池</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">0.08% – 0.32%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">0.8ms – 2.6ms</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.90%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono font-bold text-ink">99.94%</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">聚焦低延迟敏感型场景与真实 1x 倍率，击键即时无粘滞</td>
+                  <td class="whitespace-nowrap px-4 py-3 pr-8 text-right font-mono font-bold text-ink">A+ (GRADE I)</td>
                 </tr>
-                <tr>
-                  <td><strong><a href="/posts/shenxing-audit-2026/">神行加速轻量与备用方案实测</a></strong></td>
-                  <td>不限时按量计费池 / 低负载冗余中继架构</td>
-                  <td>0.35% – 0.90%</td>
-                  <td>2.5ms – 4.8ms</td>
-                  <td>99.72%</td>
-                  <td>99.75%</td>
-                  <td>聚焦不限时按量计费池与低成本长周期备用方案，防失联冗余底座</td>
-                  <td><strong>A (GRADE II)</strong></td>
+                <tr class="hover:bg-gray-50/50 transition-colors">
+                  <td class="whitespace-nowrap px-4 py-3 font-medium text-ink"><a href="/posts/shenxing-audit-2026/" class="font-bold underline underline-offset-4 hover:text-muted">神行加速轻量与备用方案实测</a></td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">不限时按量计费池 / 低负载冗余中继架构</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">0.35% – 0.90%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">2.5ms – 4.8ms</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.72%</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-ink">99.75%</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-muted">聚焦不限时按量计费池与低成本长周期备用方案，防失联冗余底座</td>
+                  <td class="whitespace-nowrap px-4 py-3 pr-8 text-right font-mono font-bold text-ink">A (GRADE II)</td>
                 </tr>
               </tbody>
             </table>
