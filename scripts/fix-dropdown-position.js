@@ -33,7 +33,7 @@ const htmlFiles = [
   'article.html',
   'disclaimer.html',
   'trial.html',
-  'posts/global-iplc-benchmark-2026.html'
+  'posts/global-iplc-benchmark-2026/index.html'
 ];
 
 htmlFiles.forEach((file) => {

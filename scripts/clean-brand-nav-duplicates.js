@@ -179,7 +179,7 @@ const targetPages = [
   { file: 'knowledge.html', prefix: '' },
   { file: 'tools.html', prefix: '' },
   { file: 'article.html', prefix: '' },
-  { file: 'posts/global-iplc-benchmark-2026.html', prefix: '../' }
+  { file: 'posts/global-iplc-benchmark-2026/index.html', prefix: '/' }
 ];
 
 const modifiedFiles = [];
@@ -221,8 +221,8 @@ targetPages.forEach(({ file, prefix }) => {
 const seoPrerenderPath = path.join(root, 'scripts', 'seo-prerender.js');
 if (fs.existsSync(seoPrerenderPath)) {
   let prerenderContent = fs.readFileSync(seoPrerenderPath, 'utf8');
-  // 确保其中的 global-iplc-benchmark-2026.html 头部也是干净的标准结构
-  const cleanPostHeader = buildStandardHeader('posts/global-iplc-benchmark-2026.html', '../');
+  // 确保其中的 global-iplc-benchmark-2026/index.html 头部也是干净的标准结构
+  const cleanPostHeader = buildStandardHeader('posts/global-iplc-benchmark-2026/index.html', '/');
   prerenderContent = prerenderContent.replace(/<header class="sticky[\s\S]*?<\/header>/, cleanPostHeader);
   fs.writeFileSync(seoPrerenderPath, prerenderContent, 'utf8');
   modifiedFiles.push('scripts/seo-prerender.js');

@@ -40,7 +40,7 @@ const filesToCheck = [
   'knowledge.html',
   'tools.html',
   'article.html',
-  'posts/global-iplc-benchmark-2026.html'
+  'posts/global-iplc-benchmark-2026/index.html'
 ];
 
 filesToCheck.forEach(f => {

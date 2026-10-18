@@ -12,6 +12,8 @@ server {
     # 历史收录路径只做单向永久跳转，目标为可直接抓取完整正文的静态文章页。
     location = /posts/dalaocloud-audit-2026 { return 301 /posts/dalaoyun-audit-2026/; }
     location = /posts/liuliancloud-audit-2026 { return 301 /posts/liulianyun-audit-2026/; }
+    location = /posts/global-iplc-benchmark-2026.html { return 301 /posts/global-iplc-benchmark-2026/; }
+    location = /posts/global-iplc-benchmark-2026 { return 301 /posts/global-iplc-benchmark-2026/; }
     location ~ ^/docs/posts/(yunjiexian|dalaoyun|huanqiuti|liulianyun|shandianshu|shenxing)-audit-2026(?:\.html)?/?$ {
         return 301 /posts/$1-audit-2026/;
     }

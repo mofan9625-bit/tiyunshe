@@ -214,7 +214,7 @@ const htmlPages = [
   { file: 'knowledge.html', isSubdir: false },
   { file: 'tools.html', isSubdir: false },
   { file: 'article.html', isSubdir: false },
-  { file: 'posts/global-iplc-benchmark-2026.html', isSubdir: true }
+  { file: 'posts/global-iplc-benchmark-2026/index.html', isSubdir: true }
 ];
 
 htmlPages.forEach(({ file, isSubdir }) => {
