@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="基于历时长周期的晚高峰多维度采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。">
+  <meta name="description" content="基于长周期晚高峰三网真实采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tiyunclub.com/posts/airport-stability-audit-2026/">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
   <meta property="og:title" content="2026 稳定网络专线与高质量机场节点综合可用率审计报告 - 梯云社">
-  <meta property="og:description" content="基于历时长周期的晚高峰多维度采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。">
+  <meta property="og:description" content="基于长周期晚高峰三网真实采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。">
   <meta property="og:url" content="https://tiyunclub.com/posts/airport-stability-audit-2026/">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="2026 稳定网络专线与高质量机场节点综合可用率审计报告 - 梯云社">
-  <meta name="twitter:description" content="基于历时长周期的晚高峰多维度采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。">
+  <meta name="twitter:description" content="基于长周期晚高峰三网真实采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。">
 
   <title>2026 稳定网络专线与高质量机场节点综合可用率审计报告 - 梯云社</title>
 
@@ -52,7 +52,7 @@
           "@id": "https://tiyunclub.com/posts/airport-stability-audit-2026/"
         },
         "headline": "2026 稳定网络专线与高质量机场节点综合可用率审计报告",
-        "description": "基于历时长周期的晚高峰多维度采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。",
+        "description": "基于长周期晚高峰三网真实采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。",
         "datePublished": "2026-10-18T08:00:00+08:00",
         "dateModified": "2026-10-18T08:00:00+08:00",
         "author": {
@@ -239,68 +239,62 @@
 <body class="bg-white font-sans text-ink antialiased">
 
   <!-- 顶部主导航栏 -->
-  <header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-sm">
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20">
-      <a href="../../" class="flex items-baseline gap-2" aria-label="梯云社首页">
+    <header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-sm">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-5 md:h-20 md:px-10 xl:px-16">
+      <a href="/" class="flex items-baseline gap-2" aria-label="梯云社首页">
         <span class="text-xl font-black">梯云社</span>
         <span class="hidden text-[10px] font-bold uppercase tracking-widest text-muted sm:inline">Tiyun Club</span>
       </a>
 
       <nav class="hidden items-center gap-7 text-sm font-medium xl:flex" aria-label="主导航">
-        <a class="nav-link" href="../../">首页</a>
-        
-        <!-- 机场推荐下拉菜单 -->
+        <a class="nav-link" href="/">首页</a>
         <div class="dropdown relative flex h-20 items-center">
-          <a class="nav-link flex items-center gap-1" href="../../airports.html" aria-haspopup="true">
-            机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
-          </a>
+          <a class="nav-link flex items-center gap-1" href="/airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a>
           <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">精选服务商导航 · 06 BRANDS</p>
               <div class="grid gap-0.5 text-sm">
-                <a href="../../airports.html" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🏆</span>年度综合推荐榜</a>
-                <a href="../../airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线精选</a>
-                <a href="../../airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价月付与不限时按量合集</a>
-                <a href="../../airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 独家优惠码清单</a>
+                <a href="/airports.html" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🏆</span>年度综合推荐榜</a>
+                <a href="/airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线精选</a>
+                <a href="/airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价月付与不限时按量合集</a>
+                <a href="/airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 独家优惠码清单</a>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- 品牌测评下拉菜单 -->
         <div class="dropdown relative flex h-20 items-center">
-          <a class="nav-link flex items-center gap-1 font-semibold text-black" href="../../knowledge.html?tag=品牌测评" aria-haspopup="true">
+          <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
             品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
-          </a>
+          </button>
           <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
             <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
               <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
               <div class="grid gap-0.5 text-sm">
-                <a href="../../posts/airport-stability-audit-2026/" class="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-2 font-semibold text-black">
+                <a href="/posts/airport-stability-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100 font-semibold text-ink">
                   <span>2026 综合可用率报告</span>
-                  <span class="font-mono text-xs text-black">支柱横评</span>
+                  <span class="font-mono text-xs text-muted">支柱横评</span>
                 </a>
-                <a href="../../posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="/posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">云界线 · 可用率审计</span>
                   <span class="font-mono text-xs text-muted">IEPL专线</span>
                 </a>
-                <a href="../../posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="/posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">大佬云 · 长连接分析</span>
                   <span class="font-mono text-xs text-muted">多设备并发</span>
                 </a>
-                <a href="../../posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="/posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">环球梯 · 协议抗拥塞</span>
                   <span class="font-mono text-xs text-muted">弱网韧性</span>
                 </a>
-                <a href="../../posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="/posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">榴莲云 · 大吞吐负载</span>
                   <span class="font-mono text-xs text-muted">高码率流媒体</span>
                 </a>
-                <a href="../../posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="/posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">闪电鼠 · 接入点测试</span>
                   <span class="font-mono text-xs text-muted">低延迟敏感</span>
                 </a>
-                <a href="../../posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                <a href="/posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
                   <span class="font-medium text-ink">神行加速 · 按量长连接</span>
                   <span class="font-mono text-xs text-muted">备用方案</span>
                 </a>
@@ -308,27 +302,23 @@
             </div>
           </div>
         </div>
-
-        <a class="nav-link" href="../../tools.html">工具使用</a>
-        <a class="nav-link" href="../../knowledge.html">知识库</a>
-        <a class="nav-link" href="../../index.html#about">关于</a>
-        <a href="../../index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a>
-        <a href="../../disclaimer.html" class="nav-link text-xs">免责声明</a>
+        <a class="nav-link" href="/tools.html">工具使用</a>
+        <a class="nav-link" href="/knowledge.html">知识库</a>
+        <a class="nav-link" href="/#about">关于</a>
+        <a href="/index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a>
+        <a href="/disclaimer.html" class="nav-link text-xs">免责声明</a>
       </nav>
 
-      <!-- 移动端触发按钮 -->
       <div class="flex items-center gap-1 xl:hidden">
-        <a href="../../index.html?search=1" class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></a>
+        <a href="/index.html?search=1" class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></a>
         <button id="menuButton" type="button" class="p-2.5" aria-expanded="false" aria-controls="mobileMenu" aria-label="打开菜单">
           <i data-lucide="menu" class="h-5 w-5"></i>
         </button>
       </div>
     </div>
-
-    <!-- 移动端抽屉导航 -->
     <nav id="mobileMenu" class="hidden border-t border-line bg-white px-5 py-5 xl:hidden" aria-label="移动端导航">
       <div class="grid gap-4 text-sm font-medium">
-        <a href="../../">首页</a>
+        <a href="/">首页</a>
         <div>
           <button id="airportMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="airportMobileMenu">
             <span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
@@ -336,10 +326,10 @@
           <div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4">
             <p class="pb-2 text-xs font-bold text-muted">精选服务商导航 · 06 BRANDS</p>
             <div class="grid gap-1 font-normal">
-              <a class="py-1.5" href="../../airports.html">🏆 年度综合推荐榜</a>
-              <a class="py-1.5" href="../../airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线精选</a>
-              <a class="py-1.5" href="../../airport-topic.html?topic=value">💎 平价月付与不限时按量合集</a>
-              <a class="py-1.5" href="../../airport-topic.html?topic=discounts">🎟️ 2026 独家优惠码清单</a>
+              <a class="py-1.5" href="/airports.html">🏆 年度综合推荐榜</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线精选</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=value">💎 平价月付与不限时按量合集</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=discounts">🎟️ 2026 独家优惠码清单</a>
             </div>
           </div>
         </div>
@@ -350,20 +340,20 @@
           <div id="brandMobileMenu" class="mt-3 hidden border-l border-line pl-4">
             <p class="pb-2 text-xs font-bold text-muted">单品深度审计实测</p>
             <div class="grid gap-1 text-sm font-normal">
-              <a class="py-1.5 flex items-center justify-between font-semibold text-black" href="../../posts/airport-stability-audit-2026/"><span>2026 综合可用率报告</span><span class="font-mono text-xs text-black">支柱横评</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="../../posts/yunjiexian-audit-2026/"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="../../posts/dalaoyun-audit-2026/"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="../../posts/huanqiuti-audit-2026/"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="../../posts/liulianyun-audit-2026/"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="../../posts/shandianshu-audit-2026/"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
-              <a class="py-1.5 flex items-center justify-between" href="../../posts/shenxing-audit-2026/"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
+              <a class="py-1.5 flex items-center justify-between font-semibold text-ink" href="/posts/airport-stability-audit-2026/"><span>2026 综合可用率报告</span><span class="font-mono text-xs text-muted">支柱横评</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/yunjiexian-audit-2026/"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/dalaoyun-audit-2026/"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/huanqiuti-audit-2026/"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/liulianyun-audit-2026/"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/shandianshu-audit-2026/"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/shenxing-audit-2026/"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
             </div>
           </div>
         </div>
-        <a href="../../tools.html">工具使用</a>
-        <a href="../../knowledge.html">知识库</a>
-        <a href="../../index.html#about">关于</a>
-        <a href="../../disclaimer.html">免责声明</a>
+        <a href="/tools.html">工具使用</a>
+        <a href="/knowledge.html">知识库</a>
+        <a href="/#about">关于</a>
+        <a href="/disclaimer.html">免责声明</a>
       </div>
     </nav>
   </header>
@@ -376,9 +366,9 @@
           
           <!-- 面包屑导航 Breadcrumb: 首页 > 品牌测评 > 2026 综合可用率审计报告 -->
           <nav aria-label="面包屑导航" class="flex items-center gap-2 text-xs font-mono text-muted">
-            <a href="../../" class="hover:text-ink hover:underline underline-offset-4">首页</a>
+            <a href="/" class="hover:text-ink hover:underline underline-offset-4">首页</a>
             <span class="text-gray-300">/</span>
-            <a href="../../knowledge.html?tag=%E5%93%81%E7%89%8C%E6%B5%8B%E8%AF%84" class="hover:text-ink hover:underline underline-offset-4">品牌测评</a>
+            <a href="/knowledge.html?tag=%E5%93%81%E7%89%8C%E6%B5%8B%E8%AF%84" class="hover:text-ink hover:underline underline-offset-4">品牌测评</a>
             <span class="text-gray-300">/</span>
             <span class="font-semibold text-ink" aria-current="page">2026 综合可用率审计报告</span>
           </nav>
@@ -396,7 +386,7 @@
           </h1>
 
           <p class="mt-6 max-w-4xl text-base leading-relaxed text-gray-600 sm:text-lg">
-            基于历时长周期的晚高峰多维度采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。
+            基于长周期晚高峰三网真实采样，从 IEPL 专线骨干抖动、长连接丢包率、多设备并发吞吐到协议抗封锁表现，对云界线、大佬云、环球梯、榴莲云、闪电鼠、神行加速展开独立可复现的技术横评。
           </p>
 
           <div class="mt-8 flex items-center gap-4 border-t border-line pt-5 text-sm">
@@ -481,7 +471,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><strong><a href="../../posts/yunjiexian-audit-2026/">云界线专线长周期可用率审计</a></strong></td>
+                  <td><strong><a href="/posts/yunjiexian-audit-2026/">云界线专线长周期可用率审计</a></strong></td>
                   <td>纯物理内网 IEPL 专线 / 多地入口多活热备</td>
                   <td><strong>0.05% – 0.22%</strong></td>
                   <td>1.4ms – 2.8ms</td>
@@ -491,7 +481,7 @@
                   <td><strong>A+ (GRADE I)</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><a href="../../posts/dalaoyun-audit-2026/">大佬云多设备并发负载与长连接稳定性分析</a></strong></td>
+                  <td><strong><a href="/posts/dalaoyun-audit-2026/">大佬云多设备并发负载与长连接稳定性分析</a></strong></td>
                   <td>多线 BGP 混合中转 / 动态智能健康排队</td>
                   <td>0.12% – 0.45%</td>
                   <td>1.8ms – 3.5ms</td>
@@ -501,7 +491,7 @@
                   <td><strong>A+ (GRADE I)</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><a href="../../posts/huanqiuti-audit-2026/">环球梯协议韧性审计</a></strong></td>
+                  <td><strong><a href="/posts/huanqiuti-audit-2026/">环球梯协议韧性审计</a></strong></td>
                   <td>新一代抗弱网传输协议 / 全球广泛边缘拓扑</td>
                   <td>0.30% – 0.85% (弱网强抗)</td>
                   <td>2.2ms – 4.2ms</td>
@@ -511,7 +501,7 @@
                   <td><strong>A (GRADE I)</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><a href="../../posts/liulianyun-audit-2026/">榴莲云大吞吐负载测试</a></strong></td>
+                  <td><strong><a href="/posts/liulianyun-audit-2026/">榴莲云大吞吐负载测试</a></strong></td>
                   <td>高带宽集群物理管道 / 单节点万兆承载</td>
                   <td>0.25% – 0.60%</td>
                   <td>2.0ms – 3.8ms</td>
@@ -521,7 +511,7 @@
                   <td><strong>A (GRADE I)</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><a href="../../posts/shandianshu-audit-2026/">闪电鼠接入点测试</a></strong></td>
+                  <td><strong><a href="/posts/shandianshu-audit-2026/">闪电鼠接入点测试</a></strong></td>
                   <td>全节点三网优质 BGP 优化对齐 / 真实倍率池</td>
                   <td>0.08% – 0.32%</td>
                   <td><strong>0.8ms – 2.6ms</strong></td>
@@ -531,7 +521,7 @@
                   <td><strong>A+ (GRADE I)</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><a href="../../posts/shenxing-audit-2026/">神行加速轻量与备用方案实测</a></strong></td>
+                  <td><strong><a href="/posts/shenxing-audit-2026/">神行加速轻量与备用方案实测</a></strong></td>
                   <td>不限时按量计费池 / 低负载冗余中继架构</td>
                   <td>0.35% – 0.90%</td>
                   <td>2.5ms – 4.8ms</td>
@@ -584,7 +574,7 @@
           <ul>
             <li><strong>核心痛点：</strong> 跨国远程桌面操作、VS Code Remote SSH 深度开发、GitHub 自动化流水线部署、Claude 连续长文本生成或 OpenAI 复杂多轮对话。在这些场景中，单次连接中断都会导致未提交的代码冲突或模型上下文丢失。</li>
             <li><strong>关键量化指标要求：</strong> 晚高峰丢包率 &lt; 0.3%，RTT Jitter &lt; 2.5ms，IP 风控标记为原生数据中心或低风控洁净段。</li>
-            <li><strong>闭环选型指引：</strong> 强烈推荐选择 <strong><a href="../../posts/yunjiexian-audit-2026/">云界线专线长周期可用率审计</a></strong>。云界线依托纯正物理 IEPL 专线通道，彻底阻断了公网 QoS 波动的影响，其香港与东京节点对 GitHub SSH 及海外主流 AI 大模型有着近乎 100% 的连续长会话保活能力，是企业技术栈与重度生产力的坚固基石。</li>
+            <li><strong>闭环选型指引：</strong> 强烈推荐选择 <strong><a href="/posts/yunjiexian-audit-2026/">云界线专线长周期可用率审计</a></strong>。云界线依托纯正物理 IEPL 专线通道，彻底阻断了公网 QoS 波动的影响，其香港与东京节点对 GitHub SSH 及海外主流 AI 大模型有着近乎 100% 的连续长会话保活能力，是企业技术栈与重度生产力的坚固基石。</li>
           </ul>
 
           <h3>场景 B：团队/多设备并发与大吞吐长连接</h3>
@@ -593,8 +583,8 @@
             <li><strong>关键量化指标要求：</strong> 不限设备连接数或高并发配额，具备长连接会话保持（Keep-Alive）与大管道吞吐储备。</li>
             <li><strong>闭环选型指引：</strong>
               <ul>
-                <li>多终端无感协同与日常办公主力：推荐选择 <strong><a href="../../posts/dalaoyun-audit-2026/">大佬云多设备并发负载与长连接稳定性分析</a></strong>。其老牌中转调度对多设备连接并发极为宽容，具备自动节点故障漂移与透明热更新，一套订阅即可覆盖全工作组平稳运行。</li>
-                <li>极高码率流媒体剪辑、多媒体资源大容量同步：推荐选择 <strong><a href="../../posts/liulianyun-audit-2026/">榴莲云大吞吐负载测试</a></strong>。凭借单节点物理宽管道与充裕流量套餐，在 4K/8K 满载持续拉取时依然保持充盈的缓冲区水位，杜绝画质跳帧与卡顿。</li>
+                <li>多终端无感协同与日常办公主力：推荐选择 <strong><a href="/posts/dalaoyun-audit-2026/">大佬云多设备并发负载与长连接稳定性分析</a></strong>。其老牌中转调度对多设备连接并发极为宽容，具备自动节点故障漂移与透明热更新，一套订阅即可覆盖全工作组平稳运行。</li>
+                <li>极高码率流媒体剪辑、多媒体资源大容量同步：推荐选择 <strong><a href="/posts/liulianyun-audit-2026/">榴莲云大吞吐负载测试</a></strong>。凭借单节点物理宽管道与充裕流量套餐，在 4K/8K 满载持续拉取时依然保持充盈的缓冲区水位，杜绝画质跳帧与卡顿。</li>
               </ul>
             </li>
           </ul>
@@ -603,7 +593,7 @@
           <ul>
             <li><strong>核心痛点：</strong> 出差差旅频繁、身处高铁/地铁等移动蜂窝基站切换频繁的场景，或是高校校园网、合租房等具有多层 NAT 转发与严苛公网 QoS 限速的恶劣环境。传统 TCP 协议在这些环境下会陷入频繁退避与重试。</li>
             <li><strong>关键量化指标要求：</strong> 具备新一代抗弱网传输协议支持（如 Hysteria 2 / TUIC），基站切换自愈耗时 &lt; 2.0s，中度丢包下吞吐保留比 &gt; 50%。</li>
-            <li><strong>闭环选型指引：</strong> 强烈推荐选择 <strong><a href="../../posts/huanqiuti-audit-2026/">环球梯协议韧性审计</a></strong>。环球梯深度适配抗拥塞前向纠错协议栈，在 5%–10% 的严重弱网丢包环境下依然能穿透拥塞，移动信号断网重连仅需 1.2 秒即可迅速恢复通信，出差途中无需频繁手动开关代理客户端。</li>
+            <li><strong>闭环选型指引：</strong> 强烈推荐选择 <strong><a href="/posts/huanqiuti-audit-2026/">环球梯协议韧性审计</a></strong>。环球梯深度适配抗拥塞前向纠错协议栈，在 5%–10% 的严重弱网丢包环境下依然能穿透拥塞，移动信号断网重连仅需 1.2 秒即可迅速恢复通信，出差途中无需频繁手动开关代理客户端。</li>
           </ul>
 
           <h3>场景 D：极低延迟要求与敏捷轻量备用</h3>
@@ -612,8 +602,8 @@
             <li><strong>关键量化指标要求：</strong> 路由物理直线对齐无折返绕行；或者支持不限时按量计费，月均维护成本低。</li>
             <li><strong>闭环选型指引：</strong>
               <ul>
-                <li>追求微秒/毫秒级即时操作反馈：首选 <strong><a href="../../posts/shandianshu-audit-2026/">闪电鼠接入点测试</a></strong>。全节点三网智能 BGP 接入，华南至香港延迟收敛至 19ms 物理极限，击键操作回显零粘滞，且全量节点保持真实 1x 倍率，计算简单透明。</li>
-                <li>追求低维护成本的长期双保险备用池：首选 <strong><a href="../../posts/shenxing-audit-2026/">神行加速轻量与备用方案实测</a></strong>。采用无到期时间的按量计费池，账户流量永久有效，平日低成本常驻在 Clash / Sing-box / Shadowrocket 客户端备用分组中，一旦主线路遭遇上游故障可瞬间无缝接管，达成高容灾冗余闭环。</li>
+                <li>追求微秒/毫秒级即时操作反馈：首选 <strong><a href="/posts/shandianshu-audit-2026/">闪电鼠接入点测试</a></strong>。全节点三网智能 BGP 接入，华南至香港延迟收敛至 19ms 物理极限，击键操作回显零粘滞，且全量节点保持真实 1x 倍率，计算简单透明。</li>
+                <li>追求低维护成本的长期双保险备用池：首选 <strong><a href="/posts/shenxing-audit-2026/">神行加速轻量与备用方案实测</a></strong>。采用无到期时间的按量计费池，账户流量永久有效，平日低成本常驻在 Clash / Sing-box / Shadowrocket 客户端备用分组中，一旦主线路遭遇上游故障可瞬间无缝接管，达成高容灾冗余闭环。</li>
               </ul>
             </li>
           </ul>
@@ -651,27 +641,27 @@
             <h4 class="text-base font-bold text-ink">📚 梯云社 2026 单品深度审计报告索引</h4>
             <p class="mt-2 text-sm text-muted">深入查阅六大服务商完整的技术拓扑、时延序列图与长周期实录数据：</p>
             <div class="mt-4 grid gap-2 sm:grid-cols-2 text-sm font-medium">
-              <a href="../../posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
+              <a href="/posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
                 <span>云界线 · IEPL 专线可用率审计</span>
                 <span class="font-mono text-xs text-muted">0 丢包实录 →</span>
               </a>
-              <a href="../../posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
+              <a href="/posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
                 <span>大佬云 · 多设备长连接分析</span>
                 <span class="font-mono text-xs text-muted">并发压力 →</span>
               </a>
-              <a href="../../posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
+              <a href="/posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
                 <span>环球梯 · 协议抗拥塞韧性</span>
                 <span class="font-mono text-xs text-muted">弱网穿透 →</span>
               </a>
-              <a href="../../posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
+              <a href="/posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
                 <span>榴莲云 · 大吞吐流媒体测试</span>
                 <span class="font-mono text-xs text-muted">4K/8K 负载 →</span>
               </a>
-              <a href="../../posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
+              <a href="/posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
                 <span>闪电鼠 · BGP 接入点测试</span>
                 <span class="font-mono text-xs text-muted">低延迟对齐 →</span>
               </a>
-              <a href="../../posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
+              <a href="/posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-3 hover:border-black transition-colors">
                 <span>神行加速 · 按量与备用实测</span>
                 <span class="font-mono text-xs text-muted">容灾双保险 →</span>
               </a>
@@ -691,11 +681,11 @@
         <span>© 2026 TIYUN CLUB. ALL RIGHTS RESERVED.</span>
       </div>
       <div class="flex items-center gap-5">
-        <a href="../../airports.html" class="hover:text-ink">机场推荐</a>
-        <a href="../../knowledge.html" class="hover:text-ink">知识库</a>
-        <a href="../../tools.html" class="hover:text-ink">工具使用</a>
-        <a href="../../disclaimer.html" class="hover:text-ink">免责声明</a>
-        <a href="../../sitemap.xml" class="hover:text-ink font-mono">SITEMAP</a>
+        <a href="/airports.html" class="hover:text-ink">机场推荐</a>
+        <a href="/knowledge.html" class="hover:text-ink">知识库</a>
+        <a href="/tools.html" class="hover:text-ink">工具使用</a>
+        <a href="/disclaimer.html" class="hover:text-ink">免责声明</a>
+        <a href="/sitemap.xml" class="hover:text-ink font-mono">SITEMAP</a>
       </div>
     </div>
   </footer>
@@ -705,6 +695,6 @@
       if (window.lucide) lucide.createIcons();
     });
   </script>
-  <script src="../../assets/airport-menu.js" defer></script>
+  <script src="/assets/airport-menu.js" defer></script>
 </body>
 </html>
