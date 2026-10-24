@@ -179,6 +179,8 @@ const targetPages = [
   { file: 'knowledge.html', prefix: '' },
   { file: 'tools.html', prefix: '' },
   { file: 'article.html', prefix: '' },
+  { file: 'disclaimer.html', prefix: '' },
+  { file: 'trial.html', prefix: '' },
   { file: 'posts/global-iplc-benchmark-2026/index.html', prefix: '/' }
 ];
 
