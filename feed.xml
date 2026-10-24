@@ -4,6 +4,20 @@
   <link>https://tiyunclub.com/</link>
   <description>网络节点评测、工具教程与网络诊断。</description>
   <item>
+    <title>2026 外贸企业跨国协同与 SLA 99.9% 高可用网络容灾架构方案</title>
+    <link>https://tiyunclub.com/posts/enterprise-cross-border-ha-audit-2026/</link>
+    <guid>https://tiyunclub.com/posts/enterprise-cross-border-ha-audit-2026/</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description>深入剖析外贸与中资出海企业跨国远程办公的音视频卡顿与断流成因，提供基于 BGP/IEPL 专线骨干与主备双活容灾的企业级高可用网络落地方案。</description>
+  </item>
+  <item>
+    <title>2026 跨境出海与多平台电商店铺防关联网络链路审计白皮书</title>
+    <link>https://tiyunclub.com/posts/cross-border-anti-association-audit-2026/</link>
+    <guid>https://tiyunclub.com/posts/cross-border-anti-association-audit-2026/</guid>
+    <pubDate>Invalid Date</pubDate>
+    <description>深入剖析跨境电商与外贸出海平台的风控审计模型，提供基于 IEPL 专线骨干与独享静态商用出口的团队防关联网络架构落地指南。</description>
+  </item>
+  <item>
     <title>2026 稳定网络专线与高质量机场节点综合可用率审计报告</title>
     <link>https://tiyunclub.com/posts/airport-stability-audit-2026/</link>
     <guid>https://tiyunclub.com/posts/airport-stability-audit-2026/</guid>
