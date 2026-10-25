@@ -33,7 +33,11 @@ function renderInline(value) {
     (_, alt, src) => `<img src="${escapeHtml(normalizeHref(src))}" alt="${alt}" loading="lazy">`);
   html = html.replace(/\[([^\]]+)\]\(([^)\s]+)(?:\s+["'][^"']*["'])?\)/g, (_, label, href) => {
     const target = normalizeHref(href);
+    const isAffGo = /^\/go(?:\.html|\/)/i.test(target);
     const external = /^https?:/i.test(target);
+    if (isAffGo) {
+      return `<a href="${escapeHtml(target)}" target="_blank" rel="nofollow sponsored noopener noreferrer">${label}</a>`;
+    }
     return `<a href="${escapeHtml(target)}"${external ? ' target="_blank" rel="noopener noreferrer sponsored"' : ''}>${label}</a>`;
   });
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');

@@ -32,7 +32,7 @@ slug: shandianshu-audit-2026
 
 > **官方独立核验通道：**  
 > 经编辑部链路指纹复核，本期受审服务商官方入口可直接核验：  
-> 👉 [访问闪电鼠官方站点与企业级方案页](https://mofanvip01.shandianshuaff.com/#/?code=a3GAQAXg)
+> 👉 [访问闪电鼠官方站点与企业级方案页](/go.html?id=shandianshu)
 
 ---
 
@@ -89,5 +89,5 @@ slug: shandianshu-audit-2026
 2. **纯粹冷数据大文件转移：** 专线网络核心溢价在于超低抖动与稳定性，不建议用于持续 TB 级非关键数据备份。
 
 > **报告附录：**  
-> 官方服务通道：[闪电鼠官方站点与企业级低延迟通道](https://mofanvip01.shandianshuaff.com/#/?code=a3GAQAXg)  
+> 官方服务通道：[闪电鼠官方站点与企业级低延迟通道](/go.html?id=shandianshu)  
 > 审计声明：本报告为梯云社特稿组独立抽检制作，测评数据保持客观真实。

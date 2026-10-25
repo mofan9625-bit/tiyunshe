@@ -32,7 +32,7 @@ slug: shenxing-audit-2026
 
 > **官方独立核验通道：**  
 > 经编辑部链路指纹复核，本期受审服务商官方入口可直接核验：  
-> 👉 [访问神行加速官方站点与按量付费方案页](https://vipmofan01.shenxingaff.com/#/?code=nn4ohwnK)
+> 👉 [访问神行加速官方站点与按量付费方案页](/go.html?id=shenxing)
 
 ---
 
@@ -89,5 +89,5 @@ slug: shenxing-audit-2026
 2. **多线程 TB 级数据持续同步：** 大文件连续下载会快速耗尽按量余额，建议搭配专职大带宽固定方案使用。
 
 > **报告附录：**  
-> 官方服务通道：[神行加速官方站点与按量计费控制台](https://vipmofan01.shenxingaff.com/#/?code=nn4ohwnK)  
+> 官方服务通道：[神行加速官方站点与按量计费控制台](/go.html?id=shenxing)  
 > 审计声明：本报告为梯云社特稿组独立抽检制作，测评数据保持客观真实。

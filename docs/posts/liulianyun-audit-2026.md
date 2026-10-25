@@ -32,7 +32,7 @@ slug: liulianyun-audit-2026
 
 > **官方独立核验通道：**  
 > 经编辑部链路指纹复核，本期受审服务商官方入口可直接核验：  
-> 👉 [访问榴莲云官方站点与大流量方案页](https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR)
+> 👉 [访问榴莲云官方站点与大流量方案页](/go.html?id=liulianyun)
 
 ---
 
@@ -89,5 +89,5 @@ slug: liulianyun-audit-2026
 2. **企业级严苛审计合规场景：** 团队远程协同研发建议选用更注重 BGP SLA 协议的专线产品。
 
 > **报告附录：**  
-> 官方服务通道：[榴莲云官方站点与大流量流媒体控制台](https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR)  
+> 官方服务通道：[榴莲云官方站点与大流量流媒体控制台](/go.html?id=liulianyun)  
 > 审计声明：本报告由梯云社特稿组独立抽检制作，测评数据保持客观真实。

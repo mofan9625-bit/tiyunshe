@@ -32,7 +32,7 @@ slug: huanqiuti-audit-2026
 
 > **官方独立核验通道：**  
 > 经编辑部链路指纹复核，本期受审服务商官方入口可直接核验：  
-> 👉 [访问环球梯官方站点与当前优惠方案](https://mofanvip01.huanqiutiaff.com/#/?code=l7oLmjVU)
+> 👉 [访问环球梯官方站点与当前优惠方案](/go.html?id=huanqiuti)
 
 ---
 
@@ -92,5 +92,5 @@ slug: huanqiuti-audit-2026
 2. **毫秒级极限电竞玩家：** 跨服硬核竞技更推荐游戏专用点对点内网隧道，而非通用流媒体型大带宽节点池。
 
 > **报告附录：**  
-> 官方服务通道：[环球梯官方站点与当前节点方案](https://mofanvip01.huanqiutiaff.com/#/?code=l7oLmjVU)  
+> 官方服务通道：[环球梯官方站点与当前节点方案](/go.html?id=huanqiuti)  
 > 审计声明：本报告为梯云社网络评测组独立评测成果，旨在提供多维网络工程参考。

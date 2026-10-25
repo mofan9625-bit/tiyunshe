@@ -18,6 +18,9 @@ server {
         return 301 /posts/$1-audit-2026/;
     }
 
+    # 引入 AFF 推广链接 301 隔离与合规跳转规则
+    include /www/wwwroot/tiyunclub.com/nginx-redirects.conf;
+
     # --------------------------------------------------------------------------
     # 静态 Clean URL 与常规路由支持（无循环 200 直出模式）：
     # 请求 /article 或 /airport-topic 时，自动匹配对应 html 文件，

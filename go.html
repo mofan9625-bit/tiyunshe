@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正在安全跳转 - 梯云社 / TIYUN CLUB</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card-bg: #f9fafb;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #111111;
+      --accent-hover: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      line-height: 1.5;
+    }
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.25rem 2rem;
+      text-align: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+    .brand-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .spinner {
+      display: inline-block;
+      width: 2.25rem;
+      height: 2.25rem;
+      border: 3px solid #e5e7eb;
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1.25rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      word-break: break-word;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: var(--accent);
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: var(--accent-hover);
+    }
+    .btn-secondary {
+      background-color: #ffffff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    .btn-secondary:hover {
+      background-color: #f3f4f6;
+    }
+    .meta-box {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="redirectCard">
+    <div class="brand-tag">TIYUN CLUB · SECURE OUTBOUND</div>
+    <div class="spinner" id="spinner"></div>
+    <h1 id="title">正在安全跳转至官方站点...</h1>
+    <p id="desc">您正在离开梯云社并前往服务商官方核验页面。本次跳转已启用 301 隔离与合规通道。</p>
+    <a id="targetBtn" class="btn" href="/" rel="nofollow sponsored noopener noreferrer">立即直达</a>
+    <a id="homeBtn" class="btn btn-secondary" href="/airports.html" style="display: none;">返回机场排行榜</a>
+    <div class="meta-box">
+      <span>🛡️ 301 Redirect Isolation</span>
+      <span>•</span>
+      <span>rel="nofollow sponsored"</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var REDIRECT_MAP = {
+        'yunjiexian': {
+          name: '云界线',
+          url: 'https://9625mofan01.yunjiexianaff.com/#/?code=OOYhSj0L'
+        },
+        'dalaoyun': {
+          name: '大佬云',
+          url: 'https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V'
+        },
+        'dalaocloud': {
+          name: '大佬云',
+          url: 'https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V'
+        },
+        'huanqiuti': {
+          name: '环球梯',
+          url: 'https://mofanvip01.huanqiutiaff.com/#/?code=l7oLmjVU'
+        },
+        'shenxing': {
+          name: '神行加速',
+          url: 'https://vipmofan01.shenxingaff.com/#/?code=nn4ohwnK'
+        },
+        'liulianyun': {
+          name: '榴莲云',
+          url: 'https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR'
+        },
+        'liuliancloud': {
+          name: '榴莲云',
+          url: 'https://mofan88.liulianyunaff.com/#/?code=ETsQBSuR'
+        },
+        'shandianshu': {
+          name: '闪电鼠',
+          url: 'https://mofanvip01.shandianshuaff.com/#/?code=a3GAQAXg'
+        }
+      };
+
+      function getTargetId() {
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('id') || params.get('target') || params.get('brand');
+        if (id) return id.trim().toLowerCase();
+
+        var hash = (window.location.hash || '').replace(/^#\/?/, '').trim().toLowerCase();
+        if (hash && REDIRECT_MAP[hash]) return hash;
+
+        var pathParts = window.location.pathname.split('/').filter(Boolean);
+        if (pathParts.length > 0) {
+          var last = pathParts[pathParts.length - 1].toLowerCase().replace(/\.html$/, '');
+          if (REDIRECT_MAP[last]) return last;
+        }
+        return null;
+      }
+
+      var targetId = getTargetId();
+      var targetInfo = targetId ? REDIRECT_MAP[targetId] : null;
+
+      var titleEl = document.getElementById('title');
+      var descEl = document.getElementById('desc');
+      var targetBtn = document.getElementById('targetBtn');
+      var homeBtn = document.getElementById('homeBtn');
+      var spinnerEl = document.getElementById('spinner');
+
+      if (targetInfo) {
+        document.title = '正在前往 ' + targetInfo.name + ' - 梯云社';
+        titleEl.textContent = '正在前往【' + targetInfo.name + '】官方站点...';
+        descEl.textContent = '正在为您建立前往 ' + targetInfo.name + ' 的安全重定向通道。若浏览器未自动跳转，请点击下方按钮直达：';
+        targetBtn.href = targetInfo.url;
+        targetBtn.textContent = '立即前往 ' + targetInfo.name + ' 官网';
+
+        // 立即执行安全重定向
+        try {
+          window.location.replace(targetInfo.url);
+        } catch (e) {
+          window.location.href = targetInfo.url;
+        }
+      } else {
+        document.title = '未找到目标服务商 - 梯云社';
+        spinnerEl.style.display = 'none';
+        titleEl.textContent = '未找到目标服务商';
+        descEl.textContent = '该推广链接可能已过期或参数有误。您可以查阅梯云社 2026 年度机场品牌排行榜获取最新评测信息。';
+        targetBtn.style.display = 'none';
+        homeBtn.style.display = 'inline-flex';
+      }
+    })();
+  </script>
+</body>
+</html>

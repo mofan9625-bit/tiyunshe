@@ -32,7 +32,7 @@ slug: dalaoyun-audit-2026
 
 > **官方独立核验通道：**  
 > 经编辑部链路指纹复核，本期受审服务商官方入口可直接核验：  
-> 👉 [访问大佬云官方站点与实时套餐方案页](https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V)
+> 👉 [访问大佬云官方站点与实时套餐方案页](/go.html?id=dalaoyun)
 
 ---
 
@@ -92,5 +92,5 @@ slug: dalaoyun-audit-2026
 2. **TB 级冷文件持续刷机：** 虽然不限设备数，但套餐总流量仍受购买档位限制，不宜用于无节制的超大文件 PT 长期做种。
 
 > **报告附录：**  
-> 官方服务通道：[大佬云官方站点与多端订阅获取](https://mofanvip01.dalaoyunaff.com/#/?code=QT2rqp5V)  
+> 官方服务通道：[大佬云官方站点与多端订阅获取](/go.html?id=dalaoyun)  
 > 审计声明：本报告由梯云社特稿组独立抽检制作，测评数据保持客观真实。
