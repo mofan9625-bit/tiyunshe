@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# 屏蔽 AFF 出站跳转与 Cloudflare 系统端点，避免搜索引擎抓取与误报
+Disallow: /go
+Disallow: /go/
+Disallow: /go.html
+Disallow: /cdn-cgi/
+
 Sitemap: https://tiyunclub.com/sitemap.xml
+
