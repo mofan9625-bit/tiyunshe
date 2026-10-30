@@ -422,7 +422,7 @@ const schemaScript = `  <script type="application/ld+json">
     "name": "梯云社",
     "alternateName": "TIYUN CLUB",
     "url": "https://tiyunclub.com/",
-    "description": "专注高质量网络加速评测、稳定专线对比与协议解析。"
+    "description": "梯云社专注于 2026 高质量网络加速评测与专线对比。提供真实晚高峰延迟、丢包率、跨国 IPLC/IEPL 专线及高性价比机场节点实测数据，拒绝峰值虚标，为工程师与跨境从业者打造客观、可复现的技术选型指南。"
   }
   </script>`;
 
