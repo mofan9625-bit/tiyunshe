@@ -18,7 +18,7 @@ server {
         return 301 /posts/$1-audit-2026/;
     }
 
-    # 引入 AFF 推广链接 301 隔离与合规跳转规则
+    # 引入 AFF 推广链接 302 隔离与合规跳转规则
     include /www/wwwroot/tiyunclub.com/nginx-redirects.conf;
 
     # --------------------------------------------------------------------------
