@@ -82,7 +82,7 @@ for (const dir of postDirs) {
       status: meta.status || 'published',
       title: meta.title || canonicalSlug,
       description: meta.description || '',
-      date: meta.date || '1970-01-01',
+      date: String(meta.date || '1970-01-01').replace(/\./g, '-'),
       category: meta.category || '文章',
       tags,
       body,

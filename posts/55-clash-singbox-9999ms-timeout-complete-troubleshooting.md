@@ -1,8 +1,8 @@
 ---
 title: "【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树"
 date: 2026-11-14
-category: 工具使用
-tags: [Clash, sing-box, 超时排查, 节点延迟, 故障诊断, 9999ms]
+category: 网络诊断
+tags: [网络诊断, 故障排查, Clash, sing-box, 超时排查, 节点延迟, 9999ms]
 description: "拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。"
 slug: 55-clash-singbox-9999ms-timeout-complete-troubleshooting
 ---
@@ -124,3 +124,4 @@ slug: 55-clash-singbox-9999ms-timeout-complete-troubleshooting
 ---
 
 > **实验室总结**：遇到 9999ms，记住排错口诀：**“先对时间再换网，关掉 TUN 测系统，换个热点定真凶，备用按量防失联”**。按照工程逻辑逐层剥离，任何网络故障都能在 3 分钟内准确定位。
+
