@@ -124,6 +124,63 @@ function pageFor(post) {
   const title = escapeHtml(post.title);
   const description = escapeHtml(post.description);
 
+  const isAudit = post.slug && post.slug.includes('-audit-2026');
+  const schemaList = [
+    {
+      '@context': 'https://schema.org',
+      '@type': isAudit ? 'TechArticle' : 'Article',
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.date,
+      author: { '@type': 'Organization', name: '梯云社网络性能独立审计实验室', url: `${siteUrl}/` },
+      publisher: { '@type': 'Organization', name: '梯云社', url: `${siteUrl}/` },
+      mainEntityOfPage: canonical
+    }
+  ];
+
+  if (isAudit) {
+    const brandMap = {
+      'yunjiexian-audit-2026': { name: '云界线', rating: 9.6, best: 10, price: '8' },
+      'dalaoyun-audit-2026': { name: '大佬云', rating: 9.5, best: 10, price: '8' },
+      'huanqiuti-audit-2026': { name: '环球梯', rating: 9.3, best: 10, price: '8' },
+      'liulianyun-audit-2026': { name: '榴莲云', rating: 9.4, best: 10, price: '8' },
+      'shandianshu-audit-2026': { name: '闪电鼠', rating: 9.5, best: 10, price: '8' },
+      'shenxing-audit-2026': { name: '神行加速', rating: 9.2, best: 10, price: '8' }
+    };
+    const b = brandMap[post.slug];
+    if (b) {
+      schemaList.push({
+        '@context': 'https://schema.org',
+        '@type': 'Review',
+        itemReviewed: {
+          '@type': 'Product',
+          name: b.name,
+          description: post.description,
+          offers: {
+            '@type': 'Offer',
+            price: b.price,
+            priceCurrency: 'CNY',
+            availability: 'https://schema.org/InStock'
+          }
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: b.rating,
+          bestRating: b.best
+        },
+        author: {
+          '@type': 'Organization',
+          name: '梯云社网络性能独立审计实验室'
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: '梯云社'
+        }
+      });
+    }
+  }
+
   return `<!doctype html>
 <html lang="zh-CN" class="scroll-smooth">
 <head>
@@ -146,17 +203,7 @@ function pageFor(post) {
   <script>
     tailwind.config = { theme: { extend: { colors: { ink:'#111111', muted:'#6B7280', line:'#E5E7EB', paper:'#FAFAFA' }, fontFamily: { mono:['SFMono-Regular','Consolas','monospace'] } } } };
   </script>
-  <script type="application/ld+json">${JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: { '@type': 'Organization', name: '梯云社编辑部' },
-    publisher: { '@type': 'Organization', name: '梯云社', url: `${siteUrl}/` },
-    mainEntityOfPage: canonical
-  }).replace(/</g, '\\u003c')}</script>
+  <script type="application/ld+json">${JSON.stringify(schemaList.length === 1 ? schemaList[0] : schemaList).replace(/</g, '\\u003c')}</script>
   <style>
     *{box-sizing:border-box}::selection{background:#111;color:#fff}
     .nav-link{position:relative}

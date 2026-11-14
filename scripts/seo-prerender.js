@@ -401,29 +401,61 @@ let indexContent = fs.readFileSync(indexPath, 'utf8');
 // (1) 替换 <title>
 indexContent = indexContent.replace(
   /<title>.*?<\/title>/s,
-  '<title>梯云社 - 2026 稳定网络专线实测与高质量机场节点评测指南</title>'
+  '<title>梯云社 (TIYUN CLUB) - 2026 独立网络专线性能审计实验室 | 晚高峰丢包与节点实测</title>'
 );
 
 // (2) 优化 og:title 和 twitter:title
 indexContent = indexContent.replace(
   /<meta\s+property="og:title"\s+content="[^"]*">/g,
-  '<meta property="og:title" content="梯云社 - 2026 稳定网络专线实测与高质量机场节点评测指南">'
+  '<meta property="og:title" content="梯云社 (TIYUN CLUB) - 2026 独立网络专线性能审计实验室 | 晚高峰丢包与节点实测">'
 );
 indexContent = indexContent.replace(
   /<meta\s+name="twitter:title"\s+content="[^"]*">/g,
-  '<meta name="twitter:title" content="梯云社 - 2026 稳定网络专线实测与高质量机场节点评测指南">'
+  '<meta name="twitter:title" content="梯云社 (TIYUN CLUB) - 2026 独立网络专线性能审计实验室 | 晚高峰丢包与节点实测">'
 );
 
 // (3) 添加 Schema.org JSON-LD
 const schemaScript = `  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "梯云社",
-    "alternateName": "TIYUN CLUB",
-    "url": "https://tiyunclub.com/",
-    "description": "梯云社专注于 2026 高质量网络加速评测与专线对比。提供真实晚高峰延迟、丢包率、跨国 IPLC/IEPL 专线及高性价比机场节点实测数据，拒绝峰值虚标，为工程师与跨境从业者打造客观、可复现的技术选型指南。"
-  }
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "梯云社",
+      "alternateName": "TIYUN CLUB",
+      "url": "https://tiyunclub.com/",
+      "description": "拒绝瞬时虚标与无脑年付！梯云社网络性能独立审计实验室基于三大骨干网探针 720 小时长周期采样，实测晚高峰丢包、IEPL 专线抖动、大模型/跨国协同生产力工具风控表现，为工程师、外贸出海与极客提供客观选型审计报告。"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "梯云社的“晚高峰 720 小时时序监测”与普通单次峰值测速有何本质区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "普通单次测速往往享受服务端的短时突发令牌桶加成，仅代表非高峰空闲瞬时峰值。梯云社探针部署于华东电信、华南联通、西南移动骨干网，聚焦 20:00–23:00 极端晚高峰 QoS 流量塑形拥塞区间，连续记录 RTT 延迟方差、P95/P99 抖动、长连接保活率与真实丢包率，拒绝一切虚标营销。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "为什么技术团队与极客用户应坚决优先选择月付而非年付？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "跨境出口受国际海缆维护、上游机房路由调整及敏感时期管控影响存在天然波动。长期年付甚至三年付往往是跑路机场与极端超售服务商的重灾区。梯云社坚持“先定预算、次选物理线路、最后务必以月付实测晚高峰”，验证本地 ISP 适配度后再行续费。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "针对 ChatGPT、Claude 及跨国远程办公，如何避免频繁触发人机验证或封号？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "大模型与合规 SaaS 服务风控主要基于出口 IP 的 ASN 组织类型与欺诈评分。广播机房 IP 容易被识别并弹出 1020 报错或 Cloudflare 验证码死循环。建议优先选用纯物理内网 IEPL 专线（如云界线）或具备洁净住宅/原生出口 IP 段的服务商（如榴莲云），会话持久且通过率极高。"
+          }
+        }
+      ]
+    }
+  ]
   </script>`;
 
 if (!indexContent.includes('application/ld+json')) {
