@@ -25,6 +25,27 @@
     <description>历时多周期的晚高峰多维度数据采样，全面对比六大主流专线品牌的丢包抖动率、吞吐韧性与场景适配方案。</description>
   </item>
   <item>
+    <title>【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑</title>
+    <link>https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/</link>
+    <guid>https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/</guid>
+    <pubDate>Fri, 13 Nov 2026 16:00:00 GMT</pubDate>
+    <description>梯云社 2026 深度排查指南：抓包剖析 OpenAI 与 Claude 弹出 1020、Access Denied 及 Cloudflare Turnstile 验证死循环的底层触发风控机制，教你自测 IP 欺诈分并提供原生/住宅 IP 避坑选型建议。</description>
+  </item>
+  <item>
+    <title>【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树</title>
+    <link>https://tiyunclub.com/posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/</link>
+    <guid>https://tiyunclub.com/posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/</guid>
+    <pubDate>Fri, 13 Nov 2026 16:00:00 GMT</pubDate>
+    <description>拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。</description>
+  </item>
+  <item>
+    <title>【避坑自查】2026 机场跑路前兆与灰产特征审计清单：为什么百元三年付必死无疑？</title>
+    <link>https://tiyunclub.com/posts/56-airport-shutdown-warning-signs-audit-2026/</link>
+    <guid>https://tiyunclub.com/posts/56-airport-shutdown-warning-signs-audit-2026/</guid>
+    <pubDate>Fri, 13 Nov 2026 16:00:00 GMT</pubDate>
+    <description>拒绝成为庞氏资金池的接盘侠！梯云社网络审计实验室基于机房万兆带宽硬成本核算，深度揭秘百元三年付机场的运营套路与灰产特征，汇总跑路前夕四大典型危险信号与科学防损准则。</description>
+  </item>
+  <item>
     <title>【2026实测】大佬云多设备并发深度评测：BGP中转与长连接防断流实录</title>
     <link>https://tiyunclub.com/posts/dalaoyun-audit-2026/</link>
     <guid>https://tiyunclub.com/posts/dalaoyun-audit-2026/</guid>

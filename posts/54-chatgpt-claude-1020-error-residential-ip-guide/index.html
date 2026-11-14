@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="梯云社 2026 深度排查指南：抓包剖析 OpenAI 与 Claude 弹出 1020、Access Denied 及 Cloudflare Turnstile 验证死循环的底层触发风控机制，教你自测 IP 欺诈分并提供原生/住宅 IP 避坑选型建议。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
+  <meta property="og:title" content="【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑">
+  <meta property="og:description" content="梯云社 2026 深度排查指南：抓包剖析 OpenAI 与 Claude 弹出 1020、Access Denied 及 Cloudflare Turnstile 验证死循环的底层触发风控机制，教你自测 IP 欺诈分并提供原生/住宅 IP 避坑选型建议。">
+  <meta property="og:url" content="https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑">
+  <meta name="twitter:description" content="梯云社 2026 深度排查指南：抓包剖析 OpenAI 与 Claude 弹出 1020、Access Denied 及 Cloudflare Turnstile 验证死循环的底层触发风控机制，教你自测 IP 欺诈分并提供原生/住宅 IP 避坑选型建议。">
+  <title>【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑｜梯云社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { ink:'#111111', muted:'#6B7280', line:'#E5E7EB', paper:'#FAFAFA' }, fontFamily: { mono:['SFMono-Regular','Consolas','monospace'] } } } };
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑","description":"梯云社 2026 深度排查指南：抓包剖析 OpenAI 与 Claude 弹出 1020、Access Denied 及 Cloudflare Turnstile 验证死循环的底层触发风控机制，教你自测 IP 欺诈分并提供原生/住宅 IP 避坑选型建议。","datePublished":"2026-11-14","dateModified":"2026-11-14","author":{"@type":"Organization","name":"梯云社网络性能独立审计实验室","url":"https://tiyunclub.com/"},"publisher":{"@type":"Organization","name":"梯云社","url":"https://tiyunclub.com/"},"mainEntityOfPage":"https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/"}</script>
+  <style>
+    *{box-sizing:border-box}::selection{background:#111;color:#fff}
+    .nav-link{position:relative}
+    .nav-link::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
+    .nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+    .dropdown-panel{position:absolute;top:100%;left:50%;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+    .dropdown:hover .dropdown-panel,.dropdown:focus-within .dropdown-panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:0s}
+    .article-body{color:#1a1a1a;font-size:1.0625rem;line-height:1.9}.article-body>*+*{margin-top:1.6rem}
+    .article-body h2{margin-top:4rem;padding-bottom:.65rem;border-bottom:1px solid #e5e7eb;font-size:1.8rem;line-height:1.35;font-weight:700}
+    .article-body h3{margin-top:2.75rem;padding-bottom:.5rem;border-bottom:1px solid #e5e7eb;font-size:1.3rem;line-height:1.4;font-weight:700}
+    .article-body a{text-decoration:underline;text-underline-offset:4px}.article-body blockquote{border-left:3px solid #111;padding:1rem 0 1rem 1.5rem;color:#374151;background:#fafafa}
+    .article-body ul,.article-body ol{padding-left:1.5rem}.article-body ul{list-style:square}.article-body ol{list-style:decimal}.article-body li+li{margin-top:.55rem}
+    .article-body code:not(pre code){background:#f3f4f6;padding:.15rem .35rem;font-family:monospace;font-size:.9em}.article-body pre{overflow-x:auto;background:#111;color:#f9fafb;padding:1.4rem;font-size:.875rem;line-height:1.7}
+    .article-body table{display:block;overflow-x:auto;width:100%;min-width:42rem;border-collapse:collapse;border-top:1px solid #111;border-bottom:1px solid #111;font-size:.9rem}.article-body th,.article-body td{padding:.8rem .55rem;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}.article-body th{font-weight:700;background:#fafafa}
+  </style>
+</head>
+<body class="bg-white text-ink antialiased">
+  <header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-sm">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-5 md:h-20 md:px-10 xl:px-16">
+      <a href="/index.html" class="flex items-baseline gap-2" aria-label="梯云社首页">
+        <span class="text-xl font-black">梯云社</span>
+        <span class="hidden text-[10px] font-bold uppercase tracking-widest text-muted sm:inline">Tiyun Club</span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-sm font-medium xl:flex" aria-label="主导航">
+        <a class="nav-link" href="/index.html">首页</a>
+        <div class="dropdown relative flex h-20 items-center">
+          <a class="nav-link flex items-center gap-1" href="/airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a>
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
+            <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
+              <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">精选服务商导航 · 06 BRANDS</p>
+              <div class="grid gap-0.5 text-sm">
+                <a href="/airports.html" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🏆</span>年度综合推荐榜</a>
+                <a href="/airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线精选</a>
+                <a href="/airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价月付与不限时按量合集</a>
+                <a href="/airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 独家优惠码清单</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown relative flex h-20 items-center">
+          <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
+            品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+          </button>
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
+            <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
+              <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
+              <div class="grid gap-0.5 text-sm">
+                <a href="/posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">云界线 · 可用率审计</span>
+                  <span class="font-mono text-xs text-muted">IEPL专线</span>
+                </a>
+                <a href="/posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">大佬云 · 长连接分析</span>
+                  <span class="font-mono text-xs text-muted">多设备并发</span>
+                </a>
+                <a href="/posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">环球梯 · 协议抗拥塞</span>
+                  <span class="font-mono text-xs text-muted">弱网韧性</span>
+                </a>
+                <a href="/posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">榴莲云 · 大吞吐负载</span>
+                  <span class="font-mono text-xs text-muted">高码率流媒体</span>
+                </a>
+                <a href="/posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">闪电鼠 · 接入点测试</span>
+                  <span class="font-mono text-xs text-muted">低延迟敏感</span>
+                </a>
+                <a href="/posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">神行加速 · 按量长连接</span>
+                  <span class="font-mono text-xs text-muted">备用方案</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="nav-link" href="/tools.html">工具使用</a>
+        <a class="nav-link font-bold" href="/knowledge.html">知识库</a>
+        <a class="nav-link" href="/index.html#about">关于</a>
+        <a href="/index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a>
+        <a href="/disclaimer.html" class="nav-link text-xs">免责声明</a>
+      </nav>
+
+      <div class="flex items-center gap-1 xl:hidden">
+        <a href="/index.html?search=1" class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></a>
+        <button id="menuButton" type="button" class="p-2.5" aria-expanded="false" aria-controls="mobileMenu" aria-label="打开菜单">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+    <nav id="mobileMenu" class="hidden border-t border-line bg-white px-5 py-5 xl:hidden" aria-label="移动端导航">
+      <div class="grid gap-4 text-sm font-medium">
+        <a href="/index.html">首页</a>
+        <div>
+          <button id="airportMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="airportMobileMenu">
+            <span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
+          </button>
+          <div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4">
+            <p class="pb-2 text-xs font-bold text-muted">精选服务商导航 · 06 BRANDS</p>
+            <div class="grid gap-1 font-normal">
+              <a class="py-1.5" href="/airports.html">🏆 年度综合推荐榜</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线精选</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=value">💎 平价月付与不限时按量合集</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=discounts">🎟️ 2026 独家优惠码清单</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button id="brandMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="brandMobileMenu">
+            <span>品牌测评</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
+          </button>
+          <div id="brandMobileMenu" class="mt-3 hidden border-l border-line pl-4">
+            <p class="pb-2 text-xs font-bold text-muted">单品深度审计实测</p>
+            <div class="grid gap-1 text-sm font-normal">
+              <a class="py-1.5 flex items-center justify-between" href="/posts/yunjiexian-audit-2026/"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/dalaoyun-audit-2026/"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/huanqiuti-audit-2026/"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/liulianyun-audit-2026/"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/shandianshu-audit-2026/"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/shenxing-audit-2026/"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
+            </div>
+          </div>
+        </div>
+        <a class="" href="/tools.html">工具使用</a>
+        <a class="font-bold" href="/knowledge.html">知识库</a>
+        <a href="/index.html#about">关于</a>
+        <a href="/disclaimer.html">免责声明</a>
+      </div>
+    </nav>
+  </header>
+  <main><article>
+    <header class="border-b border-gray-200"><div class="mx-auto max-w-5xl px-5 py-14 md:py-24">
+      <a href="/knowledge.html" class="text-sm text-gray-500 hover:text-black">← 返回知识库</a>
+      <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span class="border border-gray-300 px-3 py-1 font-mono text-black">场景加速</span><time datetime="2026-11-14">2026.11.14</time><span>·</span><span>7 MIN READ</span></div>
+      <h1 class="mt-7 text-4xl font-black leading-tight sm:text-5xl md:text-7xl">【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑</h1>
+      <p class="mt-8 max-w-3xl text-lg leading-relaxed text-gray-600">梯云社 2026 深度排查指南：抓包剖析 OpenAI 与 Claude 弹出 1020、Access Denied 及 Cloudflare Turnstile 验证死循环的底层触发风控机制，教你自测 IP 欺诈分并提供原生/住宅 IP 避坑选型建议。</p>
+      <div class="mt-10 flex items-center gap-4 border-t border-gray-200 pt-5 text-sm"><div class="flex h-10 w-10 items-center justify-center bg-black font-bold text-white">TY</div><div><p class="font-semibold">梯云社编辑部</p><p class="text-xs text-gray-500">Network Research · 2026</p></div></div>
+    </div></header>
+    <div class="mx-auto max-w-3xl px-5 py-14 md:py-20"><div class="article-body"><p>对于重度依赖 ChatGPT、Claude 3.5 Sonnet、Cursor、GitHub Copilot 的开发者与外贸出海团队而言，最令人崩溃的并非网络延迟高，而是浏览器突然弹出的 <strong>“Error 1020: Access Denied”</strong>、<strong>“Unable to load conversation”</strong>，或是陷入无限循环的人机验证转圈（Cloudflare Turnstile）。</p>
+<p>许多用户误以为这是客户端配置或代理软件报错，于是在网上胡乱重装软件、清理缓存，结果发现即便换了十几条线路依然被精准拦截。</p>
+<p>本期梯云社独立审计实验室（Tiyun Independent Lab）将从底层网络风控模型、ASN 属性分析及实测抓包数据，深入拆解大模型风控的真实触发链路，并提供切实可行的选型避坑方案。</p>
+<p>---</p>
+<h2>一、 现象背后：为什么天天换节点依然被秒封？</h2>
+<p>OpenAI 与 Anthropic（Claude）并不自己从零构建全球防御网关，它们的核心会话入口全部部署在 <strong>Cloudflare Enterprise</strong> 的高阶 WAF 与 Bot Management 策略之后。</p>
+<p>当你发起 HTTPS 请求时，网关在 0.1 秒内完成了以下多维度特征画像：</p>
+<table><thead><tr><th>风控检测维度</th><th>常见机房广播 IP 表现</th><th>洁净住宅 / 原生优化 IP 表现</th><th>判定结果</th></tr></thead><tbody><tr><td><strong>ASN 组织类型</strong></td><td><code>Hosting</code> / <code>Data Center</code>（机房托管）</td><td><code>ISP</code> / <code>Residential</code>（家庭宽带）</td><td>机房段直接打上中高风险标记</td></tr><tr><td><strong>IP 历史欺诈评分 (Fraud Score)</strong></td><td>60 – 95 分（大量黑产/爬虫复用）</td><td>0 – 15 分（正常个人网民行为画像）</td><td>高分直接弹 1020 阻断或验证死循环</td></tr><tr><td><strong>TCP / TLS 握手特征 (JA3/JA4)</strong></td><td>协议转换痕迹明显，无原生浏览器指纹</td><td>真实端到端 TLS 协商，特征库高度匹配</td><td>异常握手触发后台静默标记封号</td></tr><tr><td><strong>单 IP 并发请求离散度</strong></td><td>单出口 IP 承载成千上万个并发长连接</td><td>单 IP 仅数十个会话，离散符合人类行为</td><td>异常高并发立即触发限流与验证码</td></tr></tbody></table>
+<p><strong>结论</strong>：大部分廉价机场所宣称的“美国洛杉矶专线”，其出口实际是机房 IDC 广播段（例如购买自廉价 VPS 主机商的公网段）。这种 IP 只要有其他用户挂着脚本爬取数据或违规滥用，整段 IP 就会被 Cloudflare 纳入黑名单，无论你怎么清理本地缓存都无济于事。</p>
+<p>---</p>
+<h2>二、 核心概念辨析：机房 IP、广播 IP、原生 IP 与住宅 IP</h2>
+<p>在选购支持 AI 工具的节点时，必须厘清以下四个维度的真实定义，切勿被部分商家的营销黑话误导：</p>
+<pre><code>真实纯净度梯队（从低到高）：
+机房广播 IP (最易被封) &lt; 原生机房 IP (稳定性尚可) &lt; 动态住宅 IP (成本高/时效短) &lt; 静态独享住宅/纯净原生专线 (生产力首选)</code></pre>
+<ol><li><strong>机房广播 IP (Hosting/Broadcast)</strong>：</li></ol>
+<p>服务器物理位于欧洲或东南亚，但在 BGP 路由中宣告为美国广播。在 IP 数据库中显示为美国，但延迟异常偏高，且 ASN 类型为 Hosting。<strong>这是 ChatGPT 1020 阻断的重灾区。</strong></p>
+<ol><li><strong>原生机房 IP (Native Datacenter IP)</strong>：</li></ol>
+<p>服务器物理机房、IP 注册机构（ARIN/APNIC）与机房所在国家完全一致。用于生产力工具可承受一般交互，但遇到高风控接口依然有概率跳验证码。</p>
+<ol><li><strong>住宅原生 IP (Residential ISP)</strong>：</li></ol>
+<p>IP 地址注册归属于当地民用电信运营商（如美国 AT&amp;T、Verizon、Comcast）。在风控引擎看来，这就是一个普通的海外普通家庭用户在宽带上网，<strong>人机验证通过率超过 99.2%</strong>。</p>
+<p>---</p>
+<h2>三、 极客自检手册：如何自测节点的 IP 纯净度？</h2>
+<p>无需安装繁杂工具，打开终端或浏览器即可通过以下两个权威数据库进行核实：</p>
+<h3>1. 检查 ASN 组织类型与机房标记</h3>
+<p>访问 <code>ipinfo.io</code>（或在终端运行 <code>curl ipinfo.io</code>）：</p>
+<ul><li>重点查看 <code>org</code> 字段；</li><li>若出现 <code>ASxxxx OVH</code>、<code>ASxxxx Hetzner</code>、<code>ASxxxx DigitalOcean</code> 等知名廉价机房名称，说明该节点属于高危 IDC 段；</li><li>若出现 <code>AS7018 AT&amp;T Services</code>、<code>AS7922 Comcast Cable</code> 等，说明具备极高的 ISP 纯净信誉。</li></ul>
+<h3>2. 检查欺诈分数与黑名单历史</h3>
+<p>访问 <code>scamalytics.com</code> 输入节点的出口 IP：</p>
+<ul><li><strong>Fraud Score 0 – 15</strong>：极低风险，AI 模型秒开，绝不弹 Cloudflare 验证码；</li><li><strong>Fraud Score 16 – 40</strong>：轻度风险，偶尔需要勾选人机验证；</li><li><strong>Fraud Score 50 以上</strong>：高危受限，随时可能触发“Access Denied”与封号警报。</li></ul>
+<p>---</p>
+<h2>四、 生产力团队的长效破局方案</h2>
+<p>如果你是依赖大模型编程或跨境出海的严肃生产力用户，频繁折腾换节点会消耗大量宝贵工时。建议采用以下两种架构组合：</p>
+<ol><li><strong>分流规则精准定向</strong>：  </li></ol>
+<p>在 Clash Verge Rev 或 sing-box 中，切勿将全部流量全局走某一个落地节点。应当在规则集中配置： ``<code>yaml # 仅将 OpenAI / Claude 域名定向至原生住宅落地节点 - DOMAIN-SUFFIX,openai.com,AI-Residential - DOMAIN-SUFFIX,anthropic.com,AI-Residential - DOMAIN-SUFFIX,claude.ai,AI-Residential </code>``</p>
+<ol><li><strong>优选配备独立原生落地池的服务商</strong>：  </li></ol>
+<p>梯云社在长达 168 小时的晚高峰抽检中，针对 AI 生产力模型进行了专门的高频压力采样： - 若追求极致稳定的纯物理 IEPL 专线，推荐参考梯云社审计过的 <strong><a href="/go.html?id=yunjiexian" target="_blank" rel="nofollow sponsored noopener noreferrer">云界线官方站点</a></strong>，其企业级专线具备独立的低风控生产力专属组； - 若追求大吞吐与丰富原生住宅 IP 解锁，可参考 <strong><a href="/go.html?id=liulianyun" target="_blank" rel="nofollow sponsored noopener noreferrer">榴莲云官方站点</a></strong>，其单节点万兆承载配合原生出口池，对 Claude 与 ChatGPT 连续 6 小时会话保持率高达 99.8%。</p>
+<p>---</p>
+<blockquote><strong>实验室总结</strong>：解决 1020 报错的核心从来不是“换客户端”，而是“换掉底层 IDC 广播出口”。认清 ASN 属性与欺诈分数，以月付实测晚高峰表现，方为长治久安之策。</blockquote></div></div>
+  </article></main>
+  <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><a href="/sitemap.xml">SITEMAP</a></div></footer>
+  <script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons()});</script>
+  <script src="/assets/airport-menu.js" defer></script>
+</body>
+</html>

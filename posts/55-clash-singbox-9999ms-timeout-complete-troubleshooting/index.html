@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tiyunclub.com/posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="梯云社 / TIYUN CLUB">
+  <meta property="og:title" content="【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树">
+  <meta property="og:description" content="拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。">
+  <meta property="og:url" content="https://tiyunclub.com/posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树">
+  <meta name="twitter:description" content="拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。">
+  <title>【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树｜梯云社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { ink:'#111111', muted:'#6B7280', line:'#E5E7EB', paper:'#FAFAFA' }, fontFamily: { mono:['SFMono-Regular','Consolas','monospace'] } } } };
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树","description":"拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。","datePublished":"2026-11-14","dateModified":"2026-11-14","author":{"@type":"Organization","name":"梯云社网络性能独立审计实验室","url":"https://tiyunclub.com/"},"publisher":{"@type":"Organization","name":"梯云社","url":"https://tiyunclub.com/"},"mainEntityOfPage":"https://tiyunclub.com/posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/"}</script>
+  <style>
+    *{box-sizing:border-box}::selection{background:#111;color:#fff}
+    .nav-link{position:relative}
+    .nav-link::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
+    .nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+    .dropdown-panel{position:absolute;top:100%;left:50%;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+    .dropdown:hover .dropdown-panel,.dropdown:focus-within .dropdown-panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:0s}
+    .article-body{color:#1a1a1a;font-size:1.0625rem;line-height:1.9}.article-body>*+*{margin-top:1.6rem}
+    .article-body h2{margin-top:4rem;padding-bottom:.65rem;border-bottom:1px solid #e5e7eb;font-size:1.8rem;line-height:1.35;font-weight:700}
+    .article-body h3{margin-top:2.75rem;padding-bottom:.5rem;border-bottom:1px solid #e5e7eb;font-size:1.3rem;line-height:1.4;font-weight:700}
+    .article-body a{text-decoration:underline;text-underline-offset:4px}.article-body blockquote{border-left:3px solid #111;padding:1rem 0 1rem 1.5rem;color:#374151;background:#fafafa}
+    .article-body ul,.article-body ol{padding-left:1.5rem}.article-body ul{list-style:square}.article-body ol{list-style:decimal}.article-body li+li{margin-top:.55rem}
+    .article-body code:not(pre code){background:#f3f4f6;padding:.15rem .35rem;font-family:monospace;font-size:.9em}.article-body pre{overflow-x:auto;background:#111;color:#f9fafb;padding:1.4rem;font-size:.875rem;line-height:1.7}
+    .article-body table{display:block;overflow-x:auto;width:100%;min-width:42rem;border-collapse:collapse;border-top:1px solid #111;border-bottom:1px solid #111;font-size:.9rem}.article-body th,.article-body td{padding:.8rem .55rem;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}.article-body th{font-weight:700;background:#fafafa}
+  </style>
+</head>
+<body class="bg-white text-ink antialiased">
+  <header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur-sm">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-5 md:h-20 md:px-10 xl:px-16">
+      <a href="/index.html" class="flex items-baseline gap-2" aria-label="梯云社首页">
+        <span class="text-xl font-black">梯云社</span>
+        <span class="hidden text-[10px] font-bold uppercase tracking-widest text-muted sm:inline">Tiyun Club</span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-sm font-medium xl:flex" aria-label="主导航">
+        <a class="nav-link" href="/index.html">首页</a>
+        <div class="dropdown relative flex h-20 items-center">
+          <a class="nav-link flex items-center gap-1" href="/airports.html" aria-haspopup="true">机场推荐 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i></a>
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
+            <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
+              <p class="px-3 pb-2 pt-1 text-xs font-bold text-gray-500">精选服务商导航 · 06 BRANDS</p>
+              <div class="grid gap-0.5 text-sm">
+                <a href="/airports.html" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🏆</span>年度综合推荐榜</a>
+                <a href="/airport-topic.html?topic=premium" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">⚡</span>IEPL / IPLC 顶级专线精选</a>
+                <a href="/airport-topic.html?topic=value" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">💎</span>平价月付与不限时按量合集</a>
+                <a href="/airport-topic.html?topic=discounts" class="rounded-lg px-3 py-2 transition-colors hover:bg-gray-100"><span class="mr-2">🎟️</span>2026 独家优惠码清单</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown relative flex h-20 items-center">
+          <button type="button" class="nav-link flex items-center gap-1" aria-haspopup="true">
+            品牌测评 <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+          </button>
+          <div class="dropdown-panel absolute left-1/2 top-full z-[100] w-80 -translate-x-1/2 pt-2">
+            <div class="rounded-2xl border border-gray-100 bg-white p-3 shadow-[0_10px_30px_rgba(0,0,0,0.10)]">
+              <p class="px-3 pb-2 pt-1 font-mono text-[11px] font-bold uppercase text-gray-400">Independent Audits / 单品审计</p>
+              <div class="grid gap-0.5 text-sm">
+                <a href="/posts/yunjiexian-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">云界线 · 可用率审计</span>
+                  <span class="font-mono text-xs text-muted">IEPL专线</span>
+                </a>
+                <a href="/posts/dalaoyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">大佬云 · 长连接分析</span>
+                  <span class="font-mono text-xs text-muted">多设备并发</span>
+                </a>
+                <a href="/posts/huanqiuti-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">环球梯 · 协议抗拥塞</span>
+                  <span class="font-mono text-xs text-muted">弱网韧性</span>
+                </a>
+                <a href="/posts/liulianyun-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">榴莲云 · 大吞吐负载</span>
+                  <span class="font-mono text-xs text-muted">高码率流媒体</span>
+                </a>
+                <a href="/posts/shandianshu-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">闪电鼠 · 接入点测试</span>
+                  <span class="font-mono text-xs text-muted">低延迟敏感</span>
+                </a>
+                <a href="/posts/shenxing-audit-2026/" class="flex items-center justify-between rounded-lg px-3 py-2 transition-colors hover:bg-gray-100">
+                  <span class="font-medium text-ink">神行加速 · 按量长连接</span>
+                  <span class="font-mono text-xs text-muted">备用方案</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="nav-link font-bold" href="/tools.html">工具使用</a>
+        <a class="nav-link" href="/knowledge.html">知识库</a>
+        <a class="nav-link" href="/index.html#about">关于</a>
+        <a href="/index.html?search=1" class="p-2 transition-colors hover:bg-gray-100" aria-label="搜索"><i data-lucide="search" class="h-4 w-4"></i></a>
+        <a href="/disclaimer.html" class="nav-link text-xs">免责声明</a>
+      </nav>
+
+      <div class="flex items-center gap-1 xl:hidden">
+        <a href="/index.html?search=1" class="p-2.5" aria-label="搜索"><i data-lucide="search" class="h-5 w-5"></i></a>
+        <button id="menuButton" type="button" class="p-2.5" aria-expanded="false" aria-controls="mobileMenu" aria-label="打开菜单">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+    <nav id="mobileMenu" class="hidden border-t border-line bg-white px-5 py-5 xl:hidden" aria-label="移动端导航">
+      <div class="grid gap-4 text-sm font-medium">
+        <a href="/index.html">首页</a>
+        <div>
+          <button id="airportMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="airportMobileMenu">
+            <span>机场推荐</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
+          </button>
+          <div id="airportMobileMenu" class="mt-3 hidden border-l border-line pl-4">
+            <p class="pb-2 text-xs font-bold text-muted">精选服务商导航 · 06 BRANDS</p>
+            <div class="grid gap-1 font-normal">
+              <a class="py-1.5" href="/airports.html">🏆 年度综合推荐榜</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=premium">⚡ IEPL / IPLC 顶级专线精选</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=value">💎 平价月付与不限时按量合集</a>
+              <a class="py-1.5" href="/airport-topic.html?topic=discounts">🎟️ 2026 独家优惠码清单</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button id="brandMenuButton" type="button" class="flex w-full items-center justify-between text-left" aria-expanded="false" aria-controls="brandMobileMenu">
+            <span>品牌测评</span><i data-lucide="chevron-down" class="h-4 w-4 transition-transform"></i>
+          </button>
+          <div id="brandMobileMenu" class="mt-3 hidden border-l border-line pl-4">
+            <p class="pb-2 text-xs font-bold text-muted">单品深度审计实测</p>
+            <div class="grid gap-1 text-sm font-normal">
+              <a class="py-1.5 flex items-center justify-between" href="/posts/yunjiexian-audit-2026/"><span>云界线 · 可用率审计</span><span class="font-mono text-xs text-muted">IEPL专线</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/dalaoyun-audit-2026/"><span>大佬云 · 长连接分析</span><span class="font-mono text-xs text-muted">多设备并发</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/huanqiuti-audit-2026/"><span>环球梯 · 协议抗拥塞</span><span class="font-mono text-xs text-muted">弱网韧性</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/liulianyun-audit-2026/"><span>榴莲云 · 大吞吐负载</span><span class="font-mono text-xs text-muted">高码率流媒体</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/shandianshu-audit-2026/"><span>闪电鼠 · 接入点测试</span><span class="font-mono text-xs text-muted">低延迟敏感</span></a>
+              <a class="py-1.5 flex items-center justify-between" href="/posts/shenxing-audit-2026/"><span>神行加速 · 按量长连接</span><span class="font-mono text-xs text-muted">备用方案</span></a>
+            </div>
+          </div>
+        </div>
+        <a class="font-bold" href="/tools.html">工具使用</a>
+        <a class="" href="/knowledge.html">知识库</a>
+        <a href="/index.html#about">关于</a>
+        <a href="/disclaimer.html">免责声明</a>
+      </div>
+    </nav>
+  </header>
+  <main><article>
+    <header class="border-b border-gray-200"><div class="mx-auto max-w-5xl px-5 py-14 md:py-24">
+      <a href="/tools.html" class="text-sm text-gray-500 hover:text-black">← 返回工具使用</a>
+      <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span class="border border-gray-300 px-3 py-1 font-mono text-black">工具使用</span><time datetime="2026-11-14">2026.11.14</time><span>·</span><span>7 MIN READ</span></div>
+      <h1 class="mt-7 text-4xl font-black leading-tight sm:text-5xl md:text-7xl">【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树</h1>
+      <p class="mt-8 max-w-3xl text-lg leading-relaxed text-gray-600">拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。</p>
+      <div class="mt-10 flex items-center gap-4 border-t border-gray-200 pt-5 text-sm"><div class="flex h-10 w-10 items-center justify-center bg-black font-bold text-white">TY</div><div><p class="font-semibold">梯云社编辑部</p><p class="text-xs text-gray-500">Network Research · 2026</p></div></div>
+    </div></header>
+    <div class="mx-auto max-w-3xl px-5 py-14 md:py-20"><div class="article-body"><p>在使用 Clash Verge Rev、Mihomo Party 或 sing-box 客户端时，几乎所有人都遭遇过这种抓狂场景：</p>
+<blockquote>点击测速，原本绿油油的延迟测速列表瞬间全部变成 <strong>“Timeout”</strong> 或红色的 <strong>“9999ms”</strong>，浏览器彻底断网打不开任何网页。</blockquote>
+<p>搜索 CSDN 或中文互联网，90% 的答案充斥着“重启电脑”、“重装客户端”、“关闭防火墙”等毫无技术含量的套话。</p>
+<p><strong>核心事实</strong>：一家成熟机场的数十个节点分布在全球不同机房（香港、日本、美国、新加坡），<strong>几乎不可能在同一秒内全部宕机</strong>。当所有节点统一变红超时，问题 99% 出在<strong>本地环境的公共协商层</strong>，而非节点本身。</p>
+<p>梯云社技术组根据网络工程排错规范，整理出这份直击病灶的七步全链路排查树。</p>
+<p>---</p>
+<h2>快速自查决策树（先判定故障层级）</h2>
+<pre><code>                     所有节点测速同时 9999ms / Timeout
+                                    │
+               ┌────────────────────┴────────────────────┐
+        本地公共协商层故障                         上游中转入口故障
+  (时间偏差 / TUN网卡 / DNS回环)                 (入口服务器断流 / 订阅解析失效)
+               │                                         │
+       步骤 1 至 步骤 4                           步骤 5 至 步骤 7</code></pre>
+<p>---</p>
+<h2>第一步：检查系统时间 NTP 同步（最隐蔽也是最常见的坑）</h2>
+<p><strong>这是新手 80% 踩中却完全意识不到的致命雷区。</strong></p>
+<ul><li><strong>底层原理</strong>：现代代理协议（如 VMess、VLESS、Trojan、Shadowsocks-2022、Hysteria 2）以及 TLS 加密证书协商，对客户端与服务端的时间差有极其严格的时间戳校验。一旦你的电脑本地时间与国际标准时间偏差<strong>超过 60 秒</strong>，服务端会在 TCP 握手阶段直接强行中断连接，导致所有节点全部握死超时。</li><li><strong>排查实操</strong>：</li></ul>
+<p>- <strong>Windows 用户</strong>：右下角时间 -&gt; 右键“调整日期和时间” -&gt; 点击“立即同步”，确保同步状态显示绿色对勾； - <strong>macOS 用户</strong>：系统设置 -&gt; 通用 -&gt; 日期与时间 -&gt; 开启“自动设置日期与时间”； - 同步完成后，彻底退出代理客户端核心，重新开启测试。</p>
+<p>---</p>
+<h2>第二步：排查 TUN 虚拟网卡驱动与杀毒软件冲突</h2>
+<p>如果你开启了 <strong>TUN 模式</strong>（虚拟网卡接管系统全部流量），以下三种情况会引发全盘死锁：</p>
+<ol><li><strong>多代理网卡打架</strong>：电脑上同时安装了其他加速器、企业 VPN（如 EasyConnect、GlobalProtect、Cisco AnyConnect），两个 TUN 驱动争抢系统默认路由出口，导致虚拟网卡死循环；</li><li><strong>杀毒软件拦截</strong>：国内某些杀毒软件会静默拦截虚拟网卡驱动（如 wintun.dll），导致数据包进得去出不来；</li><li><strong>修复手段</strong>：</li></ol>
+<p>- 先在客户端内<strong>关闭 TUN 模式</strong>，切换为传统的“系统代理（System Proxy）”模式； - 若切换为系统代理后测速立刻恢复正常，说明 100% 为 TUN 驱动或路由表冲突，重新以管理员身份运行客户端并重装 Wintun 驱动即可。</p>
+<p>---</p>
+<h2>第三步：DNS 污染与混合模式（Mixed Mode）环路死锁</h2>
+<p>当客户端的 DNS 解析被污染，或者本地代理端口配置发生了回环死锁时，测速请求根本发不出去：</p>
+<ol><li><strong>检查内置 DNS 配置</strong>：打开 Clash 配置，查看 <code>dns</code> 字段是否启用了 <code>fake-ip</code>。如果误将国内直连 DNS 配成了国外已被污染的纯文本 DNS（如 8.8.8.8 未走加密），会导致域名解析全部卡死；</li><li><strong>推荐配置原则</strong>：</li></ol>
+<p>``<code>yaml dns: enable: true enhanced-mode: fake-ip nameserver: - 223.5.5.5 - 119.29.29.29 fallback: - https://1.1.1.1/dns-query - https://8.8.8.8/dns-query </code>``</p>
+<ol><li><strong>清理系统 DNS 缓存</strong>：在 Windows 命令行执行 <code>ipconfig /flushdns</code>，Mac 执行 <code>sudo dscacheutil -flushcache</code>。</li></ol>
+<p>---</p>
+<h2>第四步：检查测速地址与节点协议版本兼容性</h2>
+<p>很多时候“9999ms”只是<strong>测速本身的探测网址被墙</strong>，并不代表节点无法翻墙：</p>
+<ol><li>查看设置中的“延迟测试 URL（Latency Test URL）”；</li><li>如果默认填的是 <code>http://www.google.com/gen_204</code>，当节点配置了特定分流规则时可能被丢弃；</li><li><strong>解决方案</strong>：将测速 URL 更改为更稳定的轻量地址：</li></ol>
+<p>- <code>http://cp.cloudflare.com/generate_204</code> - <code>https://www.gstatic.com/generate_204</code></p>
+<p>---</p>
+<h2>第五步：区分是“自己本地网络”还是“机场入口机房挂掉”</h2>
+<p>如果前四步全部排查无误，依然全线飘红，我们需要判定是本地宽带故障还是机场上游故障：</p>
+<ol><li><strong>手机断开 Wi-Fi</strong>，开启 5G/4G 移动蜂窝热点让电脑连接；</li><li>再次点击测速：</li></ol>
+<p>- <strong>如果换成手机热点后瞬间全绿</strong>：说明是你家里的电信/移动宽带光猫、路由器防火墙拦截了特定端口，或者光猫拨号出现了 MTU 截断； - <strong>如果换成手机热点依然全红</strong>：说明是机场的上游国内中转入口遭遇了物理断纤或集群维护。</p>
+<p>---</p>
+<h2>第六步：更新订阅节点与核对到期状态</h2>
+<p>不要笑，大量用户超时是因为<strong>套餐流量用超或已到期</strong>，或者机场更换了后端服务器节点但客户端未同步：</p>
+<ol><li>在客户端订阅管理列表中，点击“更新订阅（Update Subscription）”；</li><li>观察是否能拉取到最新的节点列表；</li><li>登录机场后台控制台，查看当前剩余流量、重置日期与公告列表。</li></ol>
+<p>---</p>
+<h2>第七步：极客工程师的底线思维——常备容灾“冷备份”</h2>
+<p>网络连接受国际出口路由波动、光缆检修与不可抗力影响极深。任何将全部生产力押宝在单一服务商、单一套餐上的做法，都是不成熟的技术选型。</p>
+<p><strong>工业级防失联准则</strong>：</p>
+<ol><li><strong>主力专线主攻日常生产力</strong>：选择纯物理 IEPL 专线（如梯云社实测晚高峰丢包仅 0.05% 的 <strong><a href="/go.html?id=yunjiexian" target="_blank" rel="nofollow sponsored noopener noreferrer">云界线官方站点</a></strong>），保障工作日代码拉取、SSH 长连接与大模型秒回；</li><li><strong>常备按量计费作为容灾备胎</strong>：切勿购买两个按月计费的同质化套餐（双份月租极度浪费）。必须搭配一个<strong>“流量永久有效、不限使用时间”</strong>的按量计费服务（如梯云社实测过的 <strong><a href="/go.html?id=shenxing" target="_blank" rel="nofollow sponsored noopener noreferrer">神行加速官方站点</a></strong>，¥8 购买几十 GB 流量常年躺在客户端），一旦主力遇到极端故障，秒级无缝切换，彻底告别断网恐慌。</li></ol>
+<p>---</p>
+<blockquote><strong>实验室总结</strong>：遇到 9999ms，记住排错口诀：<strong>“先对时间再换网，关掉 TUN 测系统，换个热点定真凶，备用按量防失联”</strong>。按照工程逻辑逐层剥离，任何网络故障都能在 3 分钟内准确定位。</blockquote></div></div>
+  </article></main>
+  <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><a href="/sitemap.xml">SITEMAP</a></div></footer>
+  <script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons()});</script>
+  <script src="/assets/airport-menu.js" defer></script>
+</body>
+</html>
