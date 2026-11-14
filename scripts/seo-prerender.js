@@ -501,6 +501,12 @@ indexContent = indexContent.replace(
 indexContent = indexContent.replace(/\s*\.view\s*\{\s*display:\s*none;\s*\}/g, '');
 indexContent = indexContent.replace(/\s*\.view\.is-active\s*\{\s*display:\s*block;\s*\}/g, '');
 
+// (8.5) 动态同步首页统计文章数量
+indexContent = indexContent.replace(
+  /<p class="text-2xl font-bold">\d+\s+Articles<\/p>/g,
+  `<p class="text-2xl font-bold">${String(posts.length).padStart(2, '0')} Articles</p>`
+);
+
 // (9) 硬编码静态预渲染 recentPosts 和 popularTags
 indexContent = indexContent.replace(
   /<ol id="recentPosts" class="divide-y divide-line text-sm">[\s\S]*?<\/ol>/,
