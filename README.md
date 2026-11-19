@@ -3,7 +3,8 @@
 > **面向外贸出海、技术开发、科研学术、AI 推理（ChatGPT/Claude）及 4K/8K 流媒体用户的专业级网络评测与选型参考。**  
 > 拒绝虚标带宽与无脑年付推广，本清单以华东电信、华南联通、西南移动三大骨干网探针开展的 **30 天连续 720 小时时序监测** 为事实基础，全面审计晚高峰（20:00–23:00）丢包率、RTT 抖动方差、长连接保活率与原生 IP 洁净度。
 
-[![Updated](https://img.shields.io/badge/Updated-2026.10-2563eb?style=flat-square&logo=git)](https://tiyunclub.com)
+[![Updated](https://img.shields.io/badge/Updated-2026.11-2563eb?style=flat-square&logo=git)](https://tiyunclub.com)
+[![Articles](https://img.shields.io/badge/Articles-68%2B-blue?style=flat-square)](https://tiyunclub.com/knowledge.html)
 [![Audited Brands](https://img.shields.io/badge/Audited-06%20Brands-16a34a?style=flat-square)](https://tiyunclub.com/airports.html)
 [![Probe Sampling](https://img.shields.io/badge/Probes-720h%20Continuous%20Sampling-f59e0b?style=flat-square)](https://tiyunclub.com/posts/airport-stability-audit-2026/)
 [![Exclusive Discounts](https://img.shields.io/badge/Coupons-Verified%20Active-8b5cf6?style=flat-square)](https://tiyunclub.com/airport-topic.html?topic=discounts)
@@ -26,7 +27,7 @@
 
 ## 目录导航
 
-- [本期核对与最新数据快照（2026-10）](#本期核对与最新数据快照2026-10)
+- [本期核对与最新数据快照（2026-11）](#本期核对与最新数据快照2026-11)
 - [这份清单与别处的本质区别](#这份清单与别处的本质区别)
 - [三步科学选机场：避开 90% 虚假营销坑](#三步科学选机场避开-90-虚假营销坑)
 - [价格档位速查与线路架构分类](#价格档位速查与线路架构分类)
@@ -40,24 +41,25 @@
 - [常用开源客户端与新一代代理协议速查](#常用开源客户端与新一代代理协议速查)
 - [精选 FAQ 常见问题问答库（高频疑难解析）](#精选-faq-常见问题问答库高频疑难解析)
 - [梯云社站内深度专栏与技术知识库矩阵](#梯云社站内深度专栏与技术知识库矩阵)
+- [🛠️ 开源工程构建与内容维护指南](#️-开源工程构建与内容维护指南)
 - [独立审计方法论与免责声明](#独立审计方法论与免责声明)
 
 ---
 
-## 本期核对与最新数据快照（2026-10）
+## 本期核对与最新数据快照（2026-11）
 
-梯云社（Tiyun Club）每月对收录的各品牌服务商执行连通性、官网存活率、节点配置、协议变更及优惠码有效性复核。以下为 2026 年 10 月最新核对数据：
+梯云社（Tiyun Club）每月对收录的各品牌服务商执行连通性、官网存活率、节点配置、协议变更及优惠码有效性复核。以下为 2026 年 11 月最新核对数据：
 
 | 审计项目 | 本期核对结果与参数说明 |
 | :--- | :--- |
-| **最新核对日期** | 2026 年 10 月 23 日（月度动态巡检） |
+| **最新核对日期** | 2026 年 11 月 19 日（月度动态巡检） |
 | **数据采样环境** | 梯云社三网探针：上海电信千兆、广州联通千兆、成都移动千兆（对称商宽环境） |
 | **受审清单范围** | 6 家具备真实独立官网、可正常充值、具备多端订阅支持的精选服务商 |
 | **晚高峰最低丢包率** | **云界线**（香港/东京 IEPL 专线，晚高峰时段丢包率仅 0.05%） |
 | **跨境时延最低极值** | **闪电鼠**（华南 BGP 入口到香港落地 PoP 点，实测 RTT 均值 19.5ms） |
 | **起步月付门槛** | ¥8 / 月起（神行加速、大佬云、环球梯、闪电鼠、榴莲云、云界线均提供低门槛入门体验档） |
 | **最新优惠码动态** | 全量 6 家专属优惠码已通过结账页实际校验，均处于有效期内（详细码见推荐大表） |
-| **协议生态跟踪** | 环球梯全面强化 Hysteria 2 协议支持；云界线、大佬云针对 sing-box 与 Clash Meta 规则集完成优化 |
+| **协议生态跟踪** | 环球梯全面强化 Hysteria 2 协议支持；云界线、大佬云针对 sing-box 与 Clash Meta 规则集完成优化；新增 Apple TV (tvOS 17+) 原生客户端及 OpenWrt 旁路由 DNS 兼容性审计 |
 
 ---
 
@@ -373,26 +375,64 @@ $$\text{综合评分 (5.0 满分)} = W_1 \cdot S_{\text{专线隔离}} + W_2 \cd
 - [榴莲云单节点大吞吐物理管道与 4K/8K 流媒体高码率测试](https://tiyunclub.com/posts/liulianyun-audit-2026/)
 - [闪电鼠全节点优质三网 BGP 接入与低延迟极速对齐实录](https://tiyunclub.com/posts/shandianshu-audit-2026/)
 
-### 2. 核心网络架构与选购技术指南
-- [IPLC、IEPL、中转与直连有什么本质区别？为什么专线机场贵数倍？](https://tiyunclub.com/posts/02-iplc-iepl-lines/)
-- [平价月付与高性价比机场推荐：如何避开低价走量超售陷阱](https://tiyunclub.com/posts/01-budget-nodes/)
-- [AI 大模型与原生住宅 IP 深度解析：ChatGPT 与 Claude 稳定防封指南](https://tiyunclub.com/posts/03-ai-native-ip/)
+### 2. 客厅大屏、家庭网关与全屋透明代理（大屏进阶）
+- [【大屏极客】Apple TV 电视端科学上网与 4K 流媒体实战：tvOS 代理选型与防卡顿配置指南](https://tiyunclub.com/posts/57-appletv-tvos-4k-streaming-setup-guide/)
+- [【家庭网关】OpenWrt / iStoreOS 旁路由透明代理踩坑：DNS 污染与国内断网根治指南](https://tiyunclub.com/posts/58-openwrt-istoreos-transparent-gateway-dns-fix/)
 - [流媒体 4K/8K 解锁技术内幕：Netflix、Disney+ 区域片库解锁逻辑](https://tiyunclub.com/posts/04-streaming-unlock/)
-- [2026 最新机场优惠码与省钱订阅技巧全收录](https://tiyunclub.com/posts/43-discount-code-saving-guide/)
-- [月付 vs 年付终极对决：新手为什么必须从月付开始](https://tiyunclub.com/posts/47-monthly-vs-annual-subscription/)
+- [手机热点无法共享代理网络？Windows 与安卓热点共享节点方法](https://tiyunclub.com/posts/18-hotspot-proxy-sharing-windows-android/)
 
-### 3. 客户端进阶配置与实战教程
+### 3. 开发者提效、AI 避坑与跨境企业高可用（深度实战）
+- [【开发避坑】Docker pull 超时与 VS Code Remote-SSH 频繁重连：终端无代理与 TUN 模式深度救砖实录](https://tiyunclub.com/posts/59-docker-pull-timeout-vscode-ssh-reset-fix/)
+- [【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑](https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/)
+- [2026 外贸企业跨国协同与 SLA 99.9% 高可用网络容灾架构方案](https://tiyunclub.com/posts/enterprise-cross-border-ha-audit-2026/)
+- [2026 跨境出海与多平台电商店铺防关联网络链路审计白皮书](https://tiyunclub.com/posts/cross-border-anti-association-audit-2026/)
+- [GitHub 与 Docker 镜像加速实战：程序员必备的开发环境代理配置](https://tiyunclub.com/posts/33-github-docker-development-network/)
+- [AI 大模型与原生住宅 IP 深度解析：ChatGPT 与 Claude 稳定防封指南](https://tiyunclub.com/posts/03-ai-native-ip/)
+
+### 4. 全平台客户端进阶与虚拟网卡配置
 - [Clash Verge Rev 完整实战教程：配置导入、内核选择与分流规则管理](https://tiyunclub.com/posts/14-clash-verge-rev-complete-guide/)
 - [Shadowrocket iOS 小火箭从零到精通：订阅管理、规则分流与模块技巧](https://tiyunclub.com/posts/15-shadowrocket-ios-subscription-guide/)
 - [sing-box 跨平台现代化通用客户端全景深度指南](https://tiyunclub.com/posts/16-sing-box-cross-platform-guide/)
 - [v2rayN Windows 电脑客户端科学配置与订阅更新指南](https://tiyunclub.com/posts/12-v2rayn-guide/)
 - [TUN 虚拟网卡模式详解：接管整机流量与解决软件不走代理顽疾](https://tiyunclub.com/posts/22-tun-mode-explained/)
 
-### 4. 疑难故障排除与网络诊断
-- [Clash 节点全量 9999ms 超时（Timeout）七步终极排查法](https://tiyunclub.com/posts/19-clash-timeout-seven-step-fix/)
-- [机场订阅链接拉取失败与 HTTP 报错深度排查](https://tiyunclub.com/posts/21-subscription-http-error-fix/)
-- [DNS 泄漏检测与隐私保护修复：防范运营商劫持](https://tiyunclub.com/posts/49-dns-leak-detection-fix/)
-- [识别机场跑路的六大典型预兆与自救指南](https://tiyunclub.com/posts/51-service-shutdown-warning-signs/)
+### 5. 疑难故障排除与机场风控避坑（硬核排障树）
+- [【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树](https://tiyunclub.com/posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/)
+- [【避坑自查】2026 机场跑路前兆与灰产特征审计清单：为什么百元三年付必死无疑？](https://tiyunclub.com/posts/56-airport-shutdown-warning-signs-audit-2026/)
+- [开启代理后电脑 DNS 泄漏如何检测与修复？保障上网真实隐私](https://tiyunclub.com/posts/49-dns-leak-detection-fix/)
+- [浏览器提示“您的连接不是私密连接（SSL 证书错误）”排查指南](https://tiyunclub.com/posts/48-ssl-certificate-error-guide/)
+- [订阅链接无法更新？常见 HTTP 报错代码排查与手动更新方法](https://tiyunclub.com/posts/21-subscription-http-error-fix/)
+- [📖 查阅全站文章索引目录（69 篇按日期倒序完整归档）](CONTENT_INDEX.md)
+
+---
+
+## 🛠️ 开源工程构建与内容维护指南
+
+梯云社网络性能独立审计实验室采用现代前端工程标准，支持 100% 本地离线构建与静态预渲染：
+
+### 1. 本地启动与调试预览
+```bash
+# 安装轻量级项目开发依赖
+npm install
+
+# 启动本地实时调试预览服务 (默认端口 http://localhost:8080)
+npm run dev
+```
+
+### 2. 自动化编译与静态 HTML 预渲染
+```bash
+# 一键触发全链路编译：生成 SEO 静态文章、更新 posts-data.js、构建 sitemap.xml 与全站 CONTENT_INDEX.md
+npm run build
+```
+
+### 3. 全面回归安全测试
+```bash
+# 执行 105+ 项防 404、防 Nginx/Netlify 循环重定向与静态正文可抓取性回归测试
+npm run verify
+```
+
+### 4. 自动化文章索引与规则约束
+每次新增、删除或调整 Markdown 文章后，构建流水线将自动调用 `node scripts/gen-index.js` 同步刷新根目录 [CONTENT_INDEX.md](CONTENT_INDEX.md)。全部内容撰写严格遵从 [AGENTS.md](AGENTS.md) 规定的选题查重、双向内链闭环与 302 隔离合规跳转标准。
 
 ---
 
