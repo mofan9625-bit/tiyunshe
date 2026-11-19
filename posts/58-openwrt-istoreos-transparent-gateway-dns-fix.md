@@ -90,3 +90,4 @@ iptables -t nat -A POSTROUTING -o br-lan -j MASQUERADE
 ---
 
 > **实验室总结**：玩转软路由透明网关，核心口诀是“**MASQUERADE 保回程、Fake-IP 斩回环、不限设备选并发**”。避开非对称路由陷阱，软路由才能真正成为客厅与办公室的隐形加速神器。
+
