@@ -4,6 +4,27 @@
   <link>https://tiyunclub.com/</link>
   <description>网络节点评测、工具教程与网络诊断。</description>
   <item>
+    <title>【大屏极客】Apple TV 电视端科学上网与 4K 流媒体实战：tvOS 代理选型与防卡顿配置指南</title>
+    <link>https://tiyunclub.com/posts/57-appletv-tvos-4k-streaming-setup-guide/</link>
+    <guid>https://tiyunclub.com/posts/57-appletv-tvos-4k-streaming-setup-guide/</guid>
+    <pubDate>Wed, 18 Nov 2026 16:00:00 GMT</pubDate>
+    <description>梯云社 2026 客厅影音实测：深度解析 Apple TV 在 tvOS 17/18 原生系统代理下的客户端选型，教你彻底规避 Netflix 与 Disney+ 4K 缓冲转圈与降画质，解决局域网 AirPlay/HomeKit 断流冲突。</description>
+  </item>
+  <item>
+    <title>【架构避坑】OpenWrt / iStoreOS 软路由透明代理全解：彻底根治 DNS 污染死循环与国内断网</title>
+    <link>https://tiyunclub.com/posts/58-openwrt-istoreos-transparent-gateway-dns-fix/</link>
+    <guid>https://tiyunclub.com/posts/58-openwrt-istoreos-transparent-gateway-dns-fix/</guid>
+    <pubDate>Wed, 18 Nov 2026 16:00:00 GMT</pubDate>
+    <description>拒绝网络风暴与设备断网！梯云社网络实验室深度剖析 OpenWrt 与 iStoreOS 旁路由透明网关的数据流走向，从 NAT 环回、iptables 规则到 MosDNS/Fake-IP 配置，提供全套彻底根治国内断网与 DNS 死锁的避坑指南。</description>
+  </item>
+  <item>
+    <title>【开发者实战】彻底解决 Docker Pull 镜像拉取超时与 VS Code Remote SSH 频繁断连</title>
+    <link>https://tiyunclub.com/posts/59-docker-pull-timeout-vscode-ssh-reset-fix/</link>
+    <guid>https://tiyunclub.com/posts/59-docker-pull-timeout-vscode-ssh-reset-fix/</guid>
+    <pubDate>Wed, 18 Nov 2026 16:00:00 GMT</pubDate>
+    <description>拒绝构建中断与连接重置！梯云社工程师深入剖析 Docker Daemon 独立网络栈与 VS Code Remote SSH 长连接断流原理，从 systemd 代理注入、Keepalive 心跳到纯物理 IEPL 专线，提供全套彻底解决方案。</description>
+  </item>
+  <item>
     <title>【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑</title>
     <link>https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/</link>
     <guid>https://tiyunclub.com/posts/54-chatgpt-claude-1020-error-residential-ip-guide/</guid>

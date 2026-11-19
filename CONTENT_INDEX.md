@@ -2,12 +2,15 @@
 
 > ⚠️ **强制规范**：每次规划或撰写新文章前，必须先通读本文件进行**选题查重**与**内链闭环匹配**。严禁编写与既有文章标题/核心词高度重合的内容。
 > **自动化维护**：本文件由 `node scripts/gen-index.js` 自动扫描生成。
-> **当前收录文章总数**：66 篇 | **最后生成时间**：2026-11-19
+> **当前收录文章总数**：69 篇 | **最后生成时间**：2026-11-19
 
 ---
 
 ## 全站文章清单（按发布日期倒序）
 
+- [2026-11-19] [【大屏极客】Apple TV 电视端科学上网与 4K 流媒体实战：tvOS 代理选型与防卡顿配置指南](posts/57-appletv-tvos-4k-streaming-setup-guide/) | 关键词: AppleTV, tvOS, 4K流媒体, Netflix, Disney+, 软路由, 节点测速
+- [2026-11-19] [【架构避坑】OpenWrt / iStoreOS 软路由透明代理全解：彻底根治 DNS 污染死循环与国内断网](posts/58-openwrt-istoreos-transparent-gateway-dns-fix/) | 关键词: OpenWrt, iStoreOS, 软路由, 旁路由, 透明网关, DNS污染, 故障排查
+- [2026-11-19] [【开发者实战】彻底解决 Docker Pull 镜像拉取超时与 VS Code Remote SSH 频繁断连](posts/59-docker-pull-timeout-vscode-ssh-reset-fix/) | 关键词: Docker, SSH, VSCode, 开发者网络, TLS超时, 故障排查, Git
 - [2026-11-14] [【避坑自查】2026 机场跑路前兆与灰产特征审计清单：为什么百元三年付必死无疑？](posts/56-airport-shutdown-warning-signs-audit-2026/) | 关键词: 防跑路, 机场审计, 成本核算, 避坑指南, 节点稳定性
 - [2026-11-14] [【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树](posts/55-clash-singbox-9999ms-timeout-complete-troubleshooting/) | 关键词: 网络诊断, 故障排查, Clash, sing-box, 超时排查, 节点延迟, 9999ms
 - [2026-11-14] [【深度实测】OpenAI 与 Claude 频繁报 1020 / Access Denied 底层原因与住宅 IP 选型避坑](posts/54-chatgpt-claude-1020-error-residential-ip-guide/) | 关键词: AI加速, ChatGPT, Claude, 住宅IP, 原生IP, 节点测速, 协议解析

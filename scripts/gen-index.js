@@ -106,3 +106,4 @@ const finalContent = header + lines.join('\n') + '\n';
 
 fs.writeFileSync(outputFile, finalContent, 'utf8');
 console.log(`[Success] 已成功提取 ${articles.length} 篇文章索引，并按日期倒序写入: CONTENT_INDEX.md`);
+

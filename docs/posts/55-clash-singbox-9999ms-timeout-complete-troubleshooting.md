@@ -125,3 +125,11 @@ slug: 55-clash-singbox-9999ms-timeout-complete-troubleshooting
 
 > **实验室总结**：遇到 9999ms，记住排错口诀：**“先对时间再换网，关掉 TUN 测系统，换个热点定真凶，备用按量防失联”**。按照工程逻辑逐层剥离，任何网络故障都能在 3 分钟内准确定位。
 
+---
+
+## 延伸阅读与开发环境专项排错
+
+若你的 9999ms 或断流问题主要集中在终端命令行、Docker 镜像拉取或 VS Code Remote-SSH 管道重连上，请参阅针对开发者的深入实战：
+- [【开发避坑】Docker pull 超时与 VS Code Remote-SSH 频繁重连：终端无代理与 TUN 模式深度救砖实录](posts/59-docker-pull-timeout-vscode-ssh-reset-fix/)
+
+

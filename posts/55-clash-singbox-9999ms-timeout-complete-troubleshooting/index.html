@@ -154,7 +154,7 @@
   <main><article>
     <header class="border-b border-gray-200"><div class="mx-auto max-w-5xl px-5 py-14 md:py-24">
       <a href="/knowledge.html" class="text-sm text-gray-500 hover:text-black">← 返回知识库</a>
-      <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span class="border border-gray-300 px-3 py-1 font-mono text-black">网络诊断</span><time datetime="2026-11-14">2026.11.14</time><span>·</span><span>7 MIN READ</span></div>
+      <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-gray-500"><span class="border border-gray-300 px-3 py-1 font-mono text-black">网络诊断</span><time datetime="2026-11-14">2026.11.14</time><span>·</span><span>8 MIN READ</span></div>
       <h1 class="mt-7 text-4xl font-black leading-tight sm:text-5xl md:text-7xl">【拒绝CSDN套话】Clash Verge Rev / sing-box 节点全部 9999ms 超时：全链路七步排查树</h1>
       <p class="mt-8 max-w-3xl text-lg leading-relaxed text-gray-600">拒绝 CSDN 复制粘贴与无脑重装！梯云社工程师整理的 Clash Verge Rev 与 sing-box 节点全部 9999ms 超时全链路排查树，深入剖析系统时间 NTP 偏差、TUN 驱动冲突、DNS 污染回环与机场入口阻断的实操判定法。</p>
       <div class="mt-10 flex items-center gap-4 border-t border-gray-200 pt-5 text-sm"><div class="flex h-10 w-10 items-center justify-center bg-black font-bold text-white">TY</div><div><p class="font-semibold">梯云社编辑部</p><p class="text-xs text-gray-500">Network Research · 2026</p></div></div>
@@ -209,7 +209,11 @@
 <p><strong>工业级防失联准则</strong>：</p>
 <ol><li><strong>主力专线主攻日常生产力</strong>：选择纯物理 IEPL 专线（如梯云社实测晚高峰丢包仅 0.05% 的 <strong><a href="/go.html?id=yunjiexian" target="_blank" rel="nofollow sponsored noopener noreferrer">云界线官方站点</a></strong>），保障工作日代码拉取、SSH 长连接与大模型秒回；</li><li><strong>常备按量计费作为容灾备胎</strong>：切勿购买两个按月计费的同质化套餐（双份月租极度浪费）。必须搭配一个<strong>“流量永久有效、不限使用时间”</strong>的按量计费服务（如梯云社实测过的 <strong><a href="/go.html?id=shenxing" target="_blank" rel="nofollow sponsored noopener noreferrer">神行加速官方站点</a></strong>，¥8 购买几十 GB 流量常年躺在客户端），一旦主力遇到极端故障，秒级无缝切换，彻底告别断网恐慌。</li></ol>
 <p>---</p>
-<blockquote><strong>实验室总结</strong>：遇到 9999ms，记住排错口诀：<strong>“先对时间再换网，关掉 TUN 测系统，换个热点定真凶，备用按量防失联”</strong>。按照工程逻辑逐层剥离，任何网络故障都能在 3 分钟内准确定位。</blockquote></div></div>
+<blockquote><strong>实验室总结</strong>：遇到 9999ms，记住排错口诀：<strong>“先对时间再换网，关掉 TUN 测系统，换个热点定真凶，备用按量防失联”</strong>。按照工程逻辑逐层剥离，任何网络故障都能在 3 分钟内准确定位。</blockquote>
+<p>---</p>
+<h2>延伸阅读与开发环境专项排错</h2>
+<p>若你的 9999ms 或断流问题主要集中在终端命令行、Docker 镜像拉取或 VS Code Remote-SSH 管道重连上，请参阅针对开发者的深入实战：</p>
+<ul><li><a href="posts/59-docker-pull-timeout-vscode-ssh-reset-fix/">【开发避坑】Docker pull 超时与 VS Code Remote-SSH 频繁重连：终端无代理与 TUN 模式深度救砖实录</a></li></ul></div></div>
   </article></main>
   <footer class="border-t border-gray-200 bg-[#fafafa] py-8"><div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-4 px-5 text-xs text-gray-500"><span>© 2026 TIYUN CLUB</span><a href="/sitemap.xml">SITEMAP</a></div></footer>
   <script>document.addEventListener('DOMContentLoaded',()=>{if(window.lucide)lucide.createIcons()});</script>

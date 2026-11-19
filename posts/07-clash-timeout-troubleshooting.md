@@ -42,3 +42,11 @@ status: published
 ## 最小化恢复方案
 
 新建一份最小配置，只保留一个已验证节点、基础 DNS 和全局模式。若最小配置可用，再逐项恢复规则、脚本与扩展。这样比直接重装更容易找到真正原因，也能保留原有数据。
+
+---
+
+## 延伸阅读与旁路由网关排查
+
+若你的客户端运行在旁路由、软路由（OpenWrt / iStoreOS）或特殊网关分流环境下，并遇到 DNS 环路或国内 App 离线，请参考：
+- [【家庭网关】OpenWrt / iStoreOS 旁路由透明代理踩坑：DNS 污染与国内断网根治指南](posts/58-openwrt-istoreos-transparent-gateway-dns-fix/)
+
